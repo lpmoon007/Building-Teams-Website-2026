@@ -1,0 +1,27 @@
+# Generated build output — never commit or hand-edit; regenerate with `node build.js`
+dist/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Node (only if you add tooling later)
+node_modules/
+npm-debug.log*
+
+# Internal working docs — keep local, don't deploy
+Strategy Brief.html
+Deployment Guide.html
+Launch & Growth Plan.html
+Lost-Link Outreach Templates.html
+Spam Cleanup Checklist.html
+Directions.html
+
+# Print/PDF plumbing — generated for PDF export, not a deployable page
+State of Team Building 2026-print.html
+
+# Source materials handed over for reference
+uploads/

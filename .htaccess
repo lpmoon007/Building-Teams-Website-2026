@@ -1,0 +1,67 @@
+# ============================================================
+# Building Teams — redirect map  (301 preserve + 410 spam removal)
+# Generated from Semrush backlink analysis. Place at the site root.
+# Implements "Redirect Map (from backlinks).csv".
+# NOTE: the homepage "/" is intentionally NOT redirected (it KEEPS its 781 backlinks).
+# ============================================================
+
+Options +FollowSymLinks
+RewriteEngine On
+
+# ----- Canonical host + HTTPS (matches https://www. canonicals) -----
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://www.buildingteams.com%{REQUEST_URI} [R=301,L]
+# Force www
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Serve folder index + clean directory URLs
+DirectoryIndex index.html
+
+# Custom error page
+ErrorDocument 404 /404.html
+
+# ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
+# Every /news/* URL on the old site was injected casino/essay/pharma spam.
+RewriteRule ^news/ - [G,NC,L]
+RewriteRule ^zajm-onlajn-absoljutno-vsem-na-kartu/?$ - [G,NC,L]
+RewriteRule ^top-resume-service-2/?$ - [G,NC,L]
+RewriteRule ^kak-vzjat-kredit-bez-kreditnoj-istorii/?$ - [G,NC,L]
+RewriteRule ^home-inspection-checklists/?$ - [G,NC,L]
+RewriteRule ^pdf-accounting-basics-for-beginners-accounting/?$ - [G,NC,L]
+RewriteRule ^banking-option-of-the-wolf-winner-casino-online-for-dummies/?$ - [G,NC,L]
+RewriteRule ^naklejka-viza-masterkard-pay-pass-visa-paywave/?$ - [G,NC,L]
+RewriteRule ^pjat-prichin-pochemu-bank-otkazhet-v-kredite/?$ - [G,NC,L]
+RewriteRule ^(gambling-online|online-gambling)/?$ - [G,NC,L]
+
+# ----- 301 MOVED PERMANENTLY: legit old pages -> new URLs -----
+RewriteRule ^product/win-win-win/?$ /activities/ [R=301,NC,L]
+RewriteRule ^teambuilding_tools\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
+RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^Adventure_Teambuilding/corporate_sailing\.htm/?$ /activities/ [R=301,NC,L]
+RewriteRule ^workshops/two-hour-team-building-workshops/what-is-wrong-with-you/?$ /resources/ [R=301,NC,L]
+RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ / [R=301,NC,L]
+RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ /executive-team-building/ [R=301,NC,L]
+RewriteRule ^product/perfect-square/?$ /activities/ [R=301,NC,L]
+RewriteRule ^teambuilding_activity/teambuilding_games/magic_carpet\.htm/?$ /activities/ [R=301,NC,L]
+RewriteRule ^product/bull-ring-team-building-activity/?$ /activities/ [R=301,NC,L]
+RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/bull_ring\.htm/?$ /activities/ [R=301,NC,L]
+RewriteRule ^i/shack1\.jpg/?$ / [R=301,NC,L]
+RewriteRule ^location/los-angeles/?$ /locations/los-angeles/ [R=301,NC,L]
+RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ /activities/ [R=301,NC,L]
+RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /resources/ [R=301,NC,L]
+RewriteRule ^teambuilding_activity/all_teambuilding_exercises\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
+RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ / [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/communication_exercises\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/trust_teambuilding_exercises\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^Corporate_Teambuilding/half_day_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
+RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/ [R=301,NC,L]
+RewriteRule ^conference-team-building/sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
+RewriteRule ^blog/?$ /resources/ [R=301,NC,L]
+
+# ----- end redirect map -----

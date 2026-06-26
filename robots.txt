@@ -1,0 +1,17 @@
+# Building Teams robots.txt
+User-agent: *
+Allow: /
+
+# Block nothing important; allow AI + search crawlers
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.buildingteams.com/sitemap.xml
