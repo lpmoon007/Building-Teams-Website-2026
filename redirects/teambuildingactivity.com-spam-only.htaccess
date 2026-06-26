@@ -1,0 +1,18 @@
+# ============================================================
+# teambuildingactivity.com — INTERIM spam-kill (Phase 1 of consolidation)
+#
+# Use this WHILE you keep TBA live and migrate its genuine content to BT.
+# It 410s the casino/slot spam the hack injected, but leaves every real page
+# serving normally. When the genuine articles are live on BT, switch to the
+# full map in `teambuildingactivity.com.htaccess`.
+#
+# HOW TO INSTALL: paste these rules at the TOP of TBA's existing .htaccess,
+# ABOVE the "# BEGIN WordPress" block, so WordPress permalinks keep working.
+# (If TBA has no .htaccess / no WordPress, this works as a standalone file too.)
+# ============================================================
+
+# --- spam-kill (hack remnants) -> 410 GONE ---
+RewriteEngine On
+RewriteRule (casino|slot|free-spins|no-deposit|bonus-code|immortal-romance|action-bank|betzest|bwin|chipstars|campo-bet|crypto-loko|gambling) - [G,NC,L]
+RewriteRule ^news/ - [G,NC,L]
+# --- end spam-kill ---
