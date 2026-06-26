@@ -22,7 +22,12 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
-const DIST = path.join(ROOT, 'dist');
+// Output dir defaults to ./dist next to the source, but can be redirected with
+// OUT_DIR (used by deploy-plesk.sh to build into a staging dir outside the
+// public docroot, so publishing can't collide with its own output).
+const DIST = process.env.OUT_DIR
+  ? path.resolve(process.env.OUT_DIR)
+  : path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.buildingteams.com';
 
 // Pages that must never appear in the build: the two alternate homepage

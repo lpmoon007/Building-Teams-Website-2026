@@ -20,8 +20,10 @@ set -euo pipefail
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$REPO_DIR"
 
-# Public docroot to publish into. Override in Plesk via an env var if needed.
-DOCROOT="${DOCROOT:-/var/www/vhosts/buildingteams.com/httpdocs}"
+# Public docroot to publish into. Defaults to the httpdocs sibling of the repo
+# checkout (works whether Plesk deploys to a private dir or to httpdocs itself).
+# Override with the DOCROOT env var in Plesk if your docroot is non-standard.
+DOCROOT="${DOCROOT:-$(dirname "$REPO_DIR")/httpdocs}"
 
 # Find a Node binary: prefer one on PATH, else the newest Plesk-bundled Node.
 if command -v node >/dev/null 2>&1; then
@@ -35,13 +37,20 @@ else
 fi
 echo "Using node: $NODE ($("$NODE" --version))"
 
-# 1. Build the clean-URL tree (also copies .htaccess + assets into dist/).
-"$NODE" build.js
+# Build into a staging dir OUTSIDE the docroot. This keeps publishing safe even
+# if Plesk checked the source out into httpdocs itself (source and output would
+# otherwise overlap). The staging dir is always cleaned up.
+STAGING="$(mktemp -d)"
+trap 'rm -rf "$STAGING"' EXIT
 
-# 2. Publish: make the docroot identical to dist/.
-#    --delete removes stale files so the server mirrors the build exactly.
+# 1. Build the clean-URL tree into staging (also copies .htaccess + assets).
+OUT_DIR="$STAGING" "$NODE" build.js
+
+# 2. Publish: make the docroot identical to the build.
+#    --delete removes stale files (incl. any raw source Plesk left in the
+#    docroot) so the server mirrors the build exactly.
 #    .well-known/ is preserved so Let's Encrypt / ACME cert renewals keep working.
 mkdir -p "$DOCROOT"
-rsync -a --delete --exclude '.well-known/' dist/ "$DOCROOT/"
+rsync -a --delete --exclude '.well-known/' "$STAGING/" "$DOCROOT/"
 
-echo "Deployed $(find dist -type f | wc -l) files (incl. .htaccess) to $DOCROOT"
+echo "Deployed $(find "$STAGING" -type f | wc -l) files (incl. .htaccess) to $DOCROOT"
