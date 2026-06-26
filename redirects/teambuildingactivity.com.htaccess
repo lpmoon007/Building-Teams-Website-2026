@@ -1,0 +1,59 @@
+# ============================================================
+# teambuildingactivity.com (TBA)  ->  buildingteams.com (BT)
+# Domain-consolidation redirect map.  Implements REDIRECTS.md §A.
+#
+# DEPLOY THIS ON THE TBA VHOST ONLY (not the BT web root):
+#   /var/www/vhosts/teambuildingactivity.com/httpdocs/.htaccess
+# Keep TBA registered + this map live INDEFINITELY so link equity passes.
+#
+# NOTE: the wildcard topic rules below are a SAFETY NET. Before relying on
+# them, replace with EXACT path->path 301s derived from a Semrush/GSC export
+# of TBA's ranking URLs (aim to map the top ~50 precisely). The catch-all
+# then only handles the long tail.
+# ============================================================
+
+Options +FollowSymLinks
+RewriteEngine On
+
+# --- Canonicalize TBA to HTTPS+www first (avoids redirect chains) ---------
+# Any TBA request -> https://www. before we map the path, so a single 301 hop
+# lands on the canonical BT URL.
+RewriteCond %{HTTP_HOST} (^|\.)teambuildingactivity\.com$ [NC]
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.teambuildingactivity.com%{REQUEST_URI} [R=301,L]
+
+# --- 410 GONE: spam remnants from the hack (kill, do NOT 301) -------------
+# Ordered BEFORE the 301 maps so the catch-all never swallows them.
+# (Same spam patterns proven in BT's .htaccess.)
+RewriteRule ^news/ - [G,NC,L]
+RewriteRule ^zajm-onlajn-absoljutno-vsem-na-kartu/?$ - [G,NC,L]
+RewriteRule ^top-resume-service-2/?$ - [G,NC,L]
+RewriteRule ^kak-vzjat-kredit-bez-kreditnoj-istorii/?$ - [G,NC,L]
+RewriteRule ^home-inspection-checklists/?$ - [G,NC,L]
+RewriteRule ^pdf-accounting-basics-for-beginners-accounting/?$ - [G,NC,L]
+RewriteRule ^banking-option-of-the-wolf-winner-casino-online-for-dummies/?$ - [G,NC,L]
+RewriteRule ^naklejka-viza-masterkard-pay-pass-visa-paywave/?$ - [G,NC,L]
+RewriteRule ^pjat-prichin-pochemu-bank-otkazhet-v-kredite/?$ - [G,NC,L]
+RewriteRule ^(gambling-online|online-gambling)/?$ - [G,NC,L]
+
+# --- TBA home -> BT home (passes the domain's root authority) -------------
+RewriteRule ^/?$ https://www.buildingteams.com/ [R=301,L]
+
+# --- EXACT path mappings (EDIT: fill from Semrush export) ------------------
+# Add precise left-hand paths here, e.g.:
+# RewriteRule ^corporate-bike-build/?$  https://www.buildingteams.com/activities/bike-build/ [R=301,NC,L]
+
+# --- Topic mappings (SAFETY NET — wildcards, replace per the note above) ---
+RewriteRule ^.*bike.*build.*$        https://www.buildingteams.com/activities/bike-build/        [R=301,NC,L]
+RewriteRule ^.*shoe.*$               https://www.buildingteams.com/activities/shoe-build/        [R=301,NC,L]
+RewriteRule ^.*skateboard.*$         https://www.buildingteams.com/activities/skateboard/        [R=301,NC,L]
+RewriteRule ^.*scavenger.*hunt.*$    https://www.buildingteams.com/experiences/the-ultimate-hunt/ [R=301,NC,L]
+RewriteRule ^.*sailing.*$            https://www.buildingteams.com/experiences/                  [R=301,NC,L]
+RewriteRule ^.*workshop.*$           https://www.buildingteams.com/programs/                     [R=301,NC,L]
+RewriteRule ^.*(activities|games|exercises).*$ https://www.buildingteams.com/experiences/        [R=301,NC,L]
+
+# --- Catch-all: anything unmapped -> BT home (still passes equity, no 404) -
+RewriteRule ^(.*)$                   https://www.buildingteams.com/                              [R=301,L]
+
+# ----- end TBA consolidation map -----
