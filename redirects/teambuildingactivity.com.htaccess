@@ -12,7 +12,6 @@
 # Anything unmapped falls through to the BT home (passes equity, no 404s).
 # ============================================================
 
-Options +FollowSymLinks
 RewriteEngine On
 
 # ----------------------------------------------------------------------------
