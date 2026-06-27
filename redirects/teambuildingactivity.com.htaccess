@@ -30,9 +30,10 @@ RewriteRule ^news/ - [G,NC,L]
 # ----------------------------------------------------------------------------
 # 2) 301 EXACT — legit TBA URLs with real backlinks -> closest BT page.
 # ----------------------------------------------------------------------------
-# Educational concept articles (TBA's highest-authority legit links) -> Resources.
-RewriteRule ^tuckmans-model/?$                              https://www.buildingteams.com/resources/ [R=301,L]
-RewriteRule ^ladder-inference/?$                            https://www.buildingteams.com/resources/ [R=301,L]
+# Educational concept articles -> their migrated BT equivalents (content recreated
+# on BT so the link equity + topical relevance transfer fully, not just to a hub).
+RewriteRule ^tuckmans-model/?$                              https://www.buildingteams.com/resources/tuckmans-stages-of-team-development/ [R=301,L]
+RewriteRule ^ladder-inference/?$                            https://www.buildingteams.com/resources/ladder-of-inference/ [R=301,L]
 RewriteRule ^lesson-plans/?$                                https://www.buildingteams.com/resources/ [R=301,L]
 
 # Facilitation services -> Programs (ongoing/facilitated work).
