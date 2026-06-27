@@ -188,4 +188,14 @@ for (const d of COPY_DIRS) {
   else console.warn(`  ! missing asset dir: ${d}`);
 }
 
+// IndexNow key file(s): publish any root <hexkey>.txt to the site root so
+// search engines can verify ownership. Strict hex pattern avoids picking up
+// robots.txt / llms.txt / disavow-suggested.txt.
+for (const f of fs.readdirSync(ROOT)) {
+  if (/^[a-f0-9]{16,128}\.txt$/.test(f)) {
+    fs.copyFileSync(path.join(ROOT, f), path.join(DIST, f));
+    console.log(`  IndexNow key file: /${f}`);
+  }
+}
+
 console.log(`Done. ${pages.length} pages + 404 + assets written to dist/.`);

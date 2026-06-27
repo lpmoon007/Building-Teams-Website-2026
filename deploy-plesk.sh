@@ -47,10 +47,33 @@ trap 'rm -rf "$STAGING"' EXIT
 OUT_DIR="$STAGING" "$NODE" build.js
 
 # 2. Publish: make the docroot identical to the build.
+#    -c (checksum) so only genuinely content-changed files transfer, not every
+#    file just because the rebuild touched its mtime — this keeps the IndexNow
+#    list below to pages that actually changed.
 #    --delete removes stale files (incl. any raw source Plesk left in the
 #    docroot) so the server mirrors the build exactly.
 #    .well-known/ is preserved so Let's Encrypt / ACME cert renewals keep working.
 mkdir -p "$DOCROOT"
-rsync -a --delete --exclude '.well-known/' "$STAGING/" "$DOCROOT/"
+CHANGED="$(rsync -ac --delete --exclude '.well-known/' --out-format='%n' "$STAGING/" "$DOCROOT/")"
 
 echo "Deployed $(find "$STAGING" -type f | wc -l) files (incl. .htaccess) to $DOCROOT"
+
+# 3. IndexNow: instantly notify Bing/Yandex/Seznam/Naver of the pages that
+#    changed this deploy. Free, no quota. (Google ignores IndexNow — GSC covers
+#    Google.) Best-effort: never fail the deploy over it.
+INDEXNOW_KEY="c35b47d14424e87c2e04a65ca746ff9f"
+HOST="www.buildingteams.com"
+URLS="$( { printf '%s\n' "$CHANGED" \
+  | grep -E '(^|/)index\.html$' \
+  | sed -E "s#(^|.*/)index\.html\$#\1#; s#^#https://${HOST}/#" \
+  | sort -u; } || true )"
+if [ -n "$URLS" ] && command -v curl >/dev/null 2>&1; then
+  URLLIST="$(printf '%s\n' "$URLS" | sed 's/.*/"&"/' | paste -sd, -)"
+  PAYLOAD="{\"host\":\"${HOST}\",\"key\":\"${INDEXNOW_KEY}\",\"keyLocation\":\"https://${HOST}/${INDEXNOW_KEY}.txt\",\"urlList\":[${URLLIST}]}"
+  echo "IndexNow: notifying $(printf '%s\n' "$URLS" | wc -l) changed URL(s)…"
+  curl -sS -m 20 -X POST "https://api.indexnow.org/indexnow" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    --data "$PAYLOAD" -o /dev/null -w "IndexNow HTTP %{http_code}\n" || echo "IndexNow ping failed (non-fatal)."
+else
+  echo "IndexNow: no changed HTML pages to submit."
+fi
