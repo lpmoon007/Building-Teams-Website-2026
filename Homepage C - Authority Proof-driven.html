@@ -67,6 +67,16 @@
   .nav-links{display:flex;align-items:center;gap:18px}
   .nav-links a{font-size:14.5px;font-weight:500;color:var(--slate);white-space:nowrap}
   .nav-links a:hover{color:var(--brand-2)}
+  .nav-dd{position:relative;display:inline-flex;align-items:center}
+  .nav-dd-trigger{display:inline-flex;align-items:center;gap:5px;font-size:14.5px;font-weight:500;color:var(--slate);white-space:nowrap;cursor:pointer}
+  .nav-dd-trigger:hover{color:var(--brand-2)}
+  .nav-dd-caret{transition:transform .15s ease;flex:none}
+  .nav-dd-menu{position:absolute;top:100%;left:0;margin-top:9px;min-width:190px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px rgba(21,23,28,.14);padding:8px;display:none;flex-direction:column;z-index:70}
+  .nav-dd-menu::before{content:"";position:absolute;top:-13px;left:0;right:0;height:13px}
+  .nav-dd-menu a{padding:9px 14px;border-radius:8px;font-size:14px;color:var(--slate);white-space:nowrap}
+  .nav-dd-menu a:hover{background:var(--mist,#f4f1ee);color:var(--brand-2)}
+  .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{display:flex}
+  .nav-dd:hover .nav-dd-caret,.nav-dd:focus-within .nav-dd-caret{transform:rotate(180deg)}
   .nav-cta{display:flex;align-items:center;gap:16px}
   .nav-phone{display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-size:15px;font-weight:600;color:var(--brand-2);text-decoration:none;transition:.15s;white-space:nowrap}
   .nav-phone:hover{color:var(--brand)}
@@ -78,6 +88,12 @@
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 0;box-shadow:0 18px 40px rgba(21,23,28,.12);z-index:60}
     .nav-links.open{display:flex}
     .nav-links a{padding:13px 36px;font-size:16px}
+    .nav-dd{display:block}
+    .nav-dd-trigger{padding:13px 36px;font-size:16px}
+    .nav-dd-menu{position:static;display:flex;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;min-width:0}
+    .nav-dd-menu::before{display:none}
+    .nav-dd-menu a{padding:11px 36px 11px 54px;font-size:15px;border-radius:0}
+    .nav-dd-caret{display:none}
   }
   @media(max-width:560px){.nav-phone .np-num{display:none}}
 
@@ -262,7 +278,14 @@
       <a href="Experiences.html">Experiences</a>
       <a href="Programs.html">Programs</a>
       <a href="Team Coaching.html">Team Coaching</a>
-      <a href="Case Studies.html">Case Studies</a>
+      <div class="nav-dd">
+        <a href="Case Studies.html" class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">Results <svg class="nav-dd-caret" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <div class="nav-dd-menu">
+          <a href="Case Studies.html">Case Studies</a>
+          <a href="Videos.html">Videos</a>
+          <a href="Testimonials.html">Testimonials</a>
+        </div>
+      </div>
       <a href="About.html">About</a>
     </nav>
     <div class="nav-cta">
