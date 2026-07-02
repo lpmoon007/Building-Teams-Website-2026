@@ -70,6 +70,21 @@ RewriteRule ^team/team_building_blueprint_excellence/ /programs/blueprint-for-ex
 RewriteRule ^team/team_building_event/[a-z_]*building_a_dream[a-z_]*\.htm/?$ /activities/bike-build/ [R=301,NC,L]
 RewriteRule ^team/team_building_event/[a-z_]*scavanger[a-z_]*\.htm/?$ /experiences/the-ultimate-hunt/ [R=301,NC,L]
 RewriteRule ^team/ /resources/ [R=301,NC,L]
+
+# Old Conference_Teambuilding + Executive_Teambuilding trees -> modern pages
+RewriteRule ^Executive_Teambuilding/executive_teambuilding_succc?ess_stories\.htm/?$ /executive-team-building/success-stories/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/conference_teambuilding\.htm/?$ /conference-team-building/ [R=301,NC,L]
+RewriteRule ^conference_teambuilding\.htm/?$ /conference-team-building/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/care_cart\.htm/?$ /activities/care-cart/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/building_a_dream\.htm/?$ /activities/bike-build/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/sole_purpose\.htm/?$ /activities/shoe-build/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/recreate\.html?/?$ /activities/power-of-recreation/ [R=301,NC,L]
+# Remaining give-back conference events (inspiring minds, one world one team, art for the sky, etc.)
+RewriteRule ^Conference_Teambuilding/ /activities/ [R=301,NC,L]
+# Leadership activity article -> existing leadership exercises guide
+RewriteRule ^leadership_activity_ideas\.htm/?$ /resources/team-building-ideas/leadership-team-building-exercises/ [R=301,NC,L]
+# Rest of the old executive microsite -> executive team building
+RewriteRule ^Executive_Teambuilding/ /executive-team-building/ [R=301,NC,L]
 RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /resources/ [R=301,NC,L]
