@@ -111,6 +111,16 @@ RewriteRule ^(blog/)?why-teams-and-team-building/?$ /resources/why-team-building
 RewriteRule ^(blog/)?myers-briggs-mbti-as-a-team-building-tool/?$ /resources/myers-briggs-team-building/ [R=301,NC,L]
 RewriteRule ^(blog/)?5-ways-to-ensure-your-teambuilding-will-suck/?$ /resources/why-team-building-fails/ [R=301,NC,L]
 RewriteRule ^(blog/)?we-see-what-we-look-for/?$ /resources/we-see-what-we-look-for/ [R=301,NC,L]
+# Client event recaps -> Case Studies (folded in as "in the field" proof)
+RewriteRule ^(blog/)?devry-builds-108-bicycles-and-108-dreams/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?60-children-get-brand-new-bicycles-at-nbcuniversal-conference/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?cargill-builds-15-bicycles-for-the-geneva-boys-and-girls-club/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?novartiss-recreation-event-supports-indian-summer-camp/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?14-actelion-employees-built-a-better-tomorrow/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?sole-purpose-in-new-jersey/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?california-pizza-kitchen-inspires-action-on-sailing-adventure/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?enel-green-power-walks-on-fire/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?a-to-z-media-goes-beyond-traditional-team-building/?$ /case-studies/ [R=301,NC,L]
 # Everything else under /blog/ (unrevived posts, feeds, dated permalinks) -> Resources
 RewriteRule ^blog(/|$) /resources/ [R=301,NC,L]
 
