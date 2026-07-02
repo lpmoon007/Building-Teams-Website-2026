@@ -101,8 +101,17 @@ RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /resources/ [R=301,N
 RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/half_day_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
-RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/ [R=301,NC,L]
 RewriteRule ^conference-team-building/sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
-RewriteRule ^blog/?$ /resources/ [R=301,NC,L]
+
+# ----- Old WordPress blog: 7 revived evergreen posts -> new articles, rest -> Resources -----
+RewriteRule ^(blog/)?untangling-complex-group-dynamics/?$ /resources/untangling-group-dynamics/ [R=301,NC,L]
+RewriteRule ^(blog/)?the-five-cs-of-managing-virtual-teams/?$ /resources/managing-virtual-teams/ [R=301,NC,L]
+RewriteRule ^(blog/)?accountability-starts-with-you-excuse-me/?$ /resources/accountability-starts-with-me/ [R=301,NC,L]
+RewriteRule ^(blog/)?why-teams-and-team-building/?$ /resources/why-team-building/ [R=301,NC,L]
+RewriteRule ^(blog/)?myers-briggs-mbti-as-a-team-building-tool/?$ /resources/myers-briggs-team-building/ [R=301,NC,L]
+RewriteRule ^(blog/)?5-ways-to-ensure-your-teambuilding-will-suck/?$ /resources/why-team-building-fails/ [R=301,NC,L]
+RewriteRule ^(blog/)?we-see-what-we-look-for/?$ /resources/we-see-what-we-look-for/ [R=301,NC,L]
+# Everything else under /blog/ (unrevived posts, feeds, dated permalinks) -> Resources
+RewriteRule ^blog(/|$) /resources/ [R=301,NC,L]
 
 # ----- end redirect map -----
