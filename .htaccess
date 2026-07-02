@@ -59,6 +59,17 @@ RewriteRule ^staff_retreat_games_ideas\.htm/?$ /resources/corporate-retreat-idea
 RewriteRule ^staff_retreat_teambuilding_non_profit_organization\.htm/?$ /resources/corporate-retreat-ideas/ [R=301,NC,L]
 # Old team building books product page -> activities library
 RewriteRule (^|/)teambuildingbooks\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
+
+# Old email newsletters (/newsletters/*) -> best-match modern pages
+RewriteRule ^newsletters/motivation\.html?/?$ /resources/what-motivates-teams/ [R=301,NC,L]
+RewriteRule ^newsletters/valentines_day\.html?/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^newsletters/10_step_process\.html?/?$ /resources/ [R=301,NC,L]
+
+# Old Repario /team/ microsite -> best-match modern pages, rest to Resources
+RewriteRule ^team/team_building_blueprint_excellence/ /programs/blueprint-for-excellence/ [R=301,NC,L]
+RewriteRule ^team/team_building_event/[a-z_]*building_a_dream[a-z_]*\.htm/?$ /activities/bike-build/ [R=301,NC,L]
+RewriteRule ^team/team_building_event/[a-z_]*scavanger[a-z_]*\.htm/?$ /experiences/the-ultimate-hunt/ [R=301,NC,L]
+RewriteRule ^team/ /resources/ [R=301,NC,L]
 RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /resources/ [R=301,NC,L]
