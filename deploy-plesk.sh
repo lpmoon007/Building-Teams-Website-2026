@@ -25,11 +25,25 @@ cd "$REPO_DIR"
 # Override with the DOCROOT env var in Plesk if your docroot is non-standard.
 DOCROOT="${DOCROOT:-$(dirname "$REPO_DIR")/httpdocs}"
 
-# Find a Node binary: prefer one on PATH, else the newest Plesk-bundled Node.
+# Find a Node binary. Plesk's deploy shell is non-interactive, so it does NOT
+# source ~/.bashrc — meaning PATH-based tools like nodenv shims are invisible
+# here even when `node` works in an SSH session. So we probe, in order:
+#   1. node already on PATH
+#   2. Plesk-bundled Node (/opt/plesk/node/*)
+#   3. nodenv-installed Node (~/.nodenv/versions/*) — newest version wins
+#   4. common nvm / system locations
 if command -v node >/dev/null 2>&1; then
   NODE="$(command -v node)"
 elif ls -d /opt/plesk/node/*/bin/node >/dev/null 2>&1; then
   NODE="$(ls -d /opt/plesk/node/*/bin/node | sort -V | tail -n1)"
+elif ls -d "$HOME"/.nodenv/versions/*/bin/node >/dev/null 2>&1; then
+  NODE="$(ls -d "$HOME"/.nodenv/versions/*/bin/node | sort -V | tail -n1)"
+elif ls -d "$HOME"/.nvm/versions/node/*/bin/node >/dev/null 2>&1; then
+  NODE="$(ls -d "$HOME"/.nvm/versions/node/*/bin/node | sort -V | tail -n1)"
+elif [ -x /usr/local/bin/node ]; then
+  NODE=/usr/local/bin/node
+elif [ -x /usr/bin/node ]; then
+  NODE=/usr/bin/node
 else
   echo "ERROR: no node binary found. Install Node.js in Plesk (Tools & Settings" >&2
   echo "       -> Node.js) or add node to PATH, then redeploy." >&2
