@@ -118,11 +118,12 @@
   <div class="wrap">
     <style>
       /* Open, centered "trusted by" strip — no boxes, big logos, room to breathe. */
-      .logowall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:30px 52px;margin-top:30px}
-      .logowall .lg{display:inline-flex;align-items:center;justify-content:center;height:64px}
-      .logowall .lg img{max-height:56px;max-width:170px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.6;transition:.22s ease}
+      .logowall{display:grid;grid-template-columns:repeat(6,1fr);gap:38px 40px;align-items:center;margin-top:30px}
+      .logowall .lg{display:inline-flex;align-items:center;justify-content:center;height:60px}
+      .logowall .lg img{max-height:52px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.6;transition:.22s ease}
       .logowall .lg:hover img{filter:grayscale(0);opacity:1;transform:scale(1.05)}
-      @media(max-width:760px){.logowall{gap:26px 38px}.logowall .lg{height:52px}.logowall .lg img{max-height:44px;max-width:130px}}
+      @media(max-width:900px){.logowall{grid-template-columns:repeat(3,1fr);gap:32px 28px}}
+      @media(max-width:520px){.logowall{grid-template-columns:repeat(2,1fr);gap:28px 20px}.logowall .lg{height:52px}.logowall .lg img{max-height:44px}}
       /* Dark pill only for logos that are white/knockout (e.g. Motorola) so they stay visible on white. */
       .logowall .lg.mono-dark{background:#15171c;border-radius:12px;padding:10px 20px;height:64px}
       .logowall .lg.mono-dark img{filter:none;opacity:.92}
@@ -139,25 +140,18 @@
     function lwfb(el){var x=['png','svg','webp','jpg','jpeg','gif'],i=el.getAttribute('data-i');i=i?+i:0;if(i<x.length){el.setAttribute('data-i',i+1);el.src='/assets/logos/'+el.getAttribute('data-base')+'.'+x[i];return;}var p=el.parentNode;p.classList.add('ph');p.innerHTML='<span>'+el.getAttribute('data-name')+'</span>';}
     </script>
     <div class="logowall">
+      <span class="lg"><img src="assets/logos/apple.gif" alt="Apple" loading="lazy" data-base="apple" data-name="Apple" onerror="lwfb(this)" /></span>
+      <span class="lg"><img src="assets/logos/boeing.png" alt="Boeing" loading="lazy" data-base="boeing" data-name="Boeing" onerror="lwfb(this)" /></span>
+      <span class="lg"><img src="assets/logos/ford.png" alt="Ford" loading="lazy" data-base="ford" data-name="Ford" onerror="lwfb(this)" /></span>
       <span class="lg"><img src="assets/logos/american-express.jpg" alt="American Express" loading="lazy" data-base="american-express" data-name="American Express" onerror="lwfb(this)" /></span>
       <span class="lg"><img src="assets/logos/ups.jpg" alt="UPS" loading="lazy" data-base="ups" data-name="UPS" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/apple.gif" alt="Apple" loading="lazy" data-base="apple" data-name="Apple" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/salesforce.png" alt="Salesforce" loading="lazy" data-base="salesforce" data-name="Salesforce" onerror="lwfb(this)" /></span>
       <span class="lg"><img src="assets/logos/cisco.png" alt="Cisco" loading="lazy" data-base="cisco" data-name="Cisco" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/alteryx.png" alt="Alteryx" loading="lazy" data-base="alteryx" data-name="Alteryx" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/davita.jpg" alt="DaVita" loading="lazy" data-base="davita" data-name="DaVita" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/novartis.png" alt="Novartis" loading="lazy" data-base="novartis" data-name="Novartis" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/pfizer.png" alt="Pfizer" loading="lazy" data-base="pfizer" data-name="Pfizer" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/boeing.png" alt="Boeing" loading="lazy" data-base="boeing" data-name="Boeing" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/cargill.png" alt="Cargill" loading="lazy" data-base="cargill" data-name="Cargill" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/nbcuniversal.jpg" alt="NBCUniversal" loading="lazy" data-base="nbcuniversal" data-name="NBCUniversal" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/novo-nordisk.png" alt="Novo Nordisk" loading="lazy" data-base="novo-nordisk" data-name="Novo Nordisk" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/devry.webp" alt="DeVry" loading="lazy" data-base="devry" data-name="DeVry" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/california-pizza-kitchen.png" alt="California Pizza Kitchen" loading="lazy" data-base="california-pizza-kitchen" data-name="California Pizza Kitchen" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/atlas-copco.webp" alt="Atlas Copco" loading="lazy" data-base="atlas-copco" data-name="Atlas Copco" onerror="lwfb(this)" /></span>
+      <span class="lg"><img src="assets/logos/salesforce.png" alt="Salesforce" loading="lazy" data-base="salesforce" data-name="Salesforce" onerror="lwfb(this)" /></span>
       <span class="lg"><img src="assets/logos/siemens.png" alt="Siemens" loading="lazy" data-base="siemens" data-name="Siemens" onerror="lwfb(this)" /></span>
       <span class="lg"><img src="assets/logos/motorola.svg" alt="Motorola" loading="lazy" data-base="motorola" data-name="Motorola" onerror="lwfb(this)" /></span>
-      <span class="lg"><img src="assets/logos/ford.png" alt="Ford" loading="lazy" data-base="ford" data-name="Ford" onerror="lwfb(this)" /></span>
+      <span class="lg"><img src="assets/logos/nbcuniversal.jpg" alt="NBCUniversal" loading="lazy" data-base="nbcuniversal" data-name="NBCUniversal" onerror="lwfb(this)" /></span>
+      <span class="lg"><img src="assets/logos/davita.jpg" alt="DaVita" loading="lazy" data-base="davita" data-name="DaVita" onerror="lwfb(this)" /></span>
+      <span class="lg"><img src="assets/logos/cargill.png" alt="Cargill" loading="lazy" data-base="cargill" data-name="Cargill" onerror="lwfb(this)" /></span>
     </div>
     <p class="lw-cap">A few of the teams we&rsquo;ve built with. Logos are the property of their respective owners.</p>
   </div>
@@ -424,11 +418,11 @@
         <div class="wm">Building Teams</div>
         <p>Philanthropic corporate &amp; executive team building &mdash; 50,000+ bikes built and given to kids since 2003. Be Legendary.</p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="Customers.html">Customers</a></li><li><a href="Case Studies.html">Case Studies</a></li><li><a href="Resources.html">Resources</a></li><li><a href="Videos.html">Videos</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="About.html">About Us</a></li><li><a href="Contact.html">Contact</a></li><li><a href="Locations.html">Locations</a></li><li><a href="Homepage C - Authority Proof-driven.html">Home</a></li></ul></div>
-      <div><h4>Talk to us</h4><ul><li><a href="tel:800-513-8759">800-513-8759</a></li><li><a href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener">Book a call</a></li><li><a href="https://www.facebook.com/belegendary">Facebook</a></li></ul></div>
+      <div><h4>What we do</h4><ul><li><a href="Experiences.html">Experiences</a></li><li><a href="Programs.html">Programs</a></li><li><a href="Team Coaching.html">Team Coaching</a></li><li><a href="Conference Team Building.html">Conference</a></li><li><a href="Charity Team Building.html">Charity / CSR</a></li></ul></div>
+      <div><h4>Explore</h4><ul><li><a href="Case Studies.html">Case Studies</a></li><li><a href="Customers.html">Customers</a></li><li><a href="Resources.html">Resources</a></li><li><a href="Team Building Activities Library.html">Free Activity Library</a></li><li><a href="Locations.html">Locations</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="About.html">About</a></li><li><a href="Contact.html">Contact</a></li><li><a href="tel:800-513-8759">800-513-8759</a></li><li><a href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener">Book a call</a></li></ul></div>
     </div>
-    <div class="legal"><span>© 2026 Be Legendary · Building Teams. All rights reserved.</span><span>Customers</span></div>
+    <div class="legal"><span>&copy; 2026 Be Legendary &middot; Building Teams. All rights reserved.</span><span><a href="https://www.facebook.com/belegendary">Facebook</a> &middot; <a href="https://twitter.com/belegendary">X / Twitter</a></span></div>
   </div>
 </footer>
 
