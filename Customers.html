@@ -113,6 +113,43 @@
   </div>
 </section>
 
+<section style="padding:8px 0 0" aria-label="Client logos">
+  <div class="wrap">
+    <style>
+      .logowall{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+      @media(max-width:900px){.logowall{grid-template-columns:repeat(3,1fr)}}
+      @media(max-width:520px){.logowall{grid-template-columns:repeat(2,1fr)}}
+      .logowall .lg{display:flex;align-items:center;justify-content:center;height:78px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 16px}
+      .logowall .lg img{max-height:34px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.62;transition:.18s}
+      .logowall .lg:hover img{filter:grayscale(0);opacity:1}
+      .logowall .lg.ph{border-style:dashed;background:var(--mist)}
+      .logowall .lg.ph span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-0.01em;color:var(--slate);text-align:center;line-height:1.1}
+      .lw-cap{font-size:13.5px;color:var(--slate);margin:16px 0 0;text-align:center}
+    </style>
+    <div class="logowall">
+      <span class="lg"><img src="assets/logos/american-express.jpg" alt="American Express" loading="lazy" /></span>
+      <span class="lg"><img src="assets/logos/ups.jpg" alt="UPS" loading="lazy" /></span>
+      <span class="lg"><img src="assets/logos/apple.gif" alt="Apple" loading="lazy" /></span>
+      <span class="lg"><img src="assets/logos/salesforce.jpg" alt="Salesforce" loading="lazy" /></span>
+      <span class="lg"><img src="assets/logos/cisco.jpg" alt="Cisco" loading="lazy" /></span>
+      <span class="lg"><img src="assets/logos/alteryx.png" alt="Alteryx" loading="lazy" /></span>
+      <span class="lg ph" data-logo="davita.svg"><span>DaVita</span></span>
+      <span class="lg ph" data-logo="novartis.svg"><span>Novartis</span></span>
+      <span class="lg ph" data-logo="pfizer.svg"><span>Pfizer</span></span>
+      <span class="lg ph" data-logo="boeing.svg"><span>Boeing</span></span>
+      <span class="lg ph" data-logo="cargill.svg"><span>Cargill</span></span>
+      <span class="lg ph" data-logo="nbcuniversal.svg"><span>NBCUniversal</span></span>
+      <span class="lg ph" data-logo="novo-nordisk.svg"><span>Novo Nordisk</span></span>
+      <span class="lg ph" data-logo="devry.svg"><span>DeVry</span></span>
+      <span class="lg ph" data-logo="california-pizza-kitchen.svg"><span>California Pizza Kitchen</span></span>
+      <span class="lg ph" data-logo="atlas-copco.svg"><span>Atlas Copco</span></span>
+      <span class="lg ph" data-logo="motorola.svg"><span>Motorola</span></span>
+      <span class="lg ph" data-logo="ford.svg"><span>Ford</span></span>
+    </div>
+    <p class="lw-cap">A few of the teams we&rsquo;ve built with. Logos are the property of their respective owners.</p>
+  </div>
+</section>
+
 <section style="padding:30px 0 80px">
   <div class="wrap">
     <div class="legend">
