@@ -46,7 +46,10 @@ RewriteRule ^Teambuilding_Activity/ /resources/team-building-activities/ [R=301,
 RewriteRule ^product/(win-win-win|perfect-square|bull-ring-team-building-activity)/?$ /resources/team-building-activities/ [R=301,NC,L]
 
 # ----- 301 MOVED PERMANENTLY: legit old pages -> new URLs -----
-RewriteRule ^teambuilding_tools\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^teambuilding_faqs\.htm/?$ /faq/ [R=301,NC,L]
+RewriteRule ^teambuilding_tools\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^teambuilding_teachers\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^teambuilding_links\.htm/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /resources/ [R=301,NC,L]
