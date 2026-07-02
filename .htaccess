@@ -50,6 +50,15 @@ RewriteRule ^teambuilding_faqs\.htm/?$ /faq/ [R=301,NC,L]
 RewriteRule ^teambuilding_tools\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
 RewriteRule ^teambuilding_teachers\.htm/?$ /resources/ [R=301,NC,L]
 RewriteRule ^teambuilding_links\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^team_building_spy_scenarios\.htm/?$ /resources/team-building-spy-scenarios/ [R=301,NC,L]
+# Old articles hub + individual article pages -> Resources
+RewriteRule ^teambuilding_articles\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Articles/ /resources/ [R=301,NC,L]
+# Staff-retreat keyword cluster -> corporate retreat ideas
+RewriteRule ^staff_retreat_games_ideas\.htm/?$ /resources/corporate-retreat-ideas/ [R=301,NC,L]
+RewriteRule ^staff_retreat_teambuilding_non_profit_organization\.htm/?$ /resources/corporate-retreat-ideas/ [R=301,NC,L]
+# Old team building books product page -> activities library
+RewriteRule (^|/)teambuildingbooks\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
 RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /resources/ [R=301,NC,L]
@@ -59,7 +68,6 @@ RewriteRule (^|/)corporate_orienteering\.htm/?$ /experiences/team-orienteering/ 
 RewriteRule ^workshops/two-hour-team-building-workshops/what-is-wrong-with-you/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ /executive-team-building/ [R=301,NC,L]
-RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/shack1\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^location/los-angeles/?$ /locations/los-angeles/ [R=301,NC,L]
 RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ /experiences/off-road-immersion/ [R=301,NC,L]
