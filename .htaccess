@@ -35,30 +35,32 @@ RewriteRule ^naklejka-viza-masterkard-pay-pass-visa-paywave/?$ - [G,NC,L]
 RewriteRule ^pjat-prichin-pochemu-bank-otkazhet-v-kredite/?$ - [G,NC,L]
 RewriteRule ^(gambling-online|online-gambling)/?$ - [G,NC,L]
 
+# ----- Activity library consolidation: old DIY activity / kit / exercise tree -----
+# The Scavenger Hunt maps to its dedicated rebuild; everything else in the
+# /Teambuilding_Activity/ tree (individual games, kits, exercises-by-outcome,
+# simulations) consolidates into the new activities library so it inherits the
+# link equity these high-ranking pages earned. [NC] also catches lowercase paths.
+RewriteRule ^Teambuilding_Activity/Simulations/scavenger_hunt\.htm/?$ /experiences/the-ultimate-hunt/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/ /resources/team-building-activities/ [R=301,NC,L]
+# WordPress-era product URLs for individual activities -> activity library
+RewriteRule ^product/(win-win-win|perfect-square|bull-ring-team-building-activity)/?$ /resources/team-building-activities/ [R=301,NC,L]
+
 # ----- 301 MOVED PERMANENTLY: legit old pages -> new URLs -----
-RewriteRule ^product/win-win-win/?$ /activities/ [R=301,NC,L]
 RewriteRule ^teambuilding_tools\.htm/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /resources/ [R=301,NC,L]
-RewriteRule ^Adventure_Teambuilding/corporate_sailing\.htm/?$ /activities/ [R=301,NC,L]
+RewriteRule ^Adventure_Teambuilding/corporate_sailing(_shackletons_adventure)?\.htm/?$ /experiences/corporate-sailing/ [R=301,NC,L]
 RewriteRule ^workshops/two-hour-team-building-workshops/what-is-wrong-with-you/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ /executive-team-building/ [R=301,NC,L]
-RewriteRule ^product/perfect-square/?$ /activities/ [R=301,NC,L]
-RewriteRule ^teambuilding_activity/teambuilding_games/magic_carpet\.htm/?$ /activities/ [R=301,NC,L]
-RewriteRule ^product/bull-ring-team-building-activity/?$ /activities/ [R=301,NC,L]
 RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/ [R=301,NC,L]
-RewriteRule ^Teambuilding_Activity/Teambuilding_Games/bull_ring\.htm/?$ /activities/ [R=301,NC,L]
 RewriteRule ^i/shack1\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^location/los-angeles/?$ /locations/los-angeles/ [R=301,NC,L]
 RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ /activities/ [R=301,NC,L]
 RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /resources/ [R=301,NC,L]
-RewriteRule ^teambuilding_activity/all_teambuilding_exercises\.htm/?$ /resources/ [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ / [R=301,NC,L]
-RewriteRule ^Teambuilding_Activity/communication_exercises\.htm/?$ /resources/ [R=301,NC,L]
-RewriteRule ^Teambuilding_Activity/trust_teambuilding_exercises\.htm/?$ /resources/ [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/half_day_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/ [R=301,NC,L]
 RewriteRule ^conference-team-building/sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
