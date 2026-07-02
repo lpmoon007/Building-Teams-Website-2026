@@ -123,6 +123,9 @@
       .logowall .lg img{max-height:34px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.62;transition:.18s}
       .logowall .lg:hover img{filter:grayscale(0);opacity:1}
       .logowall .lg.ph{border-style:dashed;background:var(--mist)}
+      .logowall .lg.mono-dark{background:#15171c;border-color:#15171c}
+      .logowall .lg.mono-dark img{filter:none;opacity:.9}
+      .logowall .lg.mono-dark:hover img{opacity:1}
       .logowall .lg.ph span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-0.01em;color:var(--slate);text-align:center;line-height:1.1}
       .lw-cap{font-size:13.5px;color:var(--slate);margin:16px 0 0;text-align:center}
     </style>
@@ -133,41 +136,21 @@
       <span class="lg"><img src="assets/logos/salesforce.jpg" alt="Salesforce" loading="lazy" /></span>
       <span class="lg"><img src="assets/logos/cisco.jpg" alt="Cisco" loading="lazy" /></span>
       <span class="lg"><img src="assets/logos/alteryx.png" alt="Alteryx" loading="lazy" /></span>
-      <span class="lg" data-logo="davita" data-name="DaVita"></span>
-      <span class="lg" data-logo="novartis" data-name="Novartis"></span>
-      <span class="lg" data-logo="pfizer" data-name="Pfizer"></span>
-      <span class="lg" data-logo="boeing" data-name="Boeing"></span>
-      <span class="lg" data-logo="cargill" data-name="Cargill"></span>
-      <span class="lg" data-logo="nbcuniversal" data-name="NBCUniversal"></span>
-      <span class="lg" data-logo="novo-nordisk" data-name="Novo Nordisk"></span>
-      <span class="lg" data-logo="devry" data-name="DeVry"></span>
-      <span class="lg" data-logo="california-pizza-kitchen" data-name="California Pizza Kitchen"></span>
-      <span class="lg" data-logo="atlas-copco" data-name="Atlas Copco"></span>
-      <span class="lg" data-logo="siemens" data-name="Siemens"></span>
-      <span class="lg" data-logo="motorola" data-name="Motorola"></span>
-      <span class="lg" data-logo="ford" data-name="Ford"></span>
+      <span class="lg"><img src="assets/logos/davita.jpg" alt="DaVita" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>DaVita</span>'" /></span>
+      <span class="lg"><img src="assets/logos/novartis.png" alt="Novartis" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Novartis</span>'" /></span>
+      <span class="lg"><img src="assets/logos/pfizer.png" alt="Pfizer" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Pfizer</span>'" /></span>
+      <span class="lg"><img src="assets/logos/boeing.png" alt="Boeing" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Boeing</span>'" /></span>
+      <span class="lg"><img src="assets/logos/cargill.webp" alt="Cargill" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Cargill</span>'" /></span>
+      <span class="lg"><img src="assets/logos/nbcuniversal.jpg" alt="NBCUniversal" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>NBCUniversal</span>'" /></span>
+      <span class="lg"><img src="assets/logos/novo-nordisk.jpg" alt="Novo Nordisk" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Novo Nordisk</span>'" /></span>
+      <span class="lg"><img src="assets/logos/devry.webp" alt="DeVry" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>DeVry</span>'" /></span>
+      <span class="lg"><img src="assets/logos/california-pizza-kitchen.png" alt="California Pizza Kitchen" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>California Pizza Kitchen</span>'" /></span>
+      <span class="lg"><img src="assets/logos/atlas-copco.webp" alt="Atlas Copco" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Atlas Copco</span>'" /></span>
+      <span class="lg"><img src="assets/logos/siemens.png" alt="Siemens" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Siemens</span>'" /></span>
+      <span class="lg mono-dark"><img src="assets/logos/motorola.png" alt="Motorola" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Motorola</span>'" /></span>
+      <span class="lg"><img src="assets/logos/ford.png" alt="Ford" loading="lazy" onerror="var p=this.parentNode;p.classList.add('ph');p.innerHTML='<span>Ford</span>'" /></span>
     </div>
     <p class="lw-cap">A few of the teams we&rsquo;ve built with. Logos are the property of their respective owners.</p>
-    <script>
-    /* For each pending tile, try common image extensions in /assets/logos/.
-       First one that loads is shown; if none exist yet, fall back to a name-tile.
-       So you can upload david.png OR davita.svg OR davita.jpg — whatever you have. */
-    (function(){
-      var exts=['png','svg','jpg','jpeg','webp','gif'];
-      var tiles=document.querySelectorAll('.logowall .lg[data-logo]');
-      Array.prototype.forEach.call(tiles,function(tile){
-        var base=tile.getAttribute('data-logo'),name=tile.getAttribute('data-name'),i=0;
-        var img=new Image();
-        img.alt=name;img.loading='lazy';
-        img.onload=function(){tile.textContent='';tile.appendChild(img);};
-        img.onerror=function(){
-          if(i>=exts.length){tile.classList.add('ph');tile.innerHTML='<span>'+name+'</span>';return;}
-          img.src='/assets/logos/'+base+'.'+exts[i++];
-        };
-        img.onerror();
-      });
-    })();
-    </script>
   </div>
 </section>
 
