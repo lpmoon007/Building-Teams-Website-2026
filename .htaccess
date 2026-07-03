@@ -127,7 +127,6 @@ RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ /executive-te
 RewriteRule ^i/shack1\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^location/los-angeles/?$ /locations/los-angeles/ [R=301,NC,L]
 # Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
-RewriteRule ^location/(austin|boston|tampa)(/|$) /locations/ [R=301,NC,L]
 RewriteRule ^location/([^/]+) /locations/$1/ [R=301,NC,L]
 RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ /experiences/off-road-immersion/ [R=301,NC,L]
 RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /resources/ [R=301,NC,L]
