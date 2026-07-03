@@ -141,6 +141,169 @@
       <p>Want to run one yourself? Many activities below include a <b>free facilitation guide</b> to download &mdash; purpose, setup, safety, and the debrief questions that make it land. Want it done right, at scale, and tied to real outcomes? That&rsquo;s where we come in: tell us where your team is today and we&rsquo;ll pick the mix, facilitate it, and make the lesson stick.</p>
     </div>
 
+    <style>
+    .finder{margin:24px 0 8px}
+    .finder .cat-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .finder .fbar{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-start;background:var(--mist);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+    .finder .grp{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .finder label{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-right:2px}
+    .finder .chip{font-size:13px;font-weight:500;color:var(--slate);background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 12px;cursor:pointer;transition:.15s}
+    .finder .chip:hover{border-color:var(--brand-2);color:var(--brand-2)}
+    .finder .chip.on{background:var(--brand-2);border-color:var(--brand-2);color:#fff}
+    .finder input[type=number]{width:88px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;color:var(--ink)}
+    .finder .count{font-size:13px;color:var(--slate);margin:14px 2px 2px}
+    .finder .rows{display:flex;flex-direction:column}
+    .finder .row{display:grid;grid-template-columns:210px 1fr auto;gap:18px;align-items:center;padding:15px 8px;border-top:1px solid var(--line)}
+    .finder .row:last-of-type{border-bottom:1px solid var(--line)}
+    .finder .nm{font-family:var(--display);font-weight:700;font-size:15.5px;color:var(--ink)}
+    .finder .meta{font-size:12.5px;color:var(--slate);margin-top:3px}
+    .finder .lvl{display:inline-block;font-size:10.5px;font-weight:600;padding:1px 8px;border-radius:100px;margin-left:4px}
+    .finder .lvl.Low{background:#eaf5ec;color:#2f7a3f}
+    .finder .lvl.Medium{background:#fbf0e2;color:#a4651a}
+    .finder .lvl.High{background:#fbe7e9;color:#b5172b}
+    .finder .desc{font-size:14px;color:var(--slate);line-height:1.5}
+    .finder .tags{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}
+    .finder .tag{font-size:10.5px;color:var(--slate);background:var(--mist);border:1px solid var(--line);border-radius:100px;padding:2px 8px}
+    .finder .dl{white-space:nowrap;font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--brand-2)}
+    .finder .dl:hover{text-decoration:underline}
+    .finder .dl-none{white-space:nowrap;font-size:12px;color:var(--slate)}
+    .finder .row.hide{display:none}
+    .finder .empty{padding:22px;text-align:center;color:var(--slate);font-size:14px;border-top:1px solid var(--line)}
+    @media(max-width:720px){.finder .row{grid-template-columns:1fr;gap:6px}}
+    </style>
+    <div class="finder">
+      <div class="cat-head"><h2>Find the right activity</h2><span class="n">Which one fits? Filter by goal, group size and energy.</span></div>
+      <div class="fbar">
+        <div class="grp fgoal"><label>Goal</label><button class="chip on" data-goal="">All</button><button class="chip" data-goal="Communication">Communication</button><button class="chip" data-goal="Trust">Trust</button><button class="chip" data-goal="Leadership">Leadership</button><button class="chip" data-goal="Problem Solving">Problem Solving</button><button class="chip" data-goal="Change">Change</button><button class="chip" data-goal="Critical Thinking">Critical Thinking</button><button class="chip" data-goal="Decision Making">Decision Making</button><button class="chip" data-goal="Competition vs Collaboration">Collaboration</button><button class="chip" data-goal="Quality Improvement">Quality</button><button class="chip" data-goal="Coaching">Coaching</button><button class="chip" data-goal="Ice Breaker">Ice Breaker</button></div>
+        <div class="grp"><label>Group size</label><input type="number" id="fSize" min="1" placeholder="e.g. 25" aria-label="Your group size" /></div>
+        <div class="grp fener"><label>Energy</label><button class="chip on" data-level="">Any</button><button class="chip" data-level="Low">Low</button><button class="chip" data-level="Medium">Medium</button><button class="chip" data-level="High">High</button></div>
+      </div>
+      <p class="count" id="fCount"></p>
+      <div class="rows" id="fRows">
+      <div class="row" data-min="8" data-max="32" data-level="High" data-goals="Change|Communication|Problem Solving|Quality Improvement">
+        <div class="ac"><div class="nm">Alphabet Soup</div><div class="meta">8&ndash;32 people <span class="lvl High">High energy</span></div></div>
+        <div class="desc">The power of persistence — and how effectively the team really collaborates under a clock.<div class="tags"><span class="tag">Change</span><span class="tag">Communication</span><span class="tag">Problem Solving</span><span class="tag">Quality Improvement</span></div></div>
+        <a class="dl" href="/assets/activities/alphabet-soup.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="6" data-max="24" data-level="Medium" data-goals="Coaching|Change|Communication|Problem Solving">
+        <div class="ac"><div class="nm">Bull Ring</div><div class="meta">6&ndash;24 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">The context keeps changing: same task, shifting environment — a live lesson in adapting fast.<div class="tags"><span class="tag">Coaching</span><span class="tag">Change</span><span class="tag">Communication</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/bull-ring.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="16" data-level="Medium" data-goals="Change|Communication|Critical Thinking|Ice Breaker|Problem Solving">
+        <div class="ac"><div class="nm">Chain of Command</div><div class="meta">8&ndash;16 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Changing perspectives and leadership roles; measurable versus abstract outcomes.<div class="tags"><span class="tag">Change</span><span class="tag">Communication</span><span class="tag">Critical Thinking</span><span class="tag">Ice Breaker</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/chain-of-command.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="16" data-level="Medium" data-goals="Coaching|Communication|Critical Thinking|Problem Solving">
+        <div class="ac"><div class="nm">China Syndrome</div><div class="meta">8&ndash;16 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Taking on the “impossible” with critical thinking and a shared vocabulary.<div class="tags"><span class="tag">Coaching</span><span class="tag">Communication</span><span class="tag">Critical Thinking</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/china-syndrome.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="40" data-level="Medium" data-goals="Communication|Critical Thinking|Leadership|Problem Solving|Quality Improvement">
+        <div class="ac"><div class="nm">Don’t Touch Me</div><div class="meta">8&ndash;40 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Breakthrough to new possibilities using every resource — thinking outside the box.<div class="tags"><span class="tag">Communication</span><span class="tag">Critical Thinking</span><span class="tag">Leadership</span><span class="tag">Problem Solving</span><span class="tag">Quality Improvement</span></div></div>
+        <a class="dl" href="/assets/activities/dont-touch-me.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="16" data-level="Medium" data-goals="Coaching|Communication|Competition vs Collaboration|Trust">
+        <div class="ac"><div class="nm">Get It Together</div><div class="meta">8&ndash;16 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Trust, seeing things from other vantage points, and handing off responsibilities.<div class="tags"><span class="tag">Coaching</span><span class="tag">Communication</span><span class="tag">Competition vs Collaboration</span><span class="tag">Trust</span></div></div>
+        <a class="dl" href="/assets/activities/get-it-together.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="30" data-level="Medium" data-goals="Communication|Quality Improvement">
+        <div class="ac"><div class="nm">Group Juggling</div><div class="meta">8&ndash;30 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Interdependence in fast motion — juggling many projects and tasks as one team.<div class="tags"><span class="tag">Communication</span><span class="tag">Quality Improvement</span></div></div>
+        <a class="dl" href="/assets/activities/group-juggling.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="16" data-level="High" data-goals="Coaching|Communication|Critical Thinking|Leadership|Problem Solving|Trust">
+        <div class="ac"><div class="nm">Highwire</div><div class="meta">8&ndash;16 people <span class="lvl High">High energy</span></div></div>
+        <div class="desc">Shared leadership and trust under real height and pressure (facilitated on-site only).<div class="tags"><span class="tag">Coaching</span><span class="tag">Communication</span><span class="tag">Critical Thinking</span><span class="tag">Leadership</span><span class="tag">Problem Solving</span><span class="tag">Trust</span></div></div>
+        <span class="dl-none">Facilitated on-site</span>
+      </div>
+      <div class="row" data-min="8" data-max="16" data-level="Medium" data-goals="Communication|Critical Thinking|Problem Solving|Trust">
+        <div class="ac"><div class="nm">Knot A Team</div><div class="meta">8&ndash;16 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Problem-solving that breaks down invisible walls — camaraderie and cohesiveness.<div class="tags"><span class="tag">Communication</span><span class="tag">Critical Thinking</span><span class="tag">Problem Solving</span><span class="tag">Trust</span></div></div>
+        <a class="dl" href="/assets/activities/knot-a-team.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="4" data-max="36" data-level="Low" data-goals="Change|Communication|Competition vs Collaboration|Decision Making|Leadership|Problem Solving">
+        <div class="ac"><div class="nm">Knot or NOT a Knot</div><div class="meta">4&ndash;36 people <span class="lvl Low">Low energy</span></div></div>
+        <div class="desc">How a group makes decisions together and stands behind the call.<div class="tags"><span class="tag">Change</span><span class="tag">Communication</span><span class="tag">Competition vs Collaboration</span><span class="tag">Decision Making</span><span class="tag">Leadership</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/knot-or-not-a-knot.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="36" data-level="Low" data-goals="Coaching|Communication">
+        <div class="ac"><div class="nm">Learning Maze</div><div class="meta">8&ndash;36 people <span class="lvl Low">Low energy</span></div></div>
+        <div class="desc">What it looks like to make a mistake — coming together and showing support.<div class="tags"><span class="tag">Coaching</span><span class="tag">Communication</span></div></div>
+        <a class="dl" href="/assets/activities/learning-maze.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="20" data-level="Low" data-goals="Change|Communication|Leadership|Problem Solving">
+        <div class="ac"><div class="nm">Let Go My Ego</div><div class="meta">8&ndash;20 people <span class="lvl Low">Low energy</span></div></div>
+        <div class="desc">Communication and accountability — applying what you learn instead of assigning blame.<div class="tags"><span class="tag">Change</span><span class="tag">Communication</span><span class="tag">Leadership</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/let-go-my-ego.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="36" data-level="Low" data-goals="Coaching|Communication|Problem Solving">
+        <div class="ac"><div class="nm">Perfect Square</div><div class="meta">8&ndash;36 people <span class="lvl Low">Low energy</span></div></div>
+        <div class="desc">Challenging collaboration with body language removed — what really defines success.<div class="tags"><span class="tag">Coaching</span><span class="tag">Communication</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/perfect-square.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="6" data-max="24" data-level="Medium" data-goals="Coaching|Change|Communication|Problem Solving">
+        <div class="ac"><div class="nm">River Crossing</div><div class="meta">6&ndash;24 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Different contexts of communication — everyone must work together to get across.<div class="tags"><span class="tag">Coaching</span><span class="tag">Change</span><span class="tag">Communication</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/river-crossing.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="6" data-max="24" data-level="Medium" data-goals="Coaching|Communication|Leadership">
+        <div class="ac"><div class="nm">Search &amp; Rescue</div><div class="meta">6&ndash;24 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">The power of individual impact, unity of communication and group perseverance.<div class="tags"><span class="tag">Coaching</span><span class="tag">Communication</span><span class="tag">Leadership</span></div></div>
+        <a class="dl" href="/assets/activities/search-and-rescue.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="32" data-level="Medium" data-goals="Communication|Problem Solving|Quality Improvement">
+        <div class="ac"><div class="nm">Supply Chain</div><div class="meta">8&ndash;32 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">We’re only as good as our weakest link.<div class="tags"><span class="tag">Communication</span><span class="tag">Problem Solving</span><span class="tag">Quality Improvement</span></div></div>
+        <a class="dl" href="/assets/activities/supply-chain.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="30" data-level="Medium" data-goals="Communication|Critical Thinking|Decision Making|Problem Solving|Trust">
+        <div class="ac"><div class="nm">Team Shackles</div><div class="meta">8&ndash;30 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Giving and asking for help, sharing knowledge, and challenging hierarchy — fun.<div class="tags"><span class="tag">Communication</span><span class="tag">Critical Thinking</span><span class="tag">Decision Making</span><span class="tag">Problem Solving</span><span class="tag">Trust</span></div></div>
+        <a class="dl" href="/assets/activities/team-shackles.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="5" data-max="20" data-level="Low" data-goals="Communication|Decision Making|Leadership">
+        <div class="ac"><div class="nm">Tied In Knots</div><div class="meta">5&ndash;20 people <span class="lvl Low">Low energy</span></div></div>
+        <div class="desc">Strategies of execution and how a team’s decision-making process evolves.<div class="tags"><span class="tag">Communication</span><span class="tag">Decision Making</span><span class="tag">Leadership</span></div></div>
+        <a class="dl" href="/assets/activities/tied-in-knots.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="8" data-max="32" data-level="Medium" data-goals="Communication|Trust">
+        <div class="ac"><div class="nm">Trust Walk</div><div class="meta">8&ndash;32 people <span class="lvl Medium">Medium energy</span></div></div>
+        <div class="desc">Coaching dynamics — communicating from another person’s perspective.<div class="tags"><span class="tag">Communication</span><span class="tag">Trust</span></div></div>
+        <a class="dl" href="/assets/activities/trust-walk.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      <div class="row" data-min="15" data-max="35" data-level="High" data-goals="Communication|Competition vs Collaboration|Leadership|Problem Solving">
+        <div class="ac"><div class="nm">Win Win Win</div><div class="meta">15&ndash;35 people <span class="lvl High">High energy</span></div></div>
+        <div class="desc">An everyone-wins paradigm: competition versus true collaboration toward a common cause.<div class="tags"><span class="tag">Communication</span><span class="tag">Competition vs Collaboration</span><span class="tag">Leadership</span><span class="tag">Problem Solving</span></div></div>
+        <a class="dl" href="/assets/activities/win-win-win.pdf" target="_blank" rel="noopener">Guide (PDF) &darr;</a>
+      </div>
+      </div>
+      <div class="empty" id="fEmpty" style="display:none">No activities match those filters — try clearing one.</div>
+    </div>
+
+    <script>
+    (function(){
+      var rows=[].slice.call(document.querySelectorAll('#fRows .row'));
+      var goal='',level='',size=null;
+      var count=document.getElementById('fCount'),empty=document.getElementById('fEmpty');
+      function apply(){var n=0;rows.forEach(function(r){
+        var okG=!goal||(r.getAttribute('data-goals')||'').split('|').indexOf(goal)>=0;
+        var okL=!level||r.getAttribute('data-level')===level;
+        var okS=!size||(size>=+r.getAttribute('data-min')&&size<=+r.getAttribute('data-max'));
+        var show=okG&&okL&&okS;r.classList.toggle('hide',!show);if(show)n++;});
+        count.textContent='Showing '+n+' of '+rows.length+' activities';
+        empty.style.display=n?'none':'block';}
+      function wire(sel,attr,set){document.querySelectorAll(sel).forEach(function(c){c.addEventListener('click',function(){
+        document.querySelectorAll(sel).forEach(function(x){x.classList.remove('on')});c.classList.add('on');set(c.getAttribute(attr));apply();});});}
+      wire('.finder .fgoal .chip','data-goal',function(v){goal=v;});
+      wire('.finder .fener .chip','data-level',function(v){level=v;});
+      var si=document.getElementById('fSize');if(si)si.addEventListener('input',function(){size=si.value?+si.value:null;apply();});
+      apply();
+    })();
+    </script>
     <div class="cat">
       <div class="cat-head"><h2>Communication &amp; feedback</h2><span class="n">When people talk past each other</span></div>
       <div class="fmt">
