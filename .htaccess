@@ -137,10 +137,10 @@ RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/half_day_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^conference-team-building/sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
 
-# Workshop URL families that still rank/organic but had no rule (were 404ing) -> best hub
-RewriteRule ^team-building-workshops(/|$) /experiences/ [R=301,NC,L]
-RewriteRule ^teambuilding_workshops(/|$) /programs/ [R=301,NC,L]
-RewriteRule ^workshops(/|$) /programs/ [R=301,NC,L]
+# Workshop URL families -> the dedicated team building workshops page
+# (NOTE: no rule for ^team-building-workshops — that is now a real page)
+RewriteRule ^teambuilding_workshops(/|$) /team-building-workshops/ [R=301,NC,L]
+RewriteRule ^workshops(/|$) /team-building-workshops/ [R=301,NC,L]
 
 # ----- Old WordPress blog: 7 revived evergreen posts -> new articles, rest -> Resources -----
 RewriteRule ^(blog/)?untangling-complex-group-dynamics/?$ /resources/untangling-group-dynamics/ [R=301,NC,L]
