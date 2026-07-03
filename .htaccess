@@ -51,7 +51,9 @@ RewriteRule ^Teambuilding_Activity/Teambuilding_Games/china_syndrome\.html?/?$ /
 RewriteRule ^Teambuilding_Activity/Teambuilding_Games/dont_touch_me\.html?/?$ /resources/team-building-activities/dont-touch-me/ [R=301,NC,L]
 RewriteRule ^Teambuilding_Activity/Teambuilding_Games/get_it_together\.html?/?$ /resources/team-building-activities/get-it-together/ [R=301,NC,L]
 RewriteRule ^Teambuilding_Activity/Teambuilding_Games/group_juggling\.html?/?$ /resources/team-building-activities/group-juggling/ [R=301,NC,L]
-RewriteRule ^Teambuilding_Activity/Teambuilding_Games/highwire\.html?/?$ /resources/team-building-activities/highwire/ [R=301,NC,L]
+# Highwire discontinued (unsafe) -> route old game URL and the retired clean URL to the library
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/highwire\.html?/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^resources/team-building-activities/highwire/?$ /resources/team-building-activities/ [R=301,NC,L]
 RewriteRule ^Teambuilding_Activity/Teambuilding_Games/knot_a_team\.html?/?$ /resources/team-building-activities/knot-a-team/ [R=301,NC,L]
 RewriteRule ^Teambuilding_Activity/Teambuilding_Games/knot_or_not_a_knot\.html?/?$ /resources/team-building-activities/knot-or-not-a-knot/ [R=301,NC,L]
 RewriteRule ^Teambuilding_Activity/Teambuilding_Games/learning_maze\.html?/?$ /resources/team-building-activities/learning-maze/ [R=301,NC,L]
