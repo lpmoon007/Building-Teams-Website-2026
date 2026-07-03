@@ -43,15 +43,19 @@ RewriteRule ^shop/effective-facilitator-workshop/?$         https://www.building
 RewriteRule ^locations/oakland-team-building/?$             https://www.buildingteams.com/locations/oakland/ [R=301,L]
 RewriteRule ^locations/wenatchee-legendary-team-building/?$ https://www.buildingteams.com/locations/wenatchee/ [R=301,L]
 
-# Individual activities -> Experiences.
-RewriteRule ^river-crossing/?$                              https://www.buildingteams.com/experiences/ [R=301,L]
-RewriteRule ^trust-session-10-15-people/?$                  https://www.buildingteams.com/experiences/ [R=301,L]
+# Individual activities -> their exact new activity pages (built out on BT).
+RewriteRule ^river-crossing/?$                              https://www.buildingteams.com/resources/team-building-activities/river-crossing/ [R=301,L]
+RewriteRule ^trust-session-10-15-people/?$                  https://www.buildingteams.com/resources/team-building-activities/trust-walk/ [R=301,L]
 
-# Retired product/shop kits (no longer sold). Two have BT precedent -> Activities;
-# the rest go to the Experiences hub.
-RewriteRule ^shop/win-win-win/?$                            https://www.buildingteams.com/activities/ [R=301,L]
-RewriteRule ^shop/perfect-square/?$                         https://www.buildingteams.com/activities/ [R=301,L]
-RewriteRule ^shop(/.*)?$                                    https://www.buildingteams.com/experiences/ [R=301,L]
+# Military / recruiter team building (107 backlinks, still ranks) -> Experiences.
+RewriteRule ^army-recruiters-welcome/?$                     https://www.buildingteams.com/experiences/ [R=301,L]
+RewriteRule ^military-packages?/?$                          https://www.buildingteams.com/experiences/ [R=301,L]
+
+# Retired product/shop kits (no longer sold). Individual activities have exact new
+# pages; the rest go to the free activities library.
+RewriteRule ^shop/win-win-win/?$                            https://www.buildingteams.com/resources/team-building-activities/win-win-win/ [R=301,L]
+RewriteRule ^shop/perfect-square/?$                         https://www.buildingteams.com/resources/team-building-activities/perfect-square/ [R=301,L]
+RewriteRule ^shop(/.*)?$                                    https://www.buildingteams.com/resources/team-building-activities/ [R=301,L]
 
 # ----------------------------------------------------------------------------
 # 3) TOPIC SAFETY-NET — catch activity families not individually listed above
@@ -62,7 +66,7 @@ RewriteRule shoe                        https://www.buildingteams.com/activities
 RewriteRule skateboard                  https://www.buildingteams.com/activities/skateboard/        [R=301,NC,L]
 RewriteRule scavenger.*hunt             https://www.buildingteams.com/experiences/the-ultimate-hunt/ [R=301,NC,L]
 RewriteRule (workshop|facilitat)        https://www.buildingteams.com/programs/                     [R=301,NC,L]
-RewriteRule (activit|games|exercise)    https://www.buildingteams.com/experiences/                  [R=301,NC,L]
+RewriteRule (activit|games|exercise)    https://www.buildingteams.com/resources/team-building-activities/ [R=301,NC,L]
 
 # ----------------------------------------------------------------------------
 # 4) CATCH-ALL — TBA home, /wp-content/uploads/* old media, and anything else
