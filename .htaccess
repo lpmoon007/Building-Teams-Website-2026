@@ -35,6 +35,15 @@ RewriteRule ^naklejka-viza-masterkard-pay-pass-visa-paywave/?$ - [G,NC,L]
 RewriteRule ^pjat-prichin-pochemu-bank-otkazhet-v-kredite/?$ - [G,NC,L]
 RewriteRule ^(gambling-online|online-gambling)/?$ - [G,NC,L]
 
+# ----- Backlink recovery: specific legacy URLs with real editorial links -----
+# MUST precede the broad catch-alls below (first match with [L] wins), so these
+# land on their MOST specific modern page instead of the generic library.
+RewriteRule ^Teambuilding_Activity/communication_exercises\.htm/?$ /resources/communication-team-building-activities/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/trust_teambuilding_exercises\.htm/?$ /resources/team-building-activities/trust-walk/ [R=301,NC,L]
+RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/experiential-learning/ [R=301,NC,L]
+RewriteRule ^teambuilding_activity/all_teambuilding_exercises\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/what-motivates-teams/ [R=301,NC,L]
+
 # ----- Activity library consolidation: old DIY activity / kit / exercise tree -----
 # The Scavenger Hunt maps to its dedicated rebuild; everything else in the
 # /Teambuilding_Activity/ tree (individual games, kits, exercises-by-outcome,
@@ -136,14 +145,6 @@ RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /re
 RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/half_day_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^conference-team-building/sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
-
-# Backlink recovery — legacy article/exercise URLs with real editorial links
-# (Houston Chronicle, old article/library pages) that were still 404ing.
-RewriteRule ^Teambuilding_Activity/communication_exercises\.htm/?$ /resources/communication-team-building-activities/ [R=301,NC,L]
-RewriteRule ^Teambuilding_Activity/trust_teambuilding_exercises\.htm/?$ /resources/team-building-activities/trust-walk/ [R=301,NC,L]
-RewriteRule ^teambuilding_activity/all_teambuilding_exercises\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
-RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/experiential-learning/ [R=301,NC,L]
-RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/what-motivates-teams/ [R=301,NC,L]
 
 # Workshop URL families -> the dedicated team building workshops page
 # (NOTE: no rule for ^team-building-workshops — that is now a real page)
