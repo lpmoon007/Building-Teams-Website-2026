@@ -48,6 +48,19 @@
   .elstep .n{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--brand-2)}
   .elstep h3{font-family:var(--display);font-weight:700;font-size:16px;margin:6px 0 5px}
   .elstep p{font-size:14px;color:var(--slate);margin:0;line-height:1.5}
+  .elbars{margin:12px 0 8px;display:flex;flex-direction:column;gap:8px}
+  .elbar{display:grid;grid-template-columns:160px 1fr;align-items:center;gap:12px}
+  .elbar .lab{font-size:14px;color:var(--ink);text-align:right}
+  .elbar .track{background:var(--mist);border:1px solid var(--line);border-radius:8px;overflow:hidden;height:26px;position:relative}
+  .elbar .fill{height:100%;background:var(--brand-2);border-radius:8px 0 0 8px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-family:var(--display);font-weight:700;font-size:12px;min-width:34px}
+  .elbar.hi .fill{background:var(--brand)}
+  @media(max-width:600px){.elbar{grid-template-columns:110px 1fr}.elbar .lab{font-size:12px}}
+  .elzones{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 18px}
+  @media(max-width:680px){.elzones{grid-template-columns:1fr}}
+  .elzone{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}
+  .elzone h3{font-family:var(--display);font-weight:700;font-size:16px;margin:0 0 5px}
+  .elzone p{font-size:14px;color:var(--slate);margin:0;line-height:1.5}
+  .elzone.growth{border-color:var(--brand-2);box-shadow:0 6px 20px rgba(100,1,10,.07)}
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png" />
@@ -128,9 +141,32 @@
 </div>
 <p>Picture a team in an escape-style challenge. The <em>experience</em> is the frantic search for clues. <em>Observing</em>, they realize three people were solving the same puzzle while another clue sat untouched. They <em>think</em> it through as a habit &mdash; the team duplicates effort and doesn&rsquo;t assign ownership under pressure. Then they <em>apply</em> it: in the next room they call out who owns what, and finish with time to spare. Done, examined, generalized, retried &mdash; a lesson they own, because they generated it themselves.</p>
 
+<h2>Why doing beats being told</h2>
+<p>There&rsquo;s a reason a lecture rarely changes behavior. Widely referenced figures on skill retention &mdash; often attributed to the learning-pyramid tradition &mdash; put the difference starkly: we remember a fraction of what we&rsquo;re told, and the overwhelming majority of what we do and then teach to others. Treat the exact numbers as directional rather than laboratory-precise, but the shape is undeniable and matches everything we&rsquo;ve seen in 25 years:</p>
+<div class="elbars">
+<div class="elbar"><span class="lab">Lecture</span><div class="track"><div class="fill" style="width:5%">5%</div></div></div>
+<div class="elbar"><span class="lab">Reading</span><div class="track"><div class="fill" style="width:12%">12%</div></div></div>
+<div class="elbar"><span class="lab">Writing</span><div class="track"><div class="fill" style="width:27%">27%</div></div></div>
+<div class="elbar"><span class="lab">Demonstration</span><div class="track"><div class="fill" style="width:46%">46%</div></div></div>
+<div class="elbar"><span class="lab">Discussion</span><div class="track"><div class="fill" style="width:60%">60%</div></div></div>
+<div class="elbar hi"><span class="lab">Doing / practicing</span><div class="track"><div class="fill" style="width:78%">78%</div></div></div>
+<div class="elbar hi"><span class="lab">Teaching others</span><div class="track"><div class="fill" style="width:92%">92%</div></div></div>
+</div>
+<p><span style="font-size:14px;color:var(--slate)">Skill retention by learning method (widely cited, directional).</span> The takeaway isn&rsquo;t the decimal points &mdash; it&rsquo;s that participation and teaching sit at the top, and passive intake sits at the bottom. Experiential learning lives at the top of that list by design.</p>
+
+<h2>The comfort, growth and panic zones</h2>
+<p>Experiential activities work by moving people just outside their comfort zone &mdash; physically, emotionally or intellectually &mdash; into what practitioners call the growth zone. Push too far, too fast, and a participant overshoots into the panic zone, where nobody learns anything. The facilitator&rsquo;s craft is calibrating the step so it&rsquo;s a stretch, not a shock.</p>
+<div class="elzones">
+<div class="elzone"><h3>Comfort zone</h3><p>Familiar and safe &mdash; but no new learning happens here. Early in a program, people stay conservative until they trust the process.</p></div>
+<div class="elzone growth"><h3>Growth zone</h3><p>Just outside comfort. Uncomfortable but not threatening &mdash; this is where the real learning happens, and it later becomes the new comfort zone.</p></div>
+<div class="elzone"><h3>Panic zone</h3><p>A step too far. The person is overwhelmed and shuts down. A skilled facilitator keeps the challenge out of here.</p></div>
+</div>
+<p style="font-size:14px;color:var(--slate)">Comfort/growth/panic model adapted from <em>Teamwork &amp; Teamplay</em> (Cain &amp; Jolliff). This is also why <a href="How to Facilitate Team Building.html">good facilitation</a> insists on &ldquo;challenge by choice&rdquo; &mdash; letting each person choose their own step keeps them in growth, not panic.</p>
+
 <h2>The debrief is the point</h2>
 <p>This is the principle everything at Building Teams is built on: <strong>the activity is the vehicle; the debrief is where the lesson lands.</strong> The build, the puzzle, the challenge &mdash; those exist to generate real, honest behavior. But an experience on its own is just a fun afternoon that fades. What converts it into transferable change is the facilitated debrief: a skilled facilitator guiding the team through the reflection and conceptualization stages, connecting exactly what happened in the room to how the team operates every day.</p>
 <p>A good facilitator doesn&rsquo;t hand a team the lesson &mdash; that would just be another lecture. They ask the questions that let the team see its own patterns and name them out loud, then help the group commit to something specific to do differently. That&rsquo;s why we never sell a bare activity. Skip the debrief and you&rsquo;ve bought entertainment. Keep it, and you&rsquo;ve bought change. It is the single biggest difference between team building that people forget by Friday and team building that shows up in how they work months later.</p>
+<p>It helps to see that every challenge operates on <strong>two levels</strong> at once. <em>Level one</em> is the visible task &mdash; solve the puzzle, build the bike, finish on time. <em>Level two</em> is the group process underneath it: did the team plan, how did they plan, whose opinions got heard, who actually made the decisions? Level two isn&rsquo;t higher or better than level one &mdash; it&rsquo;s simply where the transferable learning lives. Weak facilitation stops at &ldquo;did we win?&rdquo; Strong facilitation spends its time on <em>how</em> the group worked, because that&rsquo;s what carries back to Monday.</p>
 
 <h2>Experiential learning in practice</h2>
 <p>Everything we run is designed around this loop. Our <a href="Team Building Activities Library.html">team building activities</a> aren&rsquo;t icebreakers for their own sake &mdash; each one is a concrete experience engineered to surface a specific team behavior, paired with a debrief that turns it into a lesson. Our give-back builds do the same with higher stakes: when a team assembles bikes or shoes for kids who need them, the collaboration is real because the outcome is real, which makes the reflection that follows honest rather than performative. You can see the full range of those <a href="Experiences.html">give-back experiences</a> for how doing something that genuinely matters deepens the learning.</p>
