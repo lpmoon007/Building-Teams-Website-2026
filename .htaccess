@@ -119,7 +119,7 @@ RewriteRule ^leadership_activity_ideas\.htm/?$ /resources/team-building-ideas/le
 RewriteRule ^Executive_Teambuilding/ /executive-team-building/ [R=301,NC,L]
 RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
-RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /team-building-workshops/ [R=301,NC,L]
 RewriteRule ^Adventure_Teambuilding/corporate_sailing(_shackletons_adventure)?\.htm/?$ /experiences/corporate-sailing/ [R=301,NC,L]
 RewriteRule ^Adventure_Teambuilding/[a-z_]*off[-_]?road[a-z_]*\.htm/?$ /experiences/off-road-immersion/ [R=301,NC,L]
 RewriteRule (^|/)corporate_orienteering\.htm/?$ /experiences/team-orienteering/ [R=301,NC,L]
@@ -131,11 +131,19 @@ RewriteRule ^location/los-angeles/?$ /locations/los-angeles/ [R=301,NC,L]
 # Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
 RewriteRule ^location/([^/]+) /locations/$1/ [R=301,NC,L]
 RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ /experiences/off-road-immersion/ [R=301,NC,L]
-RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /resources/ [R=301,NC,L]
+RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /effective-facilitation-workshop/ [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/half_day_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^conference-team-building/sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
+
+# Backlink recovery — legacy article/exercise URLs with real editorial links
+# (Houston Chronicle, old article/library pages) that were still 404ing.
+RewriteRule ^Teambuilding_Activity/communication_exercises\.htm/?$ /resources/communication-team-building-activities/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/trust_teambuilding_exercises\.htm/?$ /resources/team-building-activities/trust-walk/ [R=301,NC,L]
+RewriteRule ^teambuilding_activity/all_teambuilding_exercises\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/experiential-learning/ [R=301,NC,L]
+RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/what-motivates-teams/ [R=301,NC,L]
 
 # Workshop URL families -> the dedicated team building workshops page
 # (NOTE: no rule for ^team-building-workshops — that is now a real page)
