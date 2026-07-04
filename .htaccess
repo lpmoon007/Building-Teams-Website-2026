@@ -44,6 +44,28 @@ RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/experientia
 RewriteRule ^teambuilding_activity/all_teambuilding_exercises\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
 RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/what-motivates-teams/ [R=301,NC,L]
 
+# ----- Ranking preservation: legacy URLs holding organic positions -----
+# These currently 404 or fall to a too-generic catch-all; route each to the
+# closest modern page so its Google ranking transfers instead of dropping.
+# (MUST precede the broad ^product/, ^Teambuilding_Activity/, ^workshops rules.)
+RewriteRule ^Leadership/legendary_leadership\.htm/?$ /executive-team-building/ [R=301,NC,L]
+RewriteRule ^Leadership(/|$) /executive-team-building/ [R=301,NC,L]
+RewriteRule ^Building_Corporate_Teams(/|$) / [R=301,NC,L]
+RewriteRule ^adventure-team-building/sailing-as-team-building/?$ /experiences/corporate-sailing/ [R=301,NC,L]
+RewriteRule ^adventure-team-building(/|$) /experiences/ [R=301,NC,L]
+RewriteRule ^team-building-workshops/all-team-building-workshops/?$ /team-building-workshops/ [R=301,NC,L]
+RewriteRule ^workshops/facilitator-training-course/?$ /effective-facilitation-workshop/ [R=301,NC,L]
+RewriteRule ^executive-team-building/leadership-development/?$ /executive-team-building/ [R=301,NC,L]
+# "team building kits" ranks via several old kit/product pages -> consolidate on the kits page
+RewriteRule ^team-building-activity-kits/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^product/limited-materials-digital-kit/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^product/communication-team-building-kit/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Kits(/|$) /team-building-kits/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Simulations/index\.html?/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/best_selling_team_products\.htm/?$ /team-building-kits/ [R=301,NC,L]
+# Problem-solving exercises -> the specific guide (not the generic library)
+RewriteRule ^Teambuilding_Activity/problem_solving_exercises\.htm/?$ /resources/problem-solving-team-building-activities/ [R=301,NC,L]
+
 # ----- Activity library consolidation: old DIY activity / kit / exercise tree -----
 # The Scavenger Hunt maps to its dedicated rebuild; everything else in the
 # /Teambuilding_Activity/ tree (individual games, kits, exercises-by-outcome,
