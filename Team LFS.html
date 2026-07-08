@@ -213,7 +213,7 @@
 </footer>
 
 <script>(function(){var t=document.querySelector(".nav-toggle"),m=document.querySelector(".nav-links");if(t&&m){t.addEventListener("click",function(){var o=m.classList.toggle("open");t.setAttribute("aria-expanded",o);});}})();</script>
-<!-- Conversion event tracking (Book a call + phone) -->
+<!-- Conversion event tracking (call + proposal + phone + form submit) -->
 <script>
 (function(){
   document.addEventListener('click',function(e){
@@ -224,8 +224,19 @@
       gtag('event','book_a_call',{link_url:href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,60)});
     }else if(/^tel:/i.test(href)){
       gtag('event','phone_click',{link_url:href,page_path:location.pathname});
+    }else if(/contact/i.test(href)){
+      gtag('event','get_a_proposal_click',{link_url:href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,60)});
     }
   },true);
+  window.addEventListener('message',function(ev){
+    try{
+      var d=ev.data;
+      if(d&&d.type==='hsFormCallback'&&d.eventName==='onFormSubmitted'&&typeof gtag==='function'){
+        var lead=(d.id==='52624310-215e-45ef-a78c-ea44a2c9063c');
+        gtag('event',lead?'generate_lead':'newsletter_signup',{page_path:location.pathname,form_id:(d.id||'')});
+      }
+    }catch(_){}
+  });
 })();
 </script>
 </body>
