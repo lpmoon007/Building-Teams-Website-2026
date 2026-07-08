@@ -169,5 +169,20 @@
 </footer>
 
 <script>(function(){var t=document.querySelector(".nav-toggle"),m=document.querySelector(".nav-links");if(t&&m){t.addEventListener("click",function(){var o=m.classList.toggle("open");t.setAttribute("aria-expanded",o);});}})();</script>
+<!-- Conversion event tracking (Book a call + phone) -->
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a'):null;
+    if(!a||typeof gtag!=='function')return;
+    var href=a.getAttribute('href')||'';
+    if(/hubspot\.com/i.test(href)){
+      gtag('event','book_a_call',{link_url:href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,60)});
+    }else if(/^tel:/i.test(href)){
+      gtag('event','phone_click',{link_url:href,page_path:location.pathname});
+    }
+  },true);
+})();
+</script>
 </body>
 </html>
