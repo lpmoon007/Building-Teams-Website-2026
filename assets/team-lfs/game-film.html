@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Debrief — The CEO · Live Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0C2340;
+    --steel: #185FA5;
+    --steel-deep: #134C84;
+    --bg: #EEF0F3;
+    --surface: #FFFFFF;
+    --stage: #0E1D31;
+    --stage-2: #13263D;
+    --border: #E1E4EA;
+    --border-d: rgba(255,255,255,0.09);
+    --muted: #6B7480;
+    --muted-soft: #8E97A3;
+    --ink: #1B2733;
+    --warn: #C46A3D;
+    --warn-bg: #FBF1E9;
+    --good: #2F8A5B;
+    --good-bg: #EAF5EE;
+    --steel-tint: #EAF1F9;
+    --steel-tint-edge: #CFE0F1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  .wrap { max-width: 1440px; margin: 0 auto; padding: 0 26px 60px; }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 4px 15px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--bg); z-index: 20;
+  }
+  .tb-left { display: flex; align-items: center; gap: 14px; }
+  .wordmark { font-size: 11px; font-weight: 600; letter-spacing: 0.17em; color: var(--steel); text-transform: uppercase; }
+  .tb-sep { width: 1px; height: 20px; background: var(--border); }
+  .tb-title { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  .tb-title span { color: var(--muted); font-weight: 400; }
+  .tb-meta { display: flex; align-items: center; gap: 16px; }
+  .tb-stat { font-size: 12px; color: var(--muted); }
+  .tb-stat b { color: var(--ink); font-weight: 600; }
+  .lens-pill {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 11.5px; font-weight: 500; color: var(--steel-deep);
+    background: var(--steel-tint); border: 1px solid var(--steel-tint-edge);
+    border-radius: 100px; padding: 5px 11px; cursor: pointer;
+  }
+  .lens-pill .cv { width: 6px; height: 6px; border-radius: 50%; background: var(--steel); }
+
+  /* ---------- section headings ---------- */
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; margin: 26px 2px 12px; }
+  .sec-title { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+  .sec-note { font-size: 11.5px; color: var(--muted-soft); }
+
+  /* ---------- reel ---------- */
+  .reel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(210px, 1fr); gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+  .reel::-webkit-scrollbar { height: 8px; }
+  .reel::-webkit-scrollbar-thumb { background: rgba(12,35,64,0.16); border-radius: 4px; }
+  .rc {
+    text-align: left; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 11px; padding: 0; cursor: pointer; overflow: hidden;
+    transition: border-color .14s, box-shadow .14s, transform .1s;
+    display: flex; flex-direction: column;
+  }
+  .rc:hover { border-color: var(--steel-tint-edge); box-shadow: 0 3px 14px rgba(12,35,64,.08); }
+  .rc.active { border-color: var(--steel); box-shadow: 0 0 0 3px rgba(24,95,165,.1); }
+  .rc-top { height: 4px; }
+  .rc.sev-high .rc-top { background: var(--warn); }
+  .rc.sev-good .rc-top { background: var(--good); }
+  .rc.sev-mid .rc-top { background: var(--steel); }
+  .rc-body { padding: 11px 13px 13px; display: flex; flex-direction: column; height: 100%; }
+  .rc-time { font-size: 10.5px; color: var(--muted-soft); letter-spacing: .04em; }
+  .rc-idx { float: right; font-size: 10px; color: var(--muted-soft); border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; }
+  .rc-title { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; margin: 7px 0 auto; line-height: 1.28; }
+  .rc-tag { font-size: 10.5px; font-weight: 500; margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; }
+  .rc-tag .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .sev-high .rc-tag { color: var(--warn); } .sev-high .rc-tag .dot { background: var(--warn); }
+  .sev-good .rc-tag { color: var(--good); } .sev-good .rc-tag .dot { background: var(--good); }
+  .sev-mid .rc-tag { color: var(--steel-deep); } .sev-mid .rc-tag .dot { background: var(--steel); }
+
+  /* ---------- main grid ---------- */
+  .main { display: grid; grid-template-columns: 1fr 380px; gap: 20px; margin-top: 8px; }
+  @media (max-width: 1120px) { .main { grid-template-columns: 1fr; } }
+
+  /* stage */
+  .stage {
+    background: var(--stage); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 10px 34px rgba(8,18,32,.22);
+  }
+  .stage-head { padding: 17px 20px 15px; border-bottom: 1px solid var(--border-d); display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .stage-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--muted-soft); }
+  .stage-title { font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.015em; margin: 7px 0 0; }
+  .stage-time { font-size: 11.5px; color: var(--steel); margin-left: 14px; white-space: nowrap; padding-top: 3px; }
+  .stage-body { padding: 18px 20px 20px; }
+
+  .footage-label { font-size: 10px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--muted-soft); margin: 0 0 11px; display: flex; align-items: center; gap: 8px; }
+  .footage-label::after { content: ""; flex: 1; height: 1px; background: var(--border-d); }
+
+  .film { display: flex; flex-direction: column; gap: 9px; }
+  .fmsg { max-width: 82%; }
+  .fmsg.them { align-self: flex-start; }
+  .fmsg.me { align-self: flex-end; }
+  .fmsg.sys { align-self: center; max-width: 100%; }
+  .fmsg-who { font-size: 10.5px; color: var(--muted-soft); margin: 0 0 4px 2px; }
+  .fmsg.me .fmsg-who { text-align: right; margin-right: 2px; }
+  .bub { font-size: 13px; line-height: 1.5; padding: 9px 13px; border-radius: 4px 13px 13px 13px; }
+  .fmsg.them .bub { background: #EAEDF1; color: #1E2C3D; }
+  .fmsg.me .bub { background: var(--steel); color: #fff; border-radius: 13px 4px 13px 13px; }
+  .fmsg.sys .bub { background: transparent; border: 1px dashed var(--border-d); color: var(--muted-soft); font-style: italic; font-size: 11.5px; border-radius: 100px; padding: 5px 14px; }
+  .bub.discarded { background: repeating-linear-gradient(135deg, #24374d 0 7px, #1e3145 7px 14px); color: #93A3B5; border: 1px dashed #3a4d63; text-decoration: line-through; text-decoration-color: rgba(200,120,90,.6); }
+  .bub-flag { display:block; font-size: 10px; letter-spacing: .04em; color: var(--warn); margin-top: 5px; text-decoration: none; font-style: italic; }
+
+  .annot { margin-top: 16px; padding: 13px 15px; background: rgba(255,255,255,.04); border-left: 2px solid var(--steel); border-radius: 0 8px 8px 0; }
+  .annot p { margin: 0; font-size: 13px; line-height: 1.58; color: #D3DBE4; }
+
+  .evidence { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+  .ev { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; color: #B9C4D0; background: rgba(255,255,255,.05); border: 1px solid var(--border-d); border-radius: 7px; padding: 6px 10px; }
+  .ev .k { color: var(--muted-soft); }
+  .ev .v { color: #fff; font-weight: 500; }
+  .ev.warn .v { color: #E9A87F; }
+
+  /* right rail */
+  .rail { display: flex; flex-direction: column; gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 16px 17px; }
+  .card-h { font-size: 12px; font-weight: 600; letter-spacing: .02em; margin: 0 0 3px; }
+  .card-sub { font-size: 11px; color: var(--muted-soft); margin: 0 0 14px; }
+
+  .disc { padding: 11px 0; border-top: 1px solid var(--border); cursor: pointer; }
+  .disc:first-of-type { border-top: none; padding-top: 2px; }
+  .disc-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .disc-name { font-size: 13px; font-weight: 600; letter-spacing: -0.005em; }
+  .disc-state { font-size: 10.5px; font-weight: 500; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+  .st-good { background: var(--good-bg); color: var(--good); }
+  .st-warn { background: var(--warn-bg); color: var(--warn); }
+  .st-na { background: #F0F1F4; color: var(--muted-soft); }
+  .disc-read { font-size: 11.5px; line-height: 1.5; color: var(--muted); margin: 5px 0 0; }
+  .disc-read .link { color: var(--steel-deep); text-decoration: none; border-bottom: 1px dotted var(--steel-tint-edge); }
+
+  .twoq { margin-top: 3px; }
+  .twoq-item { padding: 11px 13px; border-radius: 9px; margin-bottom: 9px; }
+  .twoq-item.create { background: var(--good-bg); }
+  .twoq-item.allow { background: var(--warn-bg); }
+  .twoq-q { font-size: 11px; font-weight: 600; letter-spacing: .01em; margin: 0 0 4px; }
+  .twoq-item.create .twoq-q { color: var(--good); }
+  .twoq-item.allow .twoq-q { color: var(--warn); }
+  .twoq-a { font-size: 12.5px; line-height: 1.5; color: var(--ink); margin: 0; }
+
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-radius: 10px; overflow: hidden; }
+  .metric { background: var(--surface); padding: 12px 13px; }
+  .metric-v { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; font-family: 'JetBrains Mono', monospace; }
+  .metric-v.warn { color: var(--warn); }
+  .metric-l { font-size: 10.5px; color: var(--muted); margin-top: 2px; letter-spacing: .01em; }
+
+  /* timeline */
+  .timeline { background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 16px 18px 18px; margin-top: 20px; }
+  .tl-lanes { display: flex; flex-direction: column; gap: 7px; margin-top: 6px; }
+  .tl-lane { display: grid; grid-template-columns: 78px 1fr; align-items: center; gap: 10px; }
+  .tl-name { font-size: 10.5px; color: var(--muted); text-align: right; }
+  .tl-track { position: relative; height: 22px; background: #F4F5F7; border-radius: 6px; }
+  .tl-ev { position: absolute; top: 4px; height: 14px; border-radius: 3px; }
+  .tl-ev.msg { background: var(--steel); width: 8px; }
+  .tl-ev.them { background: #A9B4C1; width: 8px; }
+  .tl-ev.call { background: #6B5E9A; width: 16px; }
+  .tl-ev.email { background: #3E6E66; width: 12px; }
+  .tl-ev.gap { background: repeating-linear-gradient(90deg, #F0D9CB 0 5px, transparent 5px 10px); border: 1px dashed #E0B79E; border-radius: 4px; top: 3px; height: 16px; }
+  .tl-axis { display: grid; grid-template-columns: 78px 1fr; gap: 10px; margin-top: 9px; }
+  .tl-ticks { display: flex; justify-content: space-between; font-size: 9.5px; color: var(--muted-soft); }
+  .tl-marks { grid-column: 2; position: relative; height: 16px; margin-top: 3px; }
+  .tl-mark { position: absolute; transform: translateX(-50%); font-size: 9px; color: var(--steel-deep); cursor: pointer; text-align: center; }
+  .tl-mark .pin { display: block; width: 2px; height: 8px; background: var(--steel); margin: 0 auto 2px; }
+  .tl-mark.high .pin { background: var(--warn); } .tl-mark.high { color: var(--warn); }
+
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
+  .lg { display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: var(--muted); }
+  .lg .sw { width: 11px; height: 8px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="tb-left">
+      <span class="wordmark">InCommand · Debrief</span>
+      <span class="tb-sep"></span>
+      <span class="tb-title">The CEO <span>· Chief Executive Officer</span></span>
+    </div>
+    <div class="tb-meta">
+      <span class="tb-stat">Scenario <b>Live Simulation</b></span>
+      <span class="tb-stat">Duration <b>46 min</b></span>
+      <span class="tb-stat">Captured <b>07:44–08:30</b></span>
+      <span class="lens-pill"><span class="cv"></span>Lens: LDOL v1</span>
+    </div>
+  </div>
+
+  <!-- REEL -->
+  <div class="sec-head">
+    <span class="sec-title">The Reel — six decisive moments</span>
+    <span class="sec-note">Select a moment to play the footage · ordered by session time</span>
+  </div>
+  <div class="reel" id="reel"></div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="stage" id="stage"><!-- injected --></div>
+
+    <div class="rail">
+      <div class="card">
+        <p class="card-h">Behavioral read</p>
+        <p class="card-sub">LDOL v1 · every claim traces to footage — click to jump</p>
+        <div id="disciplines"></div>
+      </div>
+
+      <div class="card">
+        <p class="card-h">The 2Q</p>
+        <p class="card-sub">What are you creating? What are you allowing?</p>
+        <div class="twoq">
+          <div class="twoq-item create">
+            <p class="twoq-q">What you created</p>
+            <p class="twoq-a">Urgency and a timely, defensible decision under a hard deadline.</p>
+          </div>
+          <div class="twoq-item allow">
+            <p class="twoq-q">What you allowed</p>
+            <p class="twoq-a">41 minutes of silence toward your Board Chair, and a legal-exposure risk left unowned.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-h">Session signals</p>
+        <p class="card-sub">Read straight from the capture log</p>
+        <div class="metrics">
+          <div class="metric"><div class="metric-v">45<span style="font-size:12px">m</span></div><div class="metric-l">Decision latency from offer</div></div>
+          <div class="metric"><div class="metric-v warn">41<span style="font-size:12px">m</span></div><div class="metric-l">Board Chair kept waiting</div></div>
+          <div class="metric"><div class="metric-v">2<span style="font-size:12px">/6</span></div><div class="metric-l">Team members consulted</div></div>
+          <div class="metric"><div class="metric-v warn">1</div><div class="metric-l">Message drafted, then deleted</div></div>
+          <div class="metric"><div class="metric-v">8<span style="font-size:12px">/11</span></div><div class="metric-l">Threads opened</div></div>
+          <div class="metric"><div class="metric-v">6m12s</div><div class="metric-l">Avg. response latency</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="sec-head" style="margin:0 0 4px">
+      <span class="sec-title">Full timeline</span>
+      <span class="sec-note">The complete record · flags mark reel moments · hatching marks silence</span>
+    </div>
+    <div class="tl-lanes">
+      <div class="tl-lane"><span class="tl-name">Messages</span><div class="tl-track" id="lane-msg"></div></div>
+      <div class="tl-lane"><span class="tl-name">Calls</span><div class="tl-track" id="lane-call"></div></div>
+      <div class="tl-lane"><span class="tl-name">Email / Docs</span><div class="tl-track" id="lane-email"></div></div>
+    </div>
+    <div class="tl-axis">
+      <div></div>
+      <div>
+        <div class="tl-ticks"><span>07:44</span><span>07:55</span><span>08:06</span><span>08:17</span><span>08:30</span></div>
+        <div class="tl-marks" id="tl-marks"></div>
+      </div>
+    </div>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:#185FA5"></span>the CEO sent</span>
+      <span class="lg"><span class="sw" style="background:#A9B4C1"></span>Inbound</span>
+      <span class="lg"><span class="sw" style="background:#6B5E9A"></span>Call</span>
+      <span class="lg"><span class="sw" style="background:#3E6E66"></span>Email / doc</span>
+      <span class="lg"><span class="sw" style="background:repeating-linear-gradient(90deg,#F0D9CB 0 4px,transparent 4px 8px);border:1px dashed #E0B79E"></span>Silence</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const MOMENTS = [
+  {
+    id:'m1', t:'07:45 AM', sev:'good', title:'Engaged on contact', tag:'The Decision · fast',
+    film:[
+      {who:'P. Harding · Minister\u2019s Office', side:'them', text:'the CEO \u2014 we want the company as the anchor partner. I need a preliminary letter of intent by Thursday, 5:00 PM. And keep the circle small for now.'},
+      {who:'You', side:'me', text:'Understood. Give me the morning \u2014 I\u2019ll get you an answer.'},
+    ],
+    annot:'the CEO engaged the opportunity instantly \u2014 decisive attention when the stakes were exciting. Speed was never his problem.',
+    ev:[['First action','38s after inbound',0],['Opened before','briefing the team',0]]
+  },
+  {
+    id:'m2', t:'07:52 AM', sev:'high', title:'The 41-minute silence', tag:'Truth Over Comfort · avoidance',
+    film:[
+      {who:'Board Chair', side:'them', text:'the CEO, call me before 8. I\u2019m hearing things and I don\u2019t want to be surprised.'},
+      {who:'', side:'sys', text:'Thread opened 07:53 AM \u2014 no reply sent'},
+      {who:'Board Chair', side:'them', text:'Are you there?'},
+    ],
+    annot:'The one person with governance authority asked for contact \u2014 and the CEO read it and went quiet. The hardest conversation was the one he delayed longest.',
+    ev:[['Board Chair waited','41 min',1],['Follow-up prompts','2 unanswered',1],['Thread','opened, not answered',0]]
+  },
+  {
+    id:'m3', t:'08:03 AM', sev:'high', title:'The message he didn\u2019t send', tag:'The Standard · avoidance',
+    film:[
+      {who:'\u00c9. Tremblay · La Presse', side:'them', text:'We\u2019re running a story that the company is in talks on a federal green-steel deal. Care to confirm?'},
+      {who:'You', side:'me', discarded:true, text:'I can confirm we are in advanced discussions with\u2014', flag:'Drafted for 22s, then deleted \u2014 never sent'},
+    ],
+    annot:'He typed a confirmation to the press and deleted it. The instinct to speak and the restraint to stop are both data \u2014 and neither reached his Comms lead.',
+    ev:[['Draft composed','22s, discarded',1],['Comms (No\u00e9mie)','never looped in',0]]
+  },
+  {
+    id:'m4', t:'08:10 AM', sev:'high', title:'Who he left in the dark', tag:'The Standard · lost to avoidance',
+    film:[
+      {who:'', side:'sys', text:'Legal-exposure note surfaced in situation feed \u2014 08:07 AM'},
+      {who:'You \u2192 General Counsel', side:'me', discarded:true, text:'(no message ever sent to Legal)', flag:'GC received 0 messages this session'},
+    ],
+    annot:'Told to keep the circle small, the CEO dropped his General Counsel \u2014 the exact person the disclosure risk needed in the room. \u201cSmall circle\u201d became \u201cwrong circle.\u201d',
+    ev:[['General Counsel','0 messages',1],['Exposure note','unaddressed 45 min',1]]
+  },
+  {
+    id:'m5', t:'08:24 AM', sev:'good', title:'The recovery call', tag:'The Decision · repair',
+    film:[
+      {who:'', side:'sys', text:'Outbound call \u2014 the CEO \u2192 R. Vaillancourt \u00b7 4m 06s'},
+      {who:'You', side:'me', text:'I should have called sooner. Here\u2019s exactly where we are, and here\u2019s what I\u2019m recommending.'},
+    ],
+    annot:'When he finally engaged the board, he was clear, candid, and in command. The capability was never the issue \u2014 the timing was.',
+    ev:[['Outbound call','placed',0],['First board contact','+32 min late',1]]
+  },
+  {
+    id:'m6', t:'08:30 AM', sev:'good', title:'The commitment', tag:'The Decision · committed',
+    film:[
+      {who:'You \u2192 Executive Team', side:'me', text:'We pursue. I\u2019ll sign the letter of intent before the deadline. Thank you, everyone.'},
+      {who:'', side:'sys', text:'Decision committed 08:30 AM \u2014 4 min before deadline'},
+    ],
+    annot:'He made the call, and a good one \u2014 but under the wire, after the pressure peaked rather than ahead of it. A decision made late is a different act than the same decision made early.',
+    ev:[['Committed','4 min before deadline',0],['Decision latency','45 min from offer',1]]
+  },
+];
+
+const DISCIPLINES = [
+  {name:'The Decision', state:'Committed \u2014 at the wire', cls:'st-warn', read:'Decisive attention early, and a sound final call \u2014 but the commitment came 4 minutes before the deadline, after the pressure peaked.', jump:'m6'},
+  {name:'The Rhythm', state:'Uneven', cls:'st-warn', read:'Managed concurrent threads, but starved the board thread while chasing the opportunity.', jump:'m2'},
+  {name:'The Standard', state:'Lost to avoidance', cls:'st-warn', read:'Did not hold the team in the loop \u2014 General Counsel was never engaged despite clear legal exposure.', jump:'m4'},
+  {name:'The Learning', state:'n/a \u2014 single session', cls:'st-na', read:'Establishes the baseline. Re-run to read growth or regression against it.', jump:null},
+  {name:'Truth Over Comfort', state:'Avoided first', cls:'st-warn', read:'The uncomfortable moves \u2014 the board call, the press position \u2014 were the ones delayed or deleted.', jump:'m3'},
+];
+
+const laneFor = {msg:'lane-msg', them:'lane-msg', call:'lane-call', email:'lane-email'};
+const TL = [
+  {lane:'them', at:2}, {lane:'msg', at:4}, {lane:'them', at:11}, {lane:'gap', at:13, w:24, target:'lane-msg'},
+  {lane:'msg', at:40}, {lane:'them', at:44}, {lane:'call', at:76}, {lane:'msg', at:84},
+  {lane:'email', at:52, target:'lane-email'}, {lane:'them', at:62, target:'lane-email'},
+  {lane:'msg', at:96},
+];
+const MARKS = [
+  {at:2,label:'1'},{at:16,label:'2',high:true},{at:40,label:'3',high:true},
+  {at:56,label:'4',high:true},{at:88,label:'5'},{at:98,label:'6'},
+];
+
+let active = 'm1';
+
+function renderReel(){
+  const reel = document.getElementById('reel');
+  reel.innerHTML = MOMENTS.map((m,i)=>`
+    <button class="rc sev-${m.sev} ${m.id===active?'active':''}" data-id="${m.id}">
+      <span class="rc-top"></span>
+      <span class="rc-body">
+        <span class="rc-time mono">${m.t}<span class="rc-idx">${String(i+1).padStart(2,'0')}</span></span>
+        <span class="rc-title">${m.title}</span>
+        <span class="rc-tag"><span class="dot"></span>${m.tag}</span>
+      </span>
+    </button>`).join('');
+  reel.querySelectorAll('.rc').forEach(b=>b.onclick=()=>{active=b.dataset.id; renderAll();});
+}
+
+function renderStage(){
+  const m = MOMENTS.find(x=>x.id===active);
+  const film = m.film.map(f=>{
+    if(f.side==='sys') return `<div class="fmsg sys"><div class="bub">${f.text}</div></div>`;
+    const flag = f.flag ? `<span class="bub-flag">\u2298 ${f.flag}</span>` : '';
+    return `<div class="fmsg ${f.side}">${f.who?`<div class="fmsg-who">${f.who}</div>`:''}<div class="bub ${f.discarded?'discarded':''}">${f.text}${flag}</div></div>`;
+  }).join('');
+  const ev = m.ev.map(e=>`<span class="ev ${e[2]?'warn':''}"><span class="k">${e[0]}</span><span class="v">${e[1]}</span></span>`).join('');
+  document.getElementById('stage').innerHTML = `
+    <div class="stage-head">
+      <div>
+        <div class="stage-eyebrow">Now playing · moment ${MOMENTS.indexOf(m)+1} of 6</div>
+        <h2 class="stage-title">${m.title}</h2>
+      </div>
+      <span class="stage-time mono">${m.t}</span>
+    </div>
+    <div class="stage-body">
+      <p class="footage-label">Footage \u2014 what actually happened</p>
+      <div class="film">${film}</div>
+      <div class="annot"><p>${m.annot}</p></div>
+      <div class="evidence">${ev}</div>
+    </div>`;
+}
+
+function renderDisciplines(){
+  document.getElementById('disciplines').innerHTML = DISCIPLINES.map(d=>`
+    <div class="disc" ${d.jump?`data-jump="${d.jump}"`:''}>
+      <div class="disc-row"><span class="disc-name">${d.name}</span><span class="disc-state ${d.cls}">${d.state}</span></div>
+      <p class="disc-read">${d.read} ${d.jump?`<span class="link">\u2192 see footage</span>`:''}</p>
+    </div>`).join('');
+  document.querySelectorAll('.disc[data-jump]').forEach(el=>el.onclick=()=>{active=el.dataset.jump; renderAll(); document.getElementById('stage').scrollIntoView({block:'nearest'});});
+}
+
+function renderTimeline(){
+  ['lane-msg','lane-call','lane-email'].forEach(id=>document.getElementById(id).innerHTML='');
+  TL.forEach(e=>{
+    const laneId = e.target || laneFor[e.lane];
+    const lane = document.getElementById(laneId);
+    if(!lane) return;
+    const d = document.createElement('div');
+    d.className = 'tl-ev ' + (e.lane==='gap'?'gap':e.lane);
+    d.style.left = e.at + '%';
+    if(e.w) d.style.width = e.w + '%';
+    lane.appendChild(d);
+  });
+  document.getElementById('tl-marks').innerHTML = MARKS.map(m=>`
+    <span class="tl-mark ${m.high?'high':''}" data-id="m${m.label}" style="left:${m.at}%"><span class="pin"></span>${m.label}</span>`).join('');
+  document.querySelectorAll('.tl-mark').forEach(el=>el.onclick=()=>{active=el.dataset.id; renderAll();});
+}
+
+function renderAll(){ renderReel(); renderStage(); renderDisciplines(); renderTimeline(); }
+renderAll();
+</script>
+</body>
+</html>

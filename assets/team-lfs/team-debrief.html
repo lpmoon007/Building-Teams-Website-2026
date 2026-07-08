@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Team Debrief — Live Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0C2340; --steel:#185FA5; --steel-deep:#134C84; --bg:#EEF0F3; --surface:#FFFFFF;
+    --border:#E1E4EA; --muted:#6B7480; --muted-soft:#8E97A3; --ink:#1B2733;
+    --warn:#C46A3D; --warn-bg:#FBF1E9; --good:#2F8A5B; --good-bg:#EAF5EE;
+    --steel-tint:#EAF1F9; --steel-tint-edge:#CFE0F1; --map-bg:#0E1D31;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 26px 60px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 4px 15px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:20;}
+  .tb-left{display:flex;align-items:center;gap:14px;}
+  .wordmark{font-size:11px;font-weight:600;letter-spacing:.17em;color:var(--steel);text-transform:uppercase;}
+  .tb-sep{width:1px;height:20px;background:var(--border);}
+  .tb-title{font-size:15px;font-weight:600;letter-spacing:-.01em;}
+  .tb-title span{color:var(--muted);font-weight:400;}
+  .tb-meta{display:flex;align-items:center;gap:16px;}
+  .tb-stat{font-size:12px;color:var(--muted);} .tb-stat b{color:var(--ink);font-weight:600;}
+  .lens-pill{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:500;color:var(--steel-deep);background:var(--steel-tint);border:1px solid var(--steel-tint-edge);border-radius:100px;padding:5px 11px;cursor:pointer;}
+  .lens-pill .cv{width:6px;height:6px;border-radius:50%;background:var(--steel);}
+
+  /* headline banner */
+  .headline{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-top:22px;display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:center;}
+  @media(max-width:1000px){.headline{grid-template-columns:1fr;}}
+  .hl-eyebrow{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin:0 0 8px;}
+  .hl-title{font-size:23px;font-weight:600;letter-spacing:-.018em;line-height:1.22;margin:0;}
+  .hl-title b{color:var(--warn);font-weight:600;}
+  .hl-sub{font-size:13px;line-height:1.55;color:var(--muted);margin:9px 0 0;}
+  .hl-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:10px;overflow:hidden;}
+  .hm{background:var(--surface);padding:12px 13px;}
+  .hm-v{font-size:20px;font-weight:600;letter-spacing:-.02em;font-family:'JetBrains Mono',monospace;}
+  .hm-v.warn{color:var(--warn);} .hm-v.good{color:var(--good);}
+  .hm-l{font-size:10.5px;color:var(--muted);margin-top:2px;}
+
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin:26px 2px 12px;}
+  .sec-title{font-size:13px;font-weight:600;letter-spacing:.02em;}
+  .sec-note{font-size:11.5px;color:var(--muted-soft);}
+
+  .main{display:grid;grid-template-columns:1fr 372px;gap:20px;}
+  @media(max-width:1120px){.main{grid-template-columns:1fr;}}
+
+  /* MAP */
+  .map-card{background:var(--map-bg);border-radius:14px;box-shadow:0 10px 34px rgba(8,18,32,.22);overflow:hidden;}
+  .map-head{padding:16px 20px 13px;border-bottom:1px solid rgba(255,255,255,.09);}
+  .map-eyebrow{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);}
+  .map-title{font-size:17px;font-weight:600;color:#fff;letter-spacing:-.01em;margin:6px 0 0;}
+  .map-hint{font-size:11.5px;color:#8494a6;margin:5px 0 0;}
+  .map-stage{position:relative;height:470px;}
+  #edges{position:absolute;inset:0;width:100%;height:100%;}
+  .node{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;width:96px;}
+  .node-av{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600;border:2px solid rgba(255,255,255,.14);transition:transform .14s,box-shadow .14s;}
+  .node:hover .node-av{transform:scale(1.07);}
+  .node.dim{opacity:.28;}
+  .node.sel .node-av{box-shadow:0 0 0 3px var(--steel);}
+  .node-name{font-size:11px;font-weight:600;color:#EAF0F6;text-align:center;line-height:1.2;}
+  .node-role{font-size:9.5px;color:#8494a6;text-align:center;line-height:1.15;}
+  .node-flag{position:absolute;top:-3px;right:20px;width:12px;height:12px;border-radius:50%;border:2px solid var(--map-bg);}
+  .flag-warn{background:var(--warn);} .flag-good{background:var(--good);} .flag-mid{background:var(--steel);}
+  .map-legend{display:flex;gap:16px;flex-wrap:wrap;padding:13px 20px 16px;border-top:1px solid rgba(255,255,255,.09);}
+  .mlg{display:flex;align-items:center;gap:7px;font-size:10.5px;color:#9aa8b7;}
+  .mlg .ln{width:20px;height:0;border-top:2px solid;}
+  .mlg .ln.strong{border-color:#5b9bd8;}
+  .mlg .ln.miss{border-top:2px dashed var(--warn);}
+  .mlg .ln.contest{border-color:var(--warn);}
+
+  /* rail */
+  .rail{display:flex;flex-direction:column;gap:16px;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:16px 17px;}
+  .card-h{font-size:12px;font-weight:600;letter-spacing:.02em;margin:0 0 3px;}
+  .card-sub{font-size:11px;color:var(--muted-soft);margin:0 0 13px;}
+  .disc{padding:10px 0;border-top:1px solid var(--border);}
+  .disc:first-of-type{border-top:none;padding-top:2px;}
+  .disc-row{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .disc-name{font-size:12.5px;font-weight:600;}
+  .disc-state{font-size:10px;font-weight:500;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+  .st-good{background:var(--good-bg);color:var(--good);} .st-warn{background:var(--warn-bg);color:var(--warn);} .st-na{background:#F0F1F4;color:var(--muted-soft);}
+  .disc-read{font-size:11.5px;line-height:1.48;color:var(--muted);margin:4px 0 0;}
+  .twoq-item{padding:11px 13px;border-radius:9px;margin-bottom:9px;}
+  .twoq-item.create{background:var(--good-bg);} .twoq-item.allow{background:var(--warn-bg);}
+  .twoq-q{font-size:11px;font-weight:600;margin:0 0 4px;} .create .twoq-q{color:var(--good);} .allow .twoq-q{color:var(--warn);}
+  .twoq-a{font-size:12.5px;line-height:1.5;margin:0;}
+
+  /* missing-info callout */
+  .gaps{margin-top:14px;}
+  .gap-row{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--border);}
+  .gap-row:first-child{border-top:none;}
+  .gap-ico{width:20px;height:20px;border-radius:5px;background:var(--warn-bg);color:var(--warn);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;}
+  .gap-txt{font-size:11.5px;line-height:1.45;}
+  .gap-txt b{color:var(--ink);font-weight:600;} .gap-txt span{color:var(--muted);}
+
+  /* per-person */
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+  .pcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 14px;cursor:pointer;transition:border-color .14s,box-shadow .14s;}
+  .pcard:hover{border-color:var(--steel-tint-edge);box-shadow:0 3px 14px rgba(12,35,64,.07);}
+  .pcard.sel{border-color:var(--steel);box-shadow:0 0 0 3px rgba(24,95,165,.09);}
+  .pc-top{display:flex;align-items:center;gap:11px;}
+  .pc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12.5px;font-weight:600;flex-shrink:0;position:relative;}
+  .pc-flag{position:absolute;bottom:-1px;right:-1px;width:11px;height:11px;border-radius:50%;border:2px solid var(--surface);}
+  .pc-id{min-width:0;flex:1;}
+  .pc-name{font-size:13.5px;font-weight:600;letter-spacing:-.01em;}
+  .pc-role{font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pc-read{font-size:12px;line-height:1.45;color:#3A4654;margin:10px 0 0;}
+  .pc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:11px;padding-top:10px;border-top:1px solid var(--border);}
+  .pc-tag{font-size:10.5px;font-weight:500;display:inline-flex;align-items:center;gap:6px;}
+  .pc-tag .dot{width:6px;height:6px;border-radius:50%;}
+  .pc-link{font-size:11px;font-weight:500;color:var(--steel-deep);}
+  .tag-warn{color:var(--warn);} .tag-warn .dot{background:var(--warn);}
+  .tag-good{color:var(--good);} .tag-good .dot{background:var(--good);}
+  .tag-mid{color:var(--steel-deep);} .tag-mid .dot{background:var(--steel);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="tb-left">
+      <span class="wordmark">InCommand · Team Debrief</span>
+      <span class="tb-sep"></span>
+      <span class="tb-title">Executive Team <span>· Executive Team</span></span>
+    </div>
+    <div class="tb-meta">
+      <span class="tb-stat">Scenario <b>Live Simulation</b></span>
+      <span class="tb-stat">Participants <b>7</b></span>
+      <span class="tb-stat">Duration <b>46 min</b></span>
+      <span class="lens-pill"><span class="cv"></span>Lens: LDOL v1</span>
+    </div>
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <div>
+      <p class="hl-eyebrow">The systemic read</p>
+      <h2 class="hl-title">The team reached a decision on <b>partial information</b> — three things it collectively knew never reached the room.</h2>
+      <p class="hl-sub">Under a "keep it small" instruction, the team ran as a hub-and-spoke through the CEO. Peers rarely spoke to peers, and the two people holding the most decision-critical information were the least connected.</p>
+    </div>
+    <div class="hl-metrics">
+      <div class="hm"><div class="hm-v warn">3<span style="font-size:12px">/5</span></div><div class="hm-l">Critical facts that reached the decision</div></div>
+      <div class="hm"><div class="hm-v warn">5</div><div class="hm-l">Peer-to-peer messages (of 42 total)</div></div>
+      <div class="hm"><div class="hm-v">1</div><div class="hm-l">Decision-maker (all routed via CEO)</div></div>
+      <div class="hm"><div class="hm-v good">4<span style="font-size:12px">/7</span></div><div class="hm-l">Engaged before the deadline</div></div>
+    </div>
+  </div>
+
+  <!-- MAP + RAIL -->
+  <div class="sec-head"><span class="sec-title">The team as a system</span><span class="sec-note">Lines = who spoke to whom · click a person to isolate their connections</span></div>
+  <div class="main">
+    <div class="map-card">
+      <div class="map-head">
+        <div class="map-eyebrow">Communication map</div>
+        <h3 class="map-title">Who connected — and who was left out</h3>
+        <p class="map-hint">Amber marks the conversations that should have happened and didn't.</p>
+      </div>
+      <div class="map-stage" id="stage">
+        <svg id="edges"></svg>
+      </div>
+      <div class="map-legend">
+        <span class="mlg"><span class="ln strong"></span>Active exchange</span>
+        <span class="mlg"><span class="ln contest"></span>Raised, then overridden</span>
+        <span class="mlg"><span class="ln miss"></span>Critical conversation that never happened</span>
+      </div>
+    </div>
+
+    <div class="rail">
+      <div class="card">
+        <p class="card-h">What the team collectively knew — but didn't surface</p>
+        <p class="card-sub">Held by one person, never reached the decision</p>
+        <div class="gaps">
+          <div class="gap-row"><div class="gap-ico">!</div><div class="gap-txt"><b>Legal disclosure exposure.</b> <span>Held by the General Counsel. Never raised; never asked for.</span></div></div>
+          <div class="gap-row"><div class="gap-ico">!</div><div class="gap-txt"><b>Advance back-channel intel.</b> <span>Held by The Strategy Lead. Sat on it; disclosed nothing.</span></div></div>
+          <div class="gap-row"><div class="gap-ico">!</div><div class="gap-txt"><b>Indigenous consultation gap.</b> <span>Raised by The HR Lead — and talked over in the group thread.</span></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-h">Team behavioral read</p>
+        <p class="card-sub">LDOL v1 · the team as a unit</p>
+        <div class="disc"><div class="disc-row"><span class="disc-name">The Decision</span><span class="disc-state st-warn">Centralized</span></div><p class="disc-read">Made, but by one person at the wire — the team supplied inputs, not a decision.</p></div>
+        <div class="disc"><div class="disc-row"><span class="disc-name">The Rhythm</span><span class="disc-state st-warn">Siloed</span></div><p class="disc-read">Information surfaced late and through the hub; peers didn't coordinate.</p></div>
+        <div class="disc"><div class="disc-row"><span class="disc-name">The Standard</span><span class="disc-state st-warn">Not held</span></div><p class="disc-read">No one challenged the silos or drew out what colleagues were holding back.</p></div>
+        <div class="disc"><div class="disc-row"><span class="disc-name">The Learning</span><span class="disc-state st-na">Baseline</span></div><p class="disc-read">First run — the pattern to watch on the next.</p></div>
+      </div>
+
+      <div class="card">
+        <p class="card-h">The team 2Q</p>
+        <div class="twoq-item create"><p class="twoq-q">What the team created</p><p class="twoq-a">A decision, on deadline, with clear inputs from those who spoke up.</p></div>
+        <div class="twoq-item allow"><p class="twoq-q">What the team allowed</p><p class="twoq-a">Three known risks to go unspoken, and two senior voices to stay on the sidelines.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEOPLE -->
+  <div class="sec-head"><span class="sec-title">The team — seven reads</span><span class="sec-note">Click a person to isolate them on the map · open any game-film to drill in</span></div>
+  <div class="people" id="people"></div>
+
+</div>
+
+<script>
+const PEOPLE = [
+  {id:'david',   name:'The CEO',    role:'Chief Executive Officer', initials:'CE', color:'#2C4A6E', sev:'warn', tag:'The Decision · centralized',
+    read:'Kept the circle small and carried the decision alone — decided at the wire, on partial information.'},
+  {id:'alex',    name:'The COO', role:'Chief Operating Officer',  initials:'CO', color:'#3F6E86', sev:'mid', tag:'The Standard · partial',
+    read:'Flagged the Phase-2 permit risk — but only to the CEO, never to the team that needed it.'},
+  {id:'steve',   name:'The General Counsel',   role:'SVP General Counsel',      initials:'GC', color:'#8C5670', sev:'warn', tag:'Truth Over Comfort · withheld',
+    read:'Held the legal-exposure concern the whole session. Never asked, never volunteered it.'},
+  {id:'michael', name:'The Finance Lead',  role:'SVP Corp. Dev & Capital Markets', initials:'CF', color:'#4F7A52', sev:'mid', tag:'The Rhythm · late',
+    read:'Ran the numbers well — but surfaced them late, after the decision had begun to set.'},
+  {id:'francois',name:'The Strategy Lead',    role:'SVP Sales, Tech Mktg & Product Dev', initials:'ST', color:'#6B5E9A', sev:'warn', tag:'Truth Over Comfort · concealed',
+    read:'Sat on advance back-channel intelligence and disclosed nothing to the team or the CEO.'},
+  {id:'angela',  name:'The HR Lead', role:'SVP Human Resources',      initials:'HR', color:'#2F6E8F', sev:'warn', tag:'The Standard · overridden',
+    read:'Raised the consultation gap that mattered — and was talked over in the group thread.'},
+  {id:'noemi',   name:'The Comms Lead', role:'Director, Comms & Gov Affairs', initials:'CM', color:'#9A6B2F', sev:'mid', tag:'The Decision · reactive',
+    read:'Had a statement ready and waited to be asked, rather than pushing it into the room.'},
+];
+
+// edges: type strong|light|contest|miss
+const EDGES = [
+  ['david','alex','strong'], ['david','michael','strong'], ['david','noemi','strong'],
+  ['alex','michael','light'], ['michael','noemi','light'],
+  ['david','angela','contest'],
+  ['david','steve','miss'], ['david','francois','miss'],
+];
+
+const stage = document.getElementById('stage');
+const svg = document.getElementById('edges');
+let sel = null;
+
+function layout(){
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const cx = W/2, cy = H/2, r = Math.min(W,H)/2 - 74;
+  PEOPLE.forEach((p,i)=>{
+    const a = -Math.PI/2 + i*(2*Math.PI/PEOPLE.length);
+    p.x = cx + r*Math.cos(a);
+    p.y = cy + r*Math.sin(a);
+  });
+}
+function pos(id){ return PEOPLE.find(p=>p.id===id); }
+
+function renderMap(){
+  layout();
+  const W = stage.clientWidth, H = stage.clientHeight;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  let lines='';
+  EDGES.forEach(([a,b,t])=>{
+    const A=pos(a),B=pos(b);
+    const on = !sel || sel===a || sel===b;
+    const op = on?1:0.12;
+    if(t==='strong') lines+=`<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="#5b9bd8" stroke-width="${on?3:2}" opacity="${op}"/>`;
+    else if(t==='light') lines+=`<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="#5b9bd8" stroke-width="1.5" opacity="${on?0.5:0.1}"/>`;
+    else if(t==='contest') lines+=`<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="#C46A3D" stroke-width="2" opacity="${op}"/>`;
+    else if(t==='miss') lines+=`<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="#C46A3D" stroke-width="2" stroke-dasharray="3 5" opacity="${on?0.9:0.12}"/>`;
+  });
+  svg.innerHTML = lines;
+
+  stage.querySelectorAll('.node').forEach(n=>n.remove());
+  PEOPLE.forEach(p=>{
+    const connected = !sel || sel===p.id || EDGES.some(([a,b])=>(a===sel&&b===p.id)||(b===sel&&a===p.id));
+    const el = document.createElement('div');
+    el.className = 'node'+(sel===p.id?' sel':'')+(sel&&!connected?' dim':'');
+    el.style.left = p.x+'px'; el.style.top = p.y+'px';
+    el.innerHTML = `
+      <div class="node-av" style="background:${p.color}">${p.initials}<span class="node-flag flag-${p.sev}"></span></div>
+      <div class="node-name">${p.name.split(' ')[0]} ${p.name.split(' ')[1][0]}.</div>
+      <div class="node-role">${p.role.split('—')[0]}</div>`;
+    el.onclick = ()=>{ sel = (sel===p.id?null:p.id); renderMap(); renderPeople(); };
+    stage.appendChild(el);
+  });
+}
+
+function renderPeople(){
+  document.getElementById('people').innerHTML = PEOPLE.map(p=>`
+    <div class="pcard ${sel===p.id?'sel':''}" data-id="${p.id}">
+      <div class="pc-top">
+        <div class="pc-av" style="background:${p.color}">${p.initials}<span class="pc-flag flag-${p.sev}"></span></div>
+        <div class="pc-id"><div class="pc-name">${p.name}</div><div class="pc-role">${p.role}</div></div>
+      </div>
+      <p class="pc-read">${p.read}</p>
+      <div class="pc-foot">
+        <span class="pc-tag tag-${p.sev}"><span class="dot"></span>${p.tag}</span>
+        <span class="pc-link">Open game-film →</span>
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('.pcard').forEach(c=>c.onclick=()=>{ sel=(sel===c.dataset.id?null:c.dataset.id); renderMap(); renderPeople(); document.getElementById('stage').scrollIntoView({block:'nearest'}); });
+}
+
+function renderAll(){ renderMap(); renderPeople(); }
+renderAll();
+window.addEventListener('resize', renderMap);
+</script>
+</body>
+</html>
