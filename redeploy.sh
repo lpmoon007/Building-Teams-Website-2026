@@ -22,17 +22,21 @@ DOCROOT="${DOCROOT:-$HOME/httpdocs}"
 INDEXNOW_KEY="c35b47d14424e87c2e04a65ca746ff9f"
 HOST="www.buildingteams.com"
 
-# --- 1. Find a Node binary (non-interactive shells don't see nodenv shims) ---
-if command -v node >/dev/null 2>&1; then
-  NODE="$(command -v node)"
-elif ls -d "$HOME"/.nodenv/versions/*/bin/node >/dev/null 2>&1; then
-  NODE="$(ls -d "$HOME"/.nodenv/versions/*/bin/node | sort -V | tail -n1)"
-elif ls -d /opt/plesk/node/*/bin/node >/dev/null 2>&1; then
-  NODE="$(ls -d /opt/plesk/node/*/bin/node | sort -V | tail -n1)"
-elif ls -d "$HOME"/.nvm/versions/node/*/bin/node >/dev/null 2>&1; then
-  NODE="$(ls -d "$HOME"/.nvm/versions/node/*/bin/node | sort -V | tail -n1)"
-else
-  echo "ERROR: no node binary found." >&2; exit 1
+# --- 1. Find a WORKING Node binary.
+#        The nodenv *shim* often fails in a non-interactive SSH shell
+#        ("nodenv: node: command not found") because no version is selected.
+#        So we test each candidate with `--version` and use the first that
+#        actually runs, preferring real versioned binaries over the shim. ---
+NODE=""
+for cand in \
+  $(ls -d "$HOME"/.nodenv/versions/*/bin/node 2>/dev/null | sort -Vr) \
+  $(ls -d /opt/plesk/node/*/bin/node 2>/dev/null | sort -Vr) \
+  $(ls -d "$HOME"/.nvm/versions/node/*/bin/node 2>/dev/null | sort -Vr) \
+  "$(command -v node 2>/dev/null || true)"; do
+  if [ -n "$cand" ] && "$cand" --version >/dev/null 2>&1; then NODE="$cand"; break; fi
+done
+if [ -z "$NODE" ]; then
+  echo "ERROR: no working node binary found (tried nodenv/plesk/nvm/PATH)." >&2; exit 1
 fi
 echo "Using node: $NODE ($("$NODE" --version))"
 
