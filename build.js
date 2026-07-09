@@ -20,6 +20,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const ROOT = __dirname;
 // Output dir defaults to ./dist next to the source, but can be redirected with
@@ -184,6 +185,17 @@ for (const f of COPY_FILES) {
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   else console.warn(`  ! missing config file: ${f}`);
 }
+// Optimize oversized images in place before copying, so the build ships
+// compressed assets. Runs optimize-images.js (needs the optional `sharp`
+// dependency); if sharp isn't installed it exits 0 and we ship the committed
+// files as-is — hence photos should be committed already-optimized.
+try {
+  const out = execFileSync('node', [path.join(ROOT, 'optimize-images.js')], { cwd: ROOT });
+  process.stdout.write(out);
+} catch (e) {
+  console.warn(`  ! image optimization skipped (${e.message.split('\n')[0]})`);
+}
+
 for (const d of COPY_DIRS) {
   const src = path.join(ROOT, d);
   if (fs.existsSync(src)) copyDir(src, path.join(DIST, d));

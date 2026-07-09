@@ -1,0 +1,14 @@
+{
+  "name": "building-teams-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hand-authored static site for buildingteams.com. build.js emits clean-URL dist/.",
+  "scripts": {
+    "build": "node build.js",
+    "optimize": "node optimize-images.js",
+    "optimize:dry": "node optimize-images.js --dry"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}
