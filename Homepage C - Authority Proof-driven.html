@@ -19,9 +19,6 @@
 <meta property="og:title" content="Corporate Team Building for Groups of 5–5,000 | Building Teams" />
 <meta property="og:description" content="Corporate &amp; executive team building for groups of 5 to 5,000. Since 2003: 2,000+ events, 500,000+ participants, rated 4.76/5. Every event gives back." />
 <meta property="og:type" content="website" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -44,6 +41,19 @@
  {"@type":"Review","author":{"@type":"Person","name":"Elisa Sinclair"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"itemReviewed":{"@id":"https://www.buildingteams.com/#org"},"reviewBody":"The session received rave reviews. Thanks so much for making my job a breeze and a session the attendees enjoyed."}
 ]}
 </script>
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/spacegrotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+/* Self-hosted fonts (variable, latin subset) — replaces render-blocking Google Fonts CDN */
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/archivo-latin.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/spacegrotesk-latin.woff2) format('woff2')}
+.mcta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:8px;padding:9px 12px calc(9px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(21,23,28,.08)}
+.mcta a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-family:var(--display);font-weight:600;font-size:15px;padding:13px 10px;border-radius:10px;text-decoration:none;white-space:nowrap}
+.mcta .mcta-call{background:#fff;color:var(--brand-2);border:1.5px solid var(--brand-2)}
+.mcta .mcta-prop{background:var(--brand-2);color:#fff;border:1.5px solid var(--brand-2)}
+@media(max-width:819px){.mcta{display:flex}body{padding-bottom:76px}}
+@media print{.mcta{display:none}}
+</style>
 <style>
   :root{
     --brand:#64010a; --brand-2:#8c0f1c; --brand-bright:#b5172b;
@@ -60,7 +70,7 @@
   .eyebrow{font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--brand-2)}
   .wrap{max-width:1200px;margin:0 auto;padding:0 36px}
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
+  img{display:block;max-width:100%;height:auto}
 
   .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:0.01em;padding:14px 24px;border-radius:10px;border:1.5px solid transparent;cursor:pointer;transition:.16s;white-space:nowrap}
   .btn-primary{background:var(--brand-2);color:#fff}
@@ -283,7 +293,7 @@
 
 <header class="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="/"><img src="assets/logo.png" alt="Building Teams logo" /><span class="wm">Building&nbsp;Teams</span></a>
+    <a class="nav-logo" href="/"><img width="1500" height="943" src="assets/logo.png" alt="Building Teams logo" /><span class="wm">Building&nbsp;Teams</span></a>
     <nav class="nav-links" aria-label="Primary">
       <a href="Experiences.html">Experiences</a>
       <a href="Programs.html">Programs</a>
@@ -323,7 +333,7 @@
       <div class="trust-inline"><span class="stars">★★★★★</span> <strong style="color:var(--ink)">4.76/5</strong> from participants</div>
     </div>
     <div class="hero-media">
-      <img class="main" src="assets/photos/sandal-leaders.jpg" alt="Two colleagues laughing together during a Building Teams corporate team building event" />
+      <img fetchpriority="high" width="1024" height="768" class="main" src="assets/photos/sandal-leaders.jpg" alt="Two colleagues laughing together during a Building Teams corporate team building event" />
       <div class="stat-float sf-1"><b>4.76/5</b><span>participant rating</span></div>
 </section>
 
@@ -366,7 +376,7 @@
 <section class="logos" aria-label="Clients">
   <div class="wrap">
     <p class="cap">We’ve worked with 80% of the Fortune 500 — including</p>
-    <div class="logo-wall"><span class="lw"><img src="assets/logos/american-express.jpg" alt="American Express — Building Teams client" loading="lazy" /></span><span class="lw"><img src="assets/logos/ups.jpg" alt="UPS — Building Teams client" loading="lazy" /></span><span class="lw"><img src="assets/logos/apple.gif" alt="Apple — Building Teams client" loading="lazy" /></span><span class="lw"><img src="assets/logos/alteryx.png" alt="Alteryx — Building Teams client" loading="lazy" /></span><span class="lw"><img src="assets/logos/salesforce.png" alt="Salesforce — Building Teams client" loading="lazy" /></span><span class="lw"><img src="assets/logos/cisco.png" alt="Cisco — Building Teams client" loading="lazy" /></span></div>
+    <div class="logo-wall"><span class="lw"><img width="200" height="200" src="assets/logos/american-express.jpg" alt="American Express — Building Teams client" loading="lazy" /></span><span class="lw"><img width="200" height="200" src="assets/logos/ups.jpg" alt="UPS — Building Teams client" loading="lazy" /></span><span class="lw"><img width="200" height="200" src="assets/logos/apple.gif" alt="Apple — Building Teams client" loading="lazy" /></span><span class="lw"><img width="200" height="200" src="assets/logos/alteryx.png" alt="Alteryx — Building Teams client" loading="lazy" /></span><span class="lw"><img width="400" height="400" src="assets/logos/salesforce.png" alt="Salesforce — Building Teams client" loading="lazy" /></span><span class="lw"><img width="1100" height="825" src="assets/logos/cisco.png" alt="Cisco — Building Teams client" loading="lazy" /></span></div>
     <div style="text-align:center;margin-top:30px"><a class="btn btn-ghost" href="Customers.html">See more clients <span class="arr">→</span></a></div>
   </div>
 </section>
@@ -413,9 +423,9 @@
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Signature experiences</span><h2>Give your team a day they’ll never forget.</h2></div>
     <div class="exp">
-      <a class="ex" href="Bike Build Team Building.html"><div class="ph"><img src="assets/photos/building-hands.jpg" alt="Participants assembling a child's bike" /></div><div class="b"><div class="k">Bike Build</div><h3>Building a Dream</h3><p>Teams build real bikes and meet the kids who receive them onsite — our most powerful experience.</p></div></a>
-      <a class="ex" href="Skateboard Team Building.html"><div class="ph"><img src="assets/photos/skate-grin.jpg" alt="A child receiving a skateboard" /></div><div class="b"><div class="k">Get On Board</div><h3>The Power of Change</h3><p>Assemble skateboards from a bag of parts and help your people embrace change, voluntarily.</p></div></a>
-      <a class="ex" href="Shoe Build Team Building.html"><div class="ph"><img src="assets/photos/conference-build.jpg" alt="Corporate group building sandals at a conference" /></div><div class="b"><div class="k">Sole Purpose</div><h3>Shoes That Matter</h3><p>Assemble shoes for children who have never owned a pair and build a lasting ‘Shoe Bank’.</p></div></a>
+      <a class="ex" href="Bike Build Team Building.html"><div class="ph"><img width="298" height="341" src="assets/photos/building-hands.jpg" alt="Participants assembling a child's bike" /></div><div class="b"><div class="k">Bike Build</div><h3>Building a Dream</h3><p>Teams build real bikes and meet the kids who receive them onsite — our most powerful experience.</p></div></a>
+      <a class="ex" href="Skateboard Team Building.html"><div class="ph"><img width="388" height="283" src="assets/photos/skate-grin.jpg" alt="A child receiving a skateboard" /></div><div class="b"><div class="k">Get On Board</div><h3>The Power of Change</h3><p>Assemble skateboards from a bag of parts and help your people embrace change, voluntarily.</p></div></a>
+      <a class="ex" href="Shoe Build Team Building.html"><div class="ph"><img width="1600" height="1200" src="assets/photos/conference-build.jpg" alt="Corporate group building sandals at a conference" /></div><div class="b"><div class="k">Sole Purpose</div><h3>Shoes That Matter</h3><p>Assemble shoes for children who have never owned a pair and build a lasting ‘Shoe Bank’.</p></div></a>
     </div>
   </div>
 </section>
@@ -429,7 +439,7 @@
         <p>That shared act of giving is what creates the emotion ordinary team building can’t — and the pride your people carry back to work. We produced the Guinness World Record–setting bike build for our client, DaVita.</p>
         <div class="stat-row"><div><b>50,000+</b><span>bikes built</span></div><div><b>5,000</b><span>people, one event</span></div><div><b>4.76/5</b><span>participant rating</span></div></div>
       </div>
-      <div class="img"><img src="assets/photos/bike-joy.jpg" alt="A child’s joy after receiving a bike built by a corporate team — the payoff that makes the experience unforgettable" /></div>
+      <div class="img"><img width="620" height="509" src="assets/photos/bike-joy.jpg" alt="A child’s joy after receiving a bike built by a corporate team — the payoff that makes the experience unforgettable" /></div>
     </div>
   </div>
 </section>
@@ -507,7 +517,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src="assets/logo.png" alt="Building Teams logo" />
+        <img width="1500" height="943" src="assets/logo.png" alt="Building Teams logo" />
         <div class="wm">Building Teams</div>
         <p>Philanthropic corporate &amp; executive team building &mdash; 50,000+ bikes built and given to kids since 2003. Be Legendary.</p>
       </div>
@@ -546,5 +556,6 @@
   });
 })();
 </script>
+<div class="mcta" aria-label="Quick contact"><a class="mcta-call" href="tel:800-513-8759"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg>Call</a><a class="mcta-prop" href="Contact.html">Get a proposal</a></div>
 </body>
 </html>

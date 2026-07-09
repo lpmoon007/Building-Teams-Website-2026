@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node build.js",
     "optimize": "node optimize-images.js",
-    "optimize:dry": "node optimize-images.js --dry"
+    "optimize:dry": "node optimize-images.js --dry",
+    "img-dimensions": "node add-img-dimensions.js"
   },
   "devDependencies": {
     "sharp": "^0.33.0"

@@ -18,9 +18,8 @@
 <meta property="og:title" content="Corporate Team Building Company &amp; Services | Building Teams" />
 <meta property="og:description" content="A corporate team building company that plans and runs it all — give-back builds, workshops, conferences, executive and virtual events for groups of 5 to 5,000." />
 <meta property="og:type" content="website" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/spacegrotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/site.css" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.buildingteams.com/#org","name":"Building Teams","alternateName":"Be Legendary","url":"https://www.buildingteams.com/","logo":"https://www.buildingteams.com/assets/logo.png","telephone":"+1-800-513-8759","sameAs":["https://www.facebook.com/belegendary","https://twitter.com/belegendary","https://www.belegendary.org"],"foundingDate":"2003"},{"@type":"Service","name":"Corporate Team Building Services","serviceType":"Corporate team building company and services","provider":{"@id":"https://www.buildingteams.com/#org"},"areaServed":"US","description":"Full-service corporate team building company: give-back builds, team building events, conference and large-group activities, workshops, executive team building, virtual and hybrid formats, team coaching and ongoing programs, for groups of 5 to 5,000, planned and facilitated end to end."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.buildingteams.com/"},{"@type":"ListItem","position":2,"name":"Corporate Team Building Services","item":"https://www.buildingteams.com/corporate-team-building-services/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does a corporate team building company do?","acceptedAnswer":{"@type":"Answer","text":"A corporate team building company designs and runs facilitated experiences that improve how a team works — planning, materials, staffing, facilitation and follow-up. The best ones match the format to your goal, scale from a single team to thousands, and tie the day back to real work with measurement. Building Teams does all of this, and most of our events also produce a donated result for children in need."}},{"@type":"Question","name":"How do I choose a corporate team building company?","acceptedAnswer":{"@type":"Answer","text":"Match the provider to your stakes. A light activity vendor is fine for a low-stakes social; a facilitator or full-service company is better when you need the day to change behavior; a CSR provider adds giving; an OD consultancy handles multi-year transformation. Building Teams is the full-service, impact-anchored option: measurable outcomes, give-back built in, and scale to 5,000."}},{"@type":"Question","name":"What team building services do you offer?","acceptedAnswer":{"@type":"Answer","text":"Give-back and charity builds, corporate team building events, conference and large-group sessions, team building workshops, executive team building and the Team LFS leadership simulation, virtual and hybrid formats, team coaching, and ongoing programs — all planned, staffed and facilitated by us."}},{"@type":"Question","name":"How much do corporate team building services cost?","acceptedAnswer":{"@type":"Answer","text":"It varies by format, group size, location and length; give-back builds also include the cost of the donated product. Tell us your headcount, goal and budget and we'll design something that fits — request a proposal for pricing."}},{"@type":"Question","name":"What size groups can you handle?","acceptedAnswer":{"@type":"Answer","text":"From a leadership team of 5 to a conference general session of 5,000. Our formats are engineered to scale so everyone participates at once — we produced the Guinness World Record bike build for DaVita with 5,000 people."}},{"@type":"Question","name":"Do you offer virtual and hybrid team building services?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully virtual and hybrid formats, from give-back builds delivered over video to multi-week TeamwoRx programs, with a facilitator in every breakout so remote and in-office people share one experience."}}]}]}
@@ -39,7 +38,7 @@
 
 <header class="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="Homepage C - Authority Proof-driven.html"><img src="assets/logo.png" alt="Building Teams logo" /><span class="wm">Building&nbsp;Teams</span></a>
+    <a class="nav-logo" href="Homepage C - Authority Proof-driven.html"><img width="1500" height="943" src="assets/logo.png" alt="Building Teams logo" /><span class="wm">Building&nbsp;Teams</span></a>
     <nav class="nav-links" aria-label="Primary">
       <a href="Homepage C - Authority Proof-driven.html">Home</a>
       <a href="Experiences.html">Experiences</a>
@@ -81,7 +80,7 @@
       <div class="trust-inline"><span class="stars">★★★★★</span> <strong style="color:var(--ink)">4.76/5</strong> from participants</div>
     </div>
     <div class="hero-media">
-      <img class="main" src="assets/photos/big-group.jpg" alt="A large corporate team building event with employees gathered together" />
+      <img fetchpriority="high" width="1600" height="1067" class="main" src="assets/photos/big-group.jpg" alt="A large corporate team building event with employees gathered together" />
       <div class="stat-float sf-1"><b>Full-service</b><span>we run the whole thing</span></div>
       <div class="stat-float sf-2"><b>5 – 5,000</b><span>people</span></div>
     </div>
@@ -220,7 +219,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src="assets/logo.png" alt="Building Teams logo" />
+        <img width="1500" height="943" src="assets/logo.png" alt="Building Teams logo" />
         <div class="wm">Building Teams</div>
         <p>Philanthropic corporate &amp; executive team building &mdash; 50,000+ bikes built and given to kids since 2003. Be Legendary.</p>
       </div>
@@ -259,5 +258,6 @@
   });
 })();
 </script>
+<div class="mcta" aria-label="Quick contact"><a class="mcta-call" href="tel:800-513-8759"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg>Call</a><a class="mcta-prop" href="Contact.html">Get a proposal</a></div>
 </body>
 </html>
