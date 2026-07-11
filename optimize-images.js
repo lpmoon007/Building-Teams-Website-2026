@@ -23,8 +23,8 @@ const path = require('path');
 
 const ROOT = __dirname;
 const ASSET_DIR = path.join(ROOT, 'assets');
-const MAX_WIDTH = 1600;          // px — plenty for full-bleed on retina at our layout widths
-const SIZE_THRESHOLD = 300 * 1024; // 300 KB — below this and within width, leave it alone
+const MAX_WIDTH = 1280;          // px — ample for retina at our layout widths (max content ~1000px; hero column ~600px @2x)
+const SIZE_THRESHOLD = 150 * 1024; // 150 KB — above this (even within width) recompress; below, leave it alone
 const JPEG_QUALITY = 82;
 const DRY = process.argv.includes('--dry');
 
