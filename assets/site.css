@@ -296,6 +296,12 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .cw-cap{font-size:13.5px;color:var(--slate);max-width:62ch;margin:24px auto 0;text-align:center}
 @media(prefers-reduced-motion:reduce){.mq-row{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.mq{-webkit-mask:none;mask:none}}
 
+/* "As featured in" credibility strip (earned press) */
+.press-strip{text-align:center;padding:2px 0 2px}
+.press-strip .pcap{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-2);margin-bottom:12px}
+.press-strip .pnames{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px 22px;font-family:var(--display);font-weight:700;font-size:clamp(14px,1.6vw,18px);letter-spacing:.01em;color:var(--ink);opacity:.62}
+.press-strip .pnames .sep{opacity:.35;font-weight:400}
+
 /* Click-to-load video facade (activity & experience pages) — was previously per-page only */
 .actvid{position:relative;width:100%;max-width:920px;margin:0 auto;aspect-ratio:16/9;border-radius:18px;overflow:hidden;cursor:pointer;background:#0c0c0e;border:1px solid var(--line)}
 .actvid img{width:100%;height:100%;object-fit:cover}
