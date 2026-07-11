@@ -296,6 +296,19 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .cw-cap{font-size:13.5px;color:var(--slate);max-width:62ch;margin:24px auto 0;text-align:center}
 @media(prefers-reduced-motion:reduce){.mq-row{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.mq{-webkit-mask:none;mask:none}}
 
+/* Click-to-load video facade (activity & experience pages) — was previously per-page only */
+.actvid{position:relative;width:100%;max-width:920px;margin:0 auto;aspect-ratio:16/9;border-radius:18px;overflow:hidden;cursor:pointer;background:#0c0c0e;border:1px solid var(--line)}
+.actvid img{width:100%;height:100%;object-fit:cover}
+.actvid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.4));pointer-events:none}
+.actvid.playing::after{display:none}
+.actvid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:80px;height:80px;border-radius:50%;background:var(--brand-2);display:flex;align-items:center;justify-content:center;transition:.2s;box-shadow:0 12px 34px rgba(100,1,10,.45)}
+.actvid:hover .play{transform:translate(-50%,-50%) scale(1.07);background:var(--brand)}
+.actvid .play svg{width:30px;height:30px;margin-left:4px;fill:#fff}
+.actvid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+.actvid .vlabel{position:absolute;left:20px;bottom:18px;z-index:2;color:#fff;pointer-events:none}
+.actvid .vlabel .k{font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#ffb59b}
+.actvid .vlabel .t{font-family:var(--display);font-weight:700;font-size:24px;margin-top:3px;text-shadow:0 2px 16px rgba(0,0,0,.55)}
+
 /* Reusable proof video */
 .pvid{max-width:920px;margin:0 auto}
 .pvid .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--ink)}
