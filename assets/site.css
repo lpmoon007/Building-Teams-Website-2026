@@ -273,3 +273,11 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .mcta .mcta-prop{background:var(--brand-2);color:#fff;border:1.5px solid var(--brand-2)}
 @media(max-width:819px){.mcta{display:flex}body{padding-bottom:76px}}
 @media print{.mcta{display:none}}
+
+/* Native share row (resource guides & articles) — no third-party widgets */
+.share-sec{padding:6px 0 34px}
+.share-row{display:flex;flex-wrap:wrap;align-items:center;gap:9px;max-width:780px;margin:0 auto;padding-top:22px;border-top:1px solid var(--line)}
+.share-lbl{font-family:var(--display);font-weight:600;font-size:13px;color:var(--slate);margin-right:4px}
+.share-btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:13px;color:var(--brand-2);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;text-decoration:none;transition:.15s}
+.share-btn:hover{border-color:var(--brand-2);background:var(--mist)}
+.share-btn svg{width:15px;height:15px;fill:currentColor;flex:none}
