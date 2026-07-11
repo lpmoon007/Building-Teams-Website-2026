@@ -303,3 +303,29 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 
 /* Visible "last updated" byline on guides */
 .pg-upd{font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--slate);margin-top:12px}
+
+/* Author bio card (E-E-A-T) — foot of guides, ties byline to the Person entity */
+.author-card{max-width:780px;margin:34px auto 0;background:var(--mist);border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:flex;gap:18px;align-items:flex-start}
+.author-card .ac-pic{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;background:var(--mist-2)}
+.author-card .ac-mono{flex:none;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:22px;color:#fff;background:var(--brand-2)}
+.author-card .ac-lab{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-2);margin-bottom:3px}
+.author-card .ac-name{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink);margin:0}
+.author-card .ac-role{font-size:13.5px;color:var(--slate);margin:1px 0 8px}
+.author-card .ac-bio{font-size:14.5px;line-height:1.55;color:var(--ink-2,#33373e);margin:0 0 9px}
+.author-card .ac-links{display:flex;flex-wrap:wrap;gap:14px}
+.author-card .ac-links a{font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--brand-2);text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.author-card .ac-links a:hover{text-decoration:underline}
+.author-card .ac-links svg{width:14px;height:14px;fill:currentColor;flex:none}
+@media(max-width:560px){.author-card{flex-direction:column;gap:12px}}
+
+/* Global answer-first box (GEO/speakable) — was previously per-page only */
+.answer-box{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand-2);border-radius:14px;padding:24px 28px;margin:8px 0 18px}
+.answer-box .lab{font-family:var(--display);font-weight:600;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--brand-2);margin-bottom:8px}
+.answer-box p{font-size:18px;line-height:1.55;color:var(--ink);margin:0}
+
+/* Global comparison table (GEO-extractable) — was previously per-page only */
+.ctab-wrap{overflow-x:auto;margin:18px 0}
+.ctab{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+.ctab th,.ctab td{border:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top;line-height:1.5}
+.ctab th{background:var(--mist);font-family:var(--display);font-weight:600;color:var(--ink)}
+.ctab caption{caption-side:top;text-align:left;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-2);margin-bottom:8px}
