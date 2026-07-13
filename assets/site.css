@@ -315,6 +315,23 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .actvid .vlabel .k{font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#ffb59b}
 .actvid .vlabel .t{font-family:var(--display);font-weight:700;font-size:24px;margin-top:3px;text-shadow:0 2px 16px rgba(0,0,0,.55)}
 
+/* Reusable lazy-loaded photo gallery + lightbox */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;max-width:1000px;margin:0 auto}
+.gallery button{padding:0;border:1px solid var(--line);background:var(--mist);border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:4/3;display:block}
+.gallery button img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gallery button:hover img{transform:scale(1.06)}
+.gallery button:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(10,10,12,.94);display:none;align-items:center;justify-content:center;padding:32px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox .lb-btn{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:46px;height:46px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+.lightbox .lb-btn:hover{background:rgba(255,255,255,.25)}
+.lightbox .lb-close{top:20px;right:20px}
+.lightbox .lb-prev{left:20px;top:50%;transform:translateY(-50%)}
+.lightbox .lb-next{right:20px;top:50%;transform:translateY(-50%)}
+.lightbox .lb-count{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:#cfd2d8;font-family:var(--display);font-size:13px}
+@media(max-width:560px){.lightbox .lb-prev{left:8px}.lightbox .lb-next{right:8px}}
+
 /* Reusable proof video */
 .pvid{max-width:920px;margin:0 auto}
 .pvid .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--ink)}
