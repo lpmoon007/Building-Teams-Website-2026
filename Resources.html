@@ -51,8 +51,14 @@
   .rc .meta{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:11.5px;color:var(--slate)}
   .rc .meta .cat{color:var(--brand-2);letter-spacing:0.08em;text-transform:uppercase}
   .rc .meta .dot{width:4px;height:4px;border-radius:50%;background:var(--slate-2)}
-  .rc h2{font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:-0.02em;line-height:1.12;margin:14px 0 10px}
+  .rc h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-0.02em;line-height:1.12;margin:14px 0 10px}
   .rc p{font-size:15px;color:var(--slate);flex:1}
+  .r-group{margin-top:8px}
+  .r-gh{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.02em;margin:40px 0 4px;scroll-margin-top:80px}
+  .r-gi{font-size:15.5px;color:var(--slate);max-width:72ch;margin:0 0 20px}
+  .r-nav{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 8px}
+  .r-nav a{font-family:var(--display);font-weight:600;font-size:13px;color:var(--brand-2);border:1px solid var(--line);border-radius:100px;padding:7px 15px;transition:.15s}
+  .r-nav a:hover{border-color:var(--brand-2);background:var(--mist)}
   .rc .go{margin-top:18px;font-family:var(--display);font-weight:600;font-size:14px;color:var(--brand-2);display:inline-flex;gap:7px}
   .rc:hover .go{gap:11px}
 </style>
@@ -124,314 +130,352 @@
 
 <section style="padding:24px 0 80px">
   <div class="wrap">
-    <div class="r-cards">
-      <a class="rc" href="Experiential Learning.html">
-        <div class="meta"><span class="cat">Our Method</span><span class="dot"></span><span>7 min read</span></div>
-        <h2>Experiential learning: why teams learn by doing</h2>
-        <p>The principle behind everything we run — the activity is the vehicle, the debrief is where the lesson lands.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Escape Room Team Building.html">
-        <div class="meta"><span class="cat">Guide</span><span class="dot"></span><span>8 min read</span></div>
-        <h2>Escape room team building: why it works</h2>
-        <p>An escape room shows how a team <em>actually</em> solves problems under pressure — and how to debrief it so the lesson sticks.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Corporate Event Ideas.html">
-        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
-        <h2>20+ corporate event ideas that bring teams together</h2>
-        <p>By goal, size and budget — from give-back builds to offsites, conferences and virtual.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="How to Facilitate Team Building.html">
-        <div class="meta"><span class="cat">Facilitation Guide</span><span class="dot"></span><span>8 min read</span></div>
-        <h2>How to facilitate team building activities</h2>
-        <p>The facilitator&rsquo;s real role, how to run a great debrief, and the 10 pitfalls to avoid.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Individual and Group Loop.html">
-        <div class="meta"><span class="cat">Concept</span><span class="dot"></span><span>4 min read</span></div>
-        <h2>The Individual &amp; Group Loop</h2>
-        <p>How personal development and Tuckman&rsquo;s group stages move together — and why facilitators read both.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Employee Appreciation Ideas.html">
-        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
-        <h2>25 employee appreciation ideas that actually land</h2>
-        <p>Everyday recognition, Employee Appreciation Day, and team events that give back.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Boost Team Morale.html">
-        <div class="meta"><span class="cat">How-to Guide</span><span class="dot"></span><span>7 min read</span></div>
-        <h2>How to boost team morale (18 that work)</h2>
-        <p>Quick wins, morale-boosting activities, and the deeper fixes when morale is low.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Employee Engagement Activities.html">
-        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
-        <h2>20 employee engagement activities that build commitment</h2>
-        <p>Grouped by the four real drivers — connection, growth, recognition and purpose.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Team Building Questions.html">
-        <div class="meta"><span class="cat">Icebreaker Toolkit</span><span class="dot"></span><span>Questions</span></div>
-        <h2>150+ team building &amp; icebreaker questions</h2>
-        <p>Ready-to-use questions to open a meeting, retreat or all-hands — by theme.</p>
-        <span class="go">Get the questions →</span>
-      </a>
-      <a class="rc" href="Resource DISC Assessment Team Building.html">
-        <div class="meta"><span class="cat">Tools</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>DISC assessment for team building</h2>
-        <p>How to use DISC with a team — and its limits. Pair it with real shared experience to make it land.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Marshmallow Challenge.html">
-        <div class="meta"><span class="cat">Activity Guide</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>The Marshmallow Challenge</h2>
-        <p>18 minutes, 20 spaghetti sticks, one marshmallow — and why kindergarteners beat MBAs.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Egg Drop Challenge.html">
-        <div class="meta"><span class="cat">Activity Guide</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>The Egg Drop Challenge</h2>
-        <p>Protect a raw egg from a big fall — a fast lesson in prototyping, risk and how a team handles failure.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="State of Team Building 2026.html" style="grid-column:1/-1;background:var(--ink);color:#fff;border-color:var(--ink)">
-        <div class="meta"><span class="cat" style="color:#ff9b88">Annual Report</span><span class="dot"></span><span style="color:#b9bec7">2026 edition · 10 min read</span></div>
-        <h2 style="color:#fff">The 2026 State of Team Building</h2>
-        <p style="color:#c8cdd4">Companies are forcing teams back together while engagement sits at a record-low 20% and disengagement costs $10 trillion a year. The data on the connection gap — and what closes it.</p>
-        <span class="go" style="color:#ff9b88">Read the report →</span>
-      </a>
-      <a class="rc" href="Resource Company Offsite Planning Checklist.html">
-        <div class="meta"><span class="cat">Planning Guide</span><span class="dot"></span><span>8 min read</span></div>
-        <h2>The company offsite planning checklist</h2>
-        <p>A step-by-step timeline from 8 weeks out to follow-up — goal, budget, agenda, venue and the moment people remember.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Choosing Team Building.html">
-        <div class="meta"><span class="cat">Decision Guide</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>How to choose corporate team building</h2>
-        <p>An honest framework: light social vs. volunteering vs. impact-driven give-back build vs. full OD consulting — and how to decide.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Best Corporate Team Building Companies by Need.html">
-        <div class="meta"><span class="cat">Buyer&rsquo;s guide</span><span class="dot"></span><span>9 min read</span></div>
-        <h2>Best corporate team building companies, by need</h2>
-        <p>A candid, by-use-case guide to who leads for give-back CSR, large-scale, virtual and executive teams — including where a competitor is the better fit.</p>
-        <span class="go">Read the guide →</span>
-      </a>
+    
+    <nav class="r-nav" aria-label="Browse by topic"><a href="#lead">Leadership &amp; team development</a><a href="#choose">Planning, cost &amp; choosing</a><a href="#csr">Charity &amp; CSR team building</a><a href="#events">Events, offsites &amp; formats</a><a href="#activities">Activities, games &amp; icebreakers</a><a href="#facilitation">Facilitation, tools &amp; remote</a></nav>
+
+    <div class="r-group" id="lead">
+      <h2 class="r-gh">Leadership &amp; team development</h2>
+      <p class="r-gi">How real teams form, align and perform &mdash; the models, the science, and the leadership work behind them.</p>
+      <div class="r-cards">
       <a class="rc" href="Resource What Is a Leadership Simulation.html">
         <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>What is a leadership simulation?</h2>
+        <h3>What is a leadership simulation?</h3>
         <p>Definition, the main types, what good ones measure, and when to use one — plus how it differs from training and assessment.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Psychological Safety.html">
-        <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>8 min read</span></div>
-        <h2>What is psychological safety?</h2>
-        <p>The single biggest predictor of high-performing teams — what it is, the four stages, and how leaders actually build it.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Team Building for New Teams.html">
-        <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>8 min read</span></div>
-        <h2>Team building for a newly formed team</h2>
-        <p>How to take a group of strangers to a real team fast — the forming-stage playbook, what accelerates trust, and where a shared experience fits.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Executive Offsite Agenda.html">
-        <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>9 min read</span></div>
-        <h2>The executive offsite agenda that works</h2>
-        <p>A sample hour-by-hour run-of-show for a leadership offsite, plus the principles and follow-through that turn a good day into real change.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Sales Kickoff Ideas.html">
-        <div class="meta"><span class="cat">Events</span><span class="dot"></span><span>8 min read</span></div>
-        <h2>Sales kickoff ideas &amp; a sample agenda</h2>
-        <p>A sample two-day SKO run-of-show, ideas by goal, the signature moment your team remembers all year, and the follow-through most teams skip.</p>
         <span class="go">Read the guide →</span>
       </a>
       <a class="rc" href="Resource AI Leadership Simulation.html">
         <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>AI leadership simulation: how it works</h2>
+        <h3>AI leadership simulation: how it works</h3>
         <p>What AI actually adds, where it isn't the value, what to look for before you buy, and how data privacy should be handled.</p>
         <span class="go">Read the guide →</span>
       </a>
       <a class="rc" href="Resource Leadership Simulation vs 360 Feedback.html">
         <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>Leadership simulation vs. 360 feedback</h2>
+        <h3>Leadership simulation vs. 360 feedback</h3>
         <p>Perception vs. behavior — how the two differ, their strengths and limits, and when to use each (or both, and mine the gap).</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Resource Corporate Retreat Ideas.html">
-        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
-        <h2>25 corporate retreat ideas</h2>
-        <p>Organized by goal, group size and budget — from leadership alignment to team connection to give-back.</p>
+      <a class="rc" href="Resource Psychological Safety.html">
+        <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>8 min read</span></div>
+        <h3>What is psychological safety?</h3>
+        <p>The single biggest predictor of high-performing teams — what it is, the four stages, and how leaders actually build it.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Resource CSR Event Ideas.html">
-        <div class="meta"><span class="cat">CSR Guide</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>CSR event ideas that engage employees</h2>
-        <p>Give-back activities that drive engagement and measurable community impact — built for ESG reporting.</p>
+      <a class="rc" href="Resource Team Building for New Teams.html">
+        <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>8 min read</span></div>
+        <h3>Team building for a newly formed team</h3>
+        <p>How to take a group of strangers to a real team fast — the forming-stage playbook, what accelerates trust, and where a shared experience fits.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Resource Corporate Team Building Cost.html">
-        <div class="meta"><span class="cat">Pricing</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>How much does corporate team building cost?</h2>
-        <p>Why it’s priced per person, what’s included, and the four factors that move the number — plus how to budget.</p>
+      <a class="rc" href="Resource Executive Offsite Agenda.html">
+        <div class="meta"><span class="cat">Leadership Development</span><span class="dot"></span><span>9 min read</span></div>
+        <h3>The executive offsite agenda that works</h3>
+        <p>A sample hour-by-hour run-of-show for a leadership offsite, plus the principles and follow-through that turn a good day into real change.</p>
         <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Large Group Team Building.html">
-        <div class="meta"><span class="cat">Activities</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>The best team building activities for large groups</h2>
-        <p>What actually works for hundreds or thousands — without anyone sitting out — and how to match it to your event.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource Measure Team Building ROI.html">
-        <div class="meta"><span class="cat">Strategy</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>How to measure team building ROI</h2>
-        <p>A three-level framework — reaction, behavior, business results — to prove the value of your event.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Resource What Is Charity Team Building.html">
-        <div class="meta"><span class="cat">CSR</span><span class="dot"></span><span>4 min read</span></div>
-        <h2>What is charity (CSR) team building?</h2>
-        <p>How give-back events develop your team and your community at once — and how they support CSR reporting.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Best Charity Team Building Companies.html">
-        <div class="meta"><span class="cat">Buyer&rsquo;s Guide</span><span class="dot"></span><span>7 min read</span></div>
-        <h2>Best charity team building companies: how to choose</h2>
-        <p>What separates a great philanthropic team building provider from a weak one — the criteria to weigh before you book.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Charity Team Building Activities.html">
-        <div class="meta"><span class="cat">CSR Guide</span><span class="dot"></span><span>8 min read</span></div>
-        <h2>15 charity team building activities that give back</h2>
-        <p>The definitive guide to philanthropic team building — from bike, shoe and skateboard builds to care-kit and food-drive formats, and how to choose one.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Problem Solving Team Building Activities.html">
-        <div class="meta"><span class="cat">By Outcome</span><span class="dot"></span><span>Activities</span></div>
-        <h2>Problem-solving team building activities</h2>
-        <p>Our best exercises for teams that need to plan, decide and solve under pressure — each with a free facilitation guide.</p>
-        <span class="go">Browse the activities →</span>
-      </a>
-      <a class="rc" href="Communication Team Building Activities.html">
-        <div class="meta"><span class="cat">By Outcome</span><span class="dot"></span><span>Activities</span></div>
-        <h2>Communication team building activities</h2>
-        <p>Exercises that make teams feel — not just hear — how they communicate, with a free guide for each.</p>
-        <span class="go">Browse the activities →</span>
-      </a>
-      <a class="rc" href="Team Building Kits.html">
-        <div class="meta"><span class="cat">DIY</span><span class="dot"></span><span>Free kit</span></div>
-        <h2>Team building kits (free DIY guides)</h2>
-        <p>Our 26 facilitation-guide PDFs, ready to run yourself — or have us facilitate. No budget required.</p>
-        <span class="go">Get the kit →</span>
-      </a>
-      <a class="rc" href="Adult Team Building Activities.html">
-        <div class="meta"><span class="cat">By Audience</span><span class="dot"></span><span>Activities</span></div>
-        <h2>Adult team building activities that actually work</h2>
-        <p>Why the simplest activities are the hardest for adults — and the ones worth running with a grown-up team.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Outdoor Team Building Activities.html">
-        <div class="meta"><span class="cat">By Setting</span><span class="dot"></span><span>Activities</span></div>
-        <h2>Outdoor team building activities &amp; games</h2>
-        <p>The activities that shine in the open air — for offsites, retreats and any team that needs room to move.</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Two Truths and a Lie.html">
-        <div class="meta"><span class="cat">Icebreaker</span><span class="dot"></span><span>How-to</span></div>
-        <h2>Two Truths and a Lie: rules, variations &amp; tips</h2>
-        <p>The classic icebreaker done right — how to play, work-and-remote variations, and how to write a good &ldquo;lie.&rdquo;</p>
-        <span class="go">Read the guide →</span>
-      </a>
-      <a class="rc" href="Team Building Quotes.html">
-        <div class="meta"><span class="cat">Inspiration</span><span class="dot"></span><span>Quotes</span></div>
-        <h2>80+ team building quotes to inspire your team</h2>
-        <p>Curated teamwork, leadership and trust quotes to open a meeting, retreat or all-hands.</p>
-        <span class="go">Browse the quotes →</span>
       </a>
       <a class="rc" href="Resource Tuckmans Stages of Team Development.html">
         <div class="meta"><span class="cat">Framework</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>Tuckman&rsquo;s stages: forming, storming, norming, performing</h2>
+        <h3>Tuckman&rsquo;s stages: forming, storming, norming, performing</h3>
         <p>The classic model of how teams develop — what each stage looks like, and how to move a team through it faster.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Team Building Ideas.html">
-        <div class="meta"><span class="cat">Free Library</span><span class="dot"></span><span>Activities &amp; games</span></div>
-        <h2>Team building ideas library</h2>
-        <p>Free, ready-to-run activities, quick games and remote ideas — no budget required.</p>
-        <span class="go">Browse the library →</span>
-      </a>
-      <a class="rc" href="Resource Charity vs Traditional Team Building.html">
-        <div class="meta"><span class="cat">Comparison</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>Charity vs. traditional team building</h2>
-        <p>A side-by-side comparison — what each delivers, when to choose which, and why give-back wins for most teams.</p>
+      <a class="rc" href="Resource Individual and Group Loop.html">
+        <div class="meta"><span class="cat">Concept</span><span class="dot"></span><span>4 min read</span></div>
+        <h3>The Individual &amp; Group Loop</h3>
+        <p>How personal development and Tuckman&rsquo;s group stages move together — and why facilitators read both.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Team Building Activities Library.html">
-        <div class="meta"><span class="cat">Activity Library</span><span class="dot"></span><span>By outcome</span></div>
-        <h2>Team building activities &amp; exercises</h2>
-        <p>The facilitated exercises behind the breakthroughs — for communication, trust, problem solving, leadership and change.</p>
-        <span class="go">Browse the library →</span>
-      </a>
-      <a class="rc" href="Resource Team Building Spy Scenarios.html">
-        <div class="meta"><span class="cat">Facilitation</span><span class="dot"></span><span>4 min read</span></div>
-        <h2>Team building spy scenarios</h2>
-        <p>The saboteur twist that reveals how fast a team &lsquo;makes stuff up&rsquo; about each other — how to run it well, and when not to.</p>
+      <a class="rc" href="Resource Accountability Starts With Me.html">
+        <div class="meta"><span class="cat">Leadership</span><span class="dot"></span><span>5 min read</span></div>
+        <h3>Accountability starts with me</h3>
+        <p>The phrase is &lsquo;starts with you&rsquo; — and that&rsquo;s the problem. Real accountability points the finger back.</p>
         <span class="go">Read the guide →</span>
       </a>
       <a class="rc" href="Resource What Motivates Teams.html">
         <div class="meta"><span class="cat">Motivation</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>What motivates teams</h2>
+        <h3>What motivates teams</h3>
         <p>Why the carrot and stick backfires on creative work — the Candle Problem, Dan Pink&rsquo;s <em>Drive</em>, and what it means for your team.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Untangling Group Dynamics.html">
+        <div class="meta"><span class="cat">Facilitation</span><span class="dot"></span><span>6 min read</span></div>
+        <h3>Untangling complex group dynamics</h3>
+        <p>How one team broke a year-long deadlock — by separating the tangled issues, surfacing assumptions, and anchoring on the goal.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource We See What We Look For.html">
+        <div class="meta"><span class="cat">Perception</span><span class="dot"></span><span>4 min read</span></div>
+        <h3>We see what we look for</h3>
+        <p>Two people watch the same speech and hear opposite things. Confirmation bias, and what it means for how your team sees its work.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Experiential Learning.html">
+        <div class="meta"><span class="cat">Our Method</span><span class="dot"></span><span>7 min read</span></div>
+        <h3>Experiential learning: why teams learn by doing</h3>
+        <p>The principle behind everything we run — the activity is the vehicle, the debrief is where the lesson lands.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      </div>
+    </div>
+    <div class="r-group" id="choose">
+      <h2 class="r-gh">Planning, cost &amp; choosing</h2>
+      <p class="r-gi">The buyer&rsquo;s questions: the research, what it costs, how to choose the right partner, and how to prove it worked.</p>
+      <div class="r-cards">
+      <a class="rc" href="State of Team Building 2026.html" style="grid-column:1/-1;background:var(--ink);color:#fff;border-color:var(--ink)">
+        <div class="meta"><span class="cat" style="color:#ff9b88">Annual Report</span><span class="dot"></span><span style="color:#b9bec7">2026 edition · 10 min read</span></div>
+        <h2 style="color:#fff">The 2026 State of Team Building</h3>
+        <p style="color:#c8cdd4">Companies are forcing teams back together while engagement sits at a record-low 20% and disengagement costs $10 trillion a year. The data on the connection gap — and what closes it.</p>
+        <span class="go" style="color:#ff9b88">Read the report →</span>
+      </a>
+      <a class="rc" href="Resource Choosing Team Building.html">
+        <div class="meta"><span class="cat">Decision Guide</span><span class="dot"></span><span>6 min read</span></div>
+        <h3>How to choose corporate team building</h3>
+        <p>An honest framework: light social vs. volunteering vs. impact-driven give-back build vs. full OD consulting — and how to decide.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Best Corporate Team Building Companies by Need.html">
+        <div class="meta"><span class="cat">Buyer&rsquo;s guide</span><span class="dot"></span><span>9 min read</span></div>
+        <h3>Best corporate team building companies, by need</h3>
+        <p>A candid, by-use-case guide to who leads for give-back CSR, large-scale, virtual and executive teams — including where a competitor is the better fit.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Corporate Team Building Cost.html">
+        <div class="meta"><span class="cat">Pricing</span><span class="dot"></span><span>5 min read</span></div>
+        <h3>How much does corporate team building cost?</h3>
+        <p>Why it’s priced per person, what’s included, and the four factors that move the number — plus how to budget.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Measure Team Building ROI.html">
+        <div class="meta"><span class="cat">Strategy</span><span class="dot"></span><span>5 min read</span></div>
+        <h3>How to measure team building ROI</h3>
+        <p>A three-level framework — reaction, behavior, business results — to prove the value of your event.</p>
         <span class="go">Read the guide →</span>
       </a>
       <a class="rc" href="Resource Why Team Building.html">
         <div class="meta"><span class="cat">Strategy</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>Why team building (and why one-offs fail)</h2>
+        <h3>Why team building (and why one-offs fail)</h3>
         <p>The premise is sound — but the stand-alone event is doomed. Treat it like a Big Bang: the start of a plan with momentum.</p>
         <span class="go">Read the guide →</span>
       </a>
       <a class="rc" href="Resource Why Team Building Fails.html">
         <div class="meta"><span class="cat">Straight talk</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>5 ways to guarantee your team building flops</h2>
+        <h3>5 ways to guarantee your team building flops</h3>
         <p>Wrong activity, no application, a covert therapy session, chasing the comfort zone, or just &lsquo;fun&rsquo; — the five traps, from people who&rsquo;ve run thousands.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Resource Managing Virtual Teams.html">
-        <div class="meta"><span class="cat">Remote &amp; hybrid</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>The Five C&rsquo;s of managing virtual teams</h2>
-        <p>Communicate, Chat, Change it up, Cut out, Celebrate — building a real team dynamic among people who never meet in person.</p>
+      </div>
+    </div>
+    <div class="r-group" id="csr">
+      <h2 class="r-gh">Charity &amp; CSR team building</h2>
+      <p class="r-gi">Give-back team building that develops your people and your community impact at the same time.</p>
+      <div class="r-cards">
+      <a class="rc" href="Resource What Is Charity Team Building.html">
+        <div class="meta"><span class="cat">CSR</span><span class="dot"></span><span>4 min read</span></div>
+        <h3>What is charity (CSR) team building?</h3>
+        <p>How give-back events develop your team and your community at once — and how they support CSR reporting.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Resource Accountability Starts With Me.html">
-        <div class="meta"><span class="cat">Leadership</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>Accountability starts with me</h2>
-        <p>The phrase is &lsquo;starts with you&rsquo; — and that&rsquo;s the problem. Real accountability points the finger back.</p>
+      <a class="rc" href="Best Charity Team Building Companies.html">
+        <div class="meta"><span class="cat">Buyer&rsquo;s Guide</span><span class="dot"></span><span>7 min read</span></div>
+        <h3>Best charity team building companies: how to choose</h3>
+        <p>What separates a great philanthropic team building provider from a weak one — the criteria to weigh before you book.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Resource Untangling Group Dynamics.html">
-        <div class="meta"><span class="cat">Facilitation</span><span class="dot"></span><span>6 min read</span></div>
-        <h2>Untangling complex group dynamics</h2>
-        <p>How one team broke a year-long deadlock — by separating the tangled issues, surfacing assumptions, and anchoring on the goal.</p>
+      <a class="rc" href="Charity Team Building Activities.html">
+        <div class="meta"><span class="cat">CSR Guide</span><span class="dot"></span><span>8 min read</span></div>
+        <h3>15 charity team building activities that give back</h3>
+        <p>The definitive guide to philanthropic team building — from bike, shoe and skateboard builds to care-kit and food-drive formats, and how to choose one.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource CSR Event Ideas.html">
+        <div class="meta"><span class="cat">CSR Guide</span><span class="dot"></span><span>6 min read</span></div>
+        <h3>CSR event ideas that engage employees</h3>
+        <p>Give-back activities that drive engagement and measurable community impact — built for ESG reporting.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Charity vs Traditional Team Building.html">
+        <div class="meta"><span class="cat">Comparison</span><span class="dot"></span><span>6 min read</span></div>
+        <h3>Charity vs. traditional team building</h3>
+        <p>A side-by-side comparison — what each delivers, when to choose which, and why give-back wins for most teams.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      </div>
+    </div>
+    <div class="r-group" id="events">
+      <h2 class="r-gh">Events, offsites &amp; formats</h2>
+      <p class="r-gi">Planning a specific event &mdash; offsites, conferences, sales kickoffs and large groups.</p>
+      <div class="r-cards">
+      <a class="rc" href="Corporate Event Ideas.html">
+        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
+        <h3>20+ corporate event ideas that bring teams together</h3>
+        <p>By goal, size and budget — from give-back builds to offsites, conferences and virtual.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Corporate Retreat Ideas.html">
+        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
+        <h3>25 corporate retreat ideas</h3>
+        <p>Organized by goal, group size and budget — from leadership alignment to team connection to give-back.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Sales Kickoff Ideas.html">
+        <div class="meta"><span class="cat">Events</span><span class="dot"></span><span>8 min read</span></div>
+        <h3>Sales kickoff ideas &amp; a sample agenda</h3>
+        <p>A sample two-day SKO run-of-show, ideas by goal, the signature moment your team remembers all year, and the follow-through most teams skip.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Company Offsite Planning Checklist.html">
+        <div class="meta"><span class="cat">Planning Guide</span><span class="dot"></span><span>8 min read</span></div>
+        <h3>The company offsite planning checklist</h3>
+        <p>A step-by-step timeline from 8 weeks out to follow-up — goal, budget, agenda, venue and the moment people remember.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Large Group Team Building.html">
+        <div class="meta"><span class="cat">Activities</span><span class="dot"></span><span>6 min read</span></div>
+        <h3>The best team building activities for large groups</h3>
+        <p>What actually works for hundreds or thousands — without anyone sitting out — and how to match it to your event.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Escape Room Team Building.html">
+        <div class="meta"><span class="cat">Guide</span><span class="dot"></span><span>8 min read</span></div>
+        <h3>Escape room team building: why it works</h3>
+        <p>An escape room shows how a team <em>actually</em> solves problems under pressure — and how to debrief it so the lesson sticks.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Outdoor Team Building Activities.html">
+        <div class="meta"><span class="cat">By Setting</span><span class="dot"></span><span>Activities</span></div>
+        <h3>Outdoor team building activities &amp; games</h3>
+        <p>The activities that shine in the open air — for offsites, retreats and any team that needs room to move.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      </div>
+    </div>
+    <div class="r-group" id="activities">
+      <h2 class="r-gh">Activities, games &amp; icebreakers</h2>
+      <p class="r-gi">Ready-to-run activities, icebreakers and idea libraries for any team or budget.</p>
+      <div class="r-cards">
+      <a class="rc" href="Team Building Ideas.html">
+        <div class="meta"><span class="cat">Free Library</span><span class="dot"></span><span>Activities &amp; games</span></div>
+        <h3>Team building ideas library</h3>
+        <p>Free, ready-to-run activities, quick games and remote ideas — no budget required.</p>
+        <span class="go">Browse the library →</span>
+      </a>
+      <a class="rc" href="Team Building Activities Library.html">
+        <div class="meta"><span class="cat">Activity Library</span><span class="dot"></span><span>By outcome</span></div>
+        <h3>Team building activities &amp; exercises</h3>
+        <p>The facilitated exercises behind the breakthroughs — for communication, trust, problem solving, leadership and change.</p>
+        <span class="go">Browse the library →</span>
+      </a>
+      <a class="rc" href="Team Building Questions.html">
+        <div class="meta"><span class="cat">Icebreaker Toolkit</span><span class="dot"></span><span>Questions</span></div>
+        <h3>150+ team building &amp; icebreaker questions</h3>
+        <p>Ready-to-use questions to open a meeting, retreat or all-hands — by theme.</p>
+        <span class="go">Get the questions →</span>
+      </a>
+      <a class="rc" href="Marshmallow Challenge.html">
+        <div class="meta"><span class="cat">Activity Guide</span><span class="dot"></span><span>5 min read</span></div>
+        <h3>The Marshmallow Challenge</h3>
+        <p>18 minutes, 20 spaghetti sticks, one marshmallow — and why kindergarteners beat MBAs.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Egg Drop Challenge.html">
+        <div class="meta"><span class="cat">Activity Guide</span><span class="dot"></span><span>5 min read</span></div>
+        <h3>The Egg Drop Challenge</h3>
+        <p>Protect a raw egg from a big fall — a fast lesson in prototyping, risk and how a team handles failure.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Two Truths and a Lie.html">
+        <div class="meta"><span class="cat">Icebreaker</span><span class="dot"></span><span>How-to</span></div>
+        <h3>Two Truths and a Lie: rules, variations &amp; tips</h3>
+        <p>The classic icebreaker done right — how to play, work-and-remote variations, and how to write a good &ldquo;lie.&rdquo;</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource Team Building Spy Scenarios.html">
+        <div class="meta"><span class="cat">Facilitation</span><span class="dot"></span><span>4 min read</span></div>
+        <h3>Team building spy scenarios</h3>
+        <p>The saboteur twist that reveals how fast a team &lsquo;makes stuff up&rsquo; about each other — how to run it well, and when not to.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Problem Solving Team Building Activities.html">
+        <div class="meta"><span class="cat">By Outcome</span><span class="dot"></span><span>Activities</span></div>
+        <h3>Problem-solving team building activities</h3>
+        <p>Our best exercises for teams that need to plan, decide and solve under pressure — each with a free facilitation guide.</p>
+        <span class="go">Browse the activities →</span>
+      </a>
+      <a class="rc" href="Communication Team Building Activities.html">
+        <div class="meta"><span class="cat">By Outcome</span><span class="dot"></span><span>Activities</span></div>
+        <h3>Communication team building activities</h3>
+        <p>Exercises that make teams feel — not just hear — how they communicate, with a free guide for each.</p>
+        <span class="go">Browse the activities →</span>
+      </a>
+      <a class="rc" href="Adult Team Building Activities.html">
+        <div class="meta"><span class="cat">By Audience</span><span class="dot"></span><span>Activities</span></div>
+        <h3>Adult team building activities that actually work</h3>
+        <p>Why the simplest activities are the hardest for adults — and the ones worth running with a grown-up team.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Team Building Kits.html">
+        <div class="meta"><span class="cat">DIY</span><span class="dot"></span><span>Free kit</span></div>
+        <h3>Team building kits (free DIY guides)</h3>
+        <p>Our 26 facilitation-guide PDFs, ready to run yourself — or have us facilitate. No budget required.</p>
+        <span class="go">Get the kit →</span>
+      </a>
+      <a class="rc" href="Employee Appreciation Ideas.html">
+        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
+        <h3>25 employee appreciation ideas that actually land</h3>
+        <p>Everyday recognition, Employee Appreciation Day, and team events that give back.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Boost Team Morale.html">
+        <div class="meta"><span class="cat">How-to Guide</span><span class="dot"></span><span>7 min read</span></div>
+        <h3>How to boost team morale (18 that work)</h3>
+        <p>Quick wins, morale-boosting activities, and the deeper fixes when morale is low.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Employee Engagement Activities.html">
+        <div class="meta"><span class="cat">Ideas Guide</span><span class="dot"></span><span>7 min read</span></div>
+        <h3>20 employee engagement activities that build commitment</h3>
+        <p>Grouped by the four real drivers — connection, growth, recognition and purpose.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Team Building Quotes.html">
+        <div class="meta"><span class="cat">Inspiration</span><span class="dot"></span><span>Quotes</span></div>
+        <h3>80+ team building quotes to inspire your team</h3>
+        <p>Curated teamwork, leadership and trust quotes to open a meeting, retreat or all-hands.</p>
+        <span class="go">Browse the quotes →</span>
+      </a>
+      </div>
+    </div>
+    <div class="r-group" id="facilitation">
+      <h2 class="r-gh">Facilitation, tools &amp; remote</h2>
+      <p class="r-gi">Running it well: facilitation technique, personality tools, and distributed teams.</p>
+      <div class="r-cards">
+      <a class="rc" href="How to Facilitate Team Building.html">
+        <div class="meta"><span class="cat">Facilitation Guide</span><span class="dot"></span><span>8 min read</span></div>
+        <h3>How to facilitate team building activities</h3>
+        <p>The facilitator&rsquo;s real role, how to run a great debrief, and the 10 pitfalls to avoid.</p>
+        <span class="go">Read the guide →</span>
+      </a>
+      <a class="rc" href="Resource DISC Assessment Team Building.html">
+        <div class="meta"><span class="cat">Tools</span><span class="dot"></span><span>6 min read</span></div>
+        <h3>DISC assessment for team building</h3>
+        <p>How to use DISC with a team — and its limits. Pair it with real shared experience to make it land.</p>
         <span class="go">Read the guide →</span>
       </a>
       <a class="rc" href="Resource Myers Briggs Team Building.html">
         <div class="meta"><span class="cat">Tools</span><span class="dot"></span><span>5 min read</span></div>
-        <h2>Is Myers-Briggs good for team building?</h2>
+        <h3>Is Myers-Briggs good for team building?</h3>
         <p>A powerful instrument — but a roto-tiller, not a shovel. When the MBTI helps, when it doesn&rsquo;t, and why the right tool wins.</p>
         <span class="go">Read the guide →</span>
       </a>
-      <a class="rc" href="Resource We See What We Look For.html">
-        <div class="meta"><span class="cat">Perception</span><span class="dot"></span><span>4 min read</span></div>
-        <h2>We see what we look for</h2>
-        <p>Two people watch the same speech and hear opposite things. Confirmation bias, and what it means for how your team sees its work.</p>
+      <a class="rc" href="Resource Managing Virtual Teams.html">
+        <div class="meta"><span class="cat">Remote &amp; hybrid</span><span class="dot"></span><span>6 min read</span></div>
+        <h3>The Five C&rsquo;s of managing virtual teams</h3>
+        <p>Communicate, Chat, Change it up, Cut out, Celebrate — building a real team dynamic among people who never meet in person.</p>
         <span class="go">Read the guide →</span>
       </a>
+      </div>
     </div>
+  
   </div>
 </section>
 
