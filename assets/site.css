@@ -178,6 +178,8 @@ section{padding:90px 0}
 .ex .k{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--brand-2)}
 .ex h3{font-size:20px;font-weight:700;margin:8px 0 8px}
 .ex p{font-size:14px;color:var(--slate)}
+.ex .ex-more{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-family:var(--display);font-weight:600;font-size:13.5px;color:var(--brand-2);text-decoration:none}
+.ex .ex-more:hover{text-decoration:underline}
 @media(max-width:900px){.exp{grid-template-columns:1fr}}
 
 /* impact band */
