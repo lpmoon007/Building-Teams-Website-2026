@@ -1,0 +1,98 @@
+/* Building Teams — shared print styles for downloadable lead-magnet kits.
+   Rendered to PDF by render-kits.js (Chromium print). Screen preview is fine too. */
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;src:url(../assets/fonts/archivo-latin.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:100 900;src:url(../assets/fonts/spacegrotesk-latin.woff2) format('woff2')}
+:root{
+  --brand:#64010a; --brand-2:#8c0f1c; --brand-bright:#b5172b;
+  --ink:#15171c; --slate:#5a626e; --slate-2:#828b97;
+  --paper:#ffffff; --mist:#F4F5F2; --mist-2:#EBEDE8; --line:#d9dcd6;
+  --display:'Space Grotesk',sans-serif; --body:'Archivo',sans-serif;
+}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0}
+body{font-family:var(--body);color:var(--ink);font-size:11pt;line-height:1.5}
+.page{page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-0.01em;line-height:1.1;margin:0}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:9.5pt;letter-spacing:0.14em;text-transform:uppercase;color:var(--brand-2)}
+p{margin:0 0 9pt}
+strong{font-weight:700}
+a{color:var(--brand-2);text-decoration:none}
+
+/* Cover */
+.cover{background:var(--ink);color:#fff;border-radius:16px;padding:44px 38px 36px;position:relative;overflow:hidden;min-height:9.15in;display:flex;flex-direction:column}
+.cover .free{margin-top:auto}
+.cover .brand{display:flex;align-items:center;gap:11px;margin-bottom:30px}
+.cover .brand img{height:30px;width:auto;filter:brightness(0) invert(1)}
+.cover .brand .wm{font-family:var(--display);font-weight:700;font-size:15pt;letter-spacing:-0.02em}
+.cover .kicker{font-family:var(--display);font-weight:600;font-size:9.5pt;letter-spacing:0.16em;text-transform:uppercase;color:#ff9b88;margin-bottom:16px}
+.cover h1{font-size:31pt;font-weight:700;letter-spacing:-0.03em;max-width:16ch;margin-bottom:14px}
+.cover h1 em{font-style:normal;color:#ff9b88}
+.cover .sub{font-size:12.5pt;color:#c8cdd4;max-width:52ch;line-height:1.45}
+.cover .inside{margin-top:26px;border-top:1px solid rgba(255,255,255,.16);padding-top:18px}
+.cover .inside .lbl{font-family:var(--display);font-weight:600;font-size:9pt;letter-spacing:.12em;text-transform:uppercase;color:#8b929c;margin-bottom:10px}
+.cover .inside ol{margin:0;padding-left:18px;columns:2;column-gap:26px;font-size:10.5pt;color:#e7e9ec}
+.cover .inside li{margin-bottom:6px;break-inside:avoid}
+.cover .free{margin-top:22px;font-size:9.5pt;color:#8b929c}
+
+/* Section headers */
+.sec{margin:0 0 16px}
+.sec .eyebrow{display:block;margin-bottom:6px}
+.sec h2{font-size:19pt;font-weight:700;color:var(--ink);letter-spacing:-0.02em}
+.sec p.lede{font-size:11pt;color:var(--slate);margin-top:7px;max-width:64ch}
+.step{display:inline-block;font-family:var(--display);font-weight:700;font-size:10pt;color:#fff;background:var(--brand);border-radius:6px;padding:2px 9px;margin-bottom:9px}
+
+/* Fillable primitives */
+.field{margin:0 0 13pt}
+.field .q{font-weight:700;font-size:10.5pt;margin-bottom:5pt;color:var(--ink)}
+.field .q small{display:block;font-weight:400;font-size:9pt;color:var(--slate);margin-top:2px}
+.wl{border-bottom:1.3px solid var(--line);height:20pt}
+.wl+.wl{margin-top:9pt}
+.boxfill{border:1.3px solid var(--line);border-radius:8px;min-height:52pt;background:var(--mist)}
+.boxfill.sm{min-height:34pt}
+.two{display:flex;gap:16px}
+.two>*{flex:1}
+.pill{display:inline-block;font-family:var(--display);font-weight:600;font-size:9pt;color:var(--brand-2);border:1px solid var(--line);border-radius:999px;padding:4px 11px;margin:0 5px 6px 0}
+.ck{display:flex;align-items:flex-start;gap:9px;margin:0 0 8pt;font-size:10.5pt;line-height:1.4}
+.ck .b{flex:none;width:14px;height:14px;border:1.4px solid var(--brand-2);border-radius:3px;margin-top:1px}
+.ck small{display:block;color:var(--slate);font-size:9pt}
+.grid2{columns:2;column-gap:30px}
+.grid2 .ck{break-inside:avoid}
+.hint{background:var(--mist);border-left:3px solid var(--brand-2);border-radius:0 8px 8px 0;padding:11px 14px;font-size:10pt;color:var(--slate);margin:12pt 0}
+.hint b{color:var(--ink)}
+
+/* Tables / worksheets */
+table{width:100%;border-collapse:collapse;font-size:10pt;margin:4pt 0}
+th{font-family:var(--display);font-weight:600;font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);text-align:left;padding:7px 9px;border-bottom:1.5px solid var(--ink)}
+td{padding:0;border-bottom:1.3px solid var(--line);height:30pt;vertical-align:top}
+td .c{padding:7px 9px}
+td.write{background:var(--mist)}
+tr{break-inside:avoid}
+.rowfill td{height:34pt}
+
+/* Scale (for assessment) */
+.scale{display:flex;gap:6px;align-items:center}
+.scale .n{width:20px;height:20px;border:1.3px solid var(--line);border-radius:50%;font-size:9pt;display:flex;align-items:center;justify-content:center;color:var(--slate);font-family:var(--display)}
+.qgroup{break-inside:avoid}
+.q-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:9pt 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.q-row .t{font-size:10.5pt;max-width:70%}
+.legend{font-size:9pt;color:var(--slate);margin:2pt 0 10pt}
+
+/* Score bands */
+.band{border:1.3px solid var(--line);border-radius:9px;padding:12px 15px;margin:0 0 10px;break-inside:avoid}
+.band h4{font-size:11.5pt;color:var(--brand);margin-bottom:4px}
+.band p{font-size:10pt;color:var(--slate);margin:0}
+.band .rng{font-family:var(--display);font-weight:700;font-size:10pt;color:var(--ink);float:right}
+
+/* Closing CTA page */
+.cta{background:var(--brand);color:#fff;border-radius:16px;padding:40px 38px;text-align:center}
+.cta .eyebrow{color:#ffb59b}
+.cta h2{color:#fff;font-size:24pt;font-weight:700;margin:10px auto 12px;max-width:20ch}
+.cta p{color:#f4dcde;font-size:12pt;max-width:52ch;margin:0 auto 22px}
+.cta .btn{display:inline-block;background:#fff;color:var(--brand);font-family:var(--display);font-weight:700;font-size:12pt;border-radius:10px;padding:13px 26px}
+.cta .ph{margin-top:16px;font-size:11pt;color:#f4dcde}
+.cta .ph b{color:#fff}
+.proof{display:flex;justify-content:center;gap:34px;margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.18)}
+.proof b{font-family:var(--display);font-weight:700;font-size:18pt;color:#fff;display:block;line-height:1}
+.proof span{font-size:8.5pt;color:#e7bfc3;letter-spacing:.02em}
+.mt{margin-top:22px}
