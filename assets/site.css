@@ -10,6 +10,11 @@
   --good:oklch(0.62 0.15 150);
   --display:'Space Grotesk',sans-serif;
 }
+/* Accessibility: skip link + visible keyboard focus (WCAG 2.4.1 / 2.4.7) */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:1000}
+.skip-link:focus{left:0;background:var(--brand);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-family:var(--display);font-weight:600;font-size:14px;text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--brand-bright);outline-offset:2px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 /* newsletter band */
@@ -232,7 +237,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .foot img{height:40px;width:auto;margin-bottom:8px}
 .foot .wm{font-family:var(--display);font-weight:700;font-size:20px;margin:6px 0 10px}
 .foot p{font-size:14px;color:var(--slate);max-width:32ch}
-.foot h4{font-family:var(--display);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate-2);margin-bottom:14px}
+.foot h4,.foot .fh{font-family:var(--display);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate-2);margin-bottom:14px}
 .foot ul{list-style:none;display:grid;gap:10px}
 .foot ul a{font-size:14.5px;color:var(--ink);opacity:.82}
 .foot ul a:hover{opacity:1;color:var(--brand-2)}
