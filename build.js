@@ -153,6 +153,39 @@ function rewriteHtml(html) {
   );
 }
 
+// Set of root-absolute WebP paths that exist in assets/ ("/assets/photos/x.webp").
+function collectWebp() {
+  const set = new Set();
+  const base = path.join(ROOT, 'assets');
+  (function walk(dir) {
+    if (!fs.existsSync(dir)) return;
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.toLowerCase().endsWith('.webp')) {
+        set.add('/' + path.relative(ROOT, p).split(path.sep).join('/'));
+      }
+    }
+  })(base);
+  return set;
+}
+
+// Wrap <img src="/assets/x.jpg"> in <picture> with a WebP <source> when a
+// same-name .webp exists — modern browsers get WebP, others get the original.
+// Runs after rewriteHtml, so src values are already root-absolute.
+function wrapPictures(html, webpSet) {
+  return html.replace(/<img\b[^>]*>/gi, (tag) => {
+    const m = tag.match(/\bsrc=("|')([^"']+)\1/i);
+    if (!m) return tag;
+    const src = m[2];
+    const mm = src.match(/^(\/assets\/.+)\.(jpe?g|png)$/i);
+    if (!mm) return tag;
+    const webp = mm[1] + '.webp';
+    if (!webpSet.has(webp)) return tag;
+    return `<picture><source type="image/webp" srcset="${webp}">${tag}</picture>`;
+  });
+}
+
 // ---------------------------------------------------------------------------
 // run
 // ---------------------------------------------------------------------------
@@ -161,9 +194,22 @@ console.log(`Building dist/ (${pages.length} pages)…`);
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 
+// Prepare images before emitting HTML: optimize oversized photos in place, then
+// generate WebP siblings — so wrapPictures() below can see which .webp exist.
+// Both are no-ops without the optional `sharp` dependency (build ships the
+// committed files as-is), which is why optimized photos + .webp are committed.
+for (const script of ['optimize-images.js', 'gen-webp.js']) {
+  try {
+    process.stdout.write(execFileSync('node', [path.join(ROOT, script)], { cwd: ROOT }));
+  } catch (e) {
+    console.warn(`  ! ${script} skipped (${e.message.split('\n')[0]})`);
+  }
+}
+const webpSet = collectWebp();
+
 for (const page of pages) {
   const html = fs.readFileSync(path.join(ROOT, page.file), 'utf8');
-  const out = rewriteHtml(html);
+  const out = wrapPictures(rewriteHtml(html), webpSet);
   const dest = path.join(DIST, page.distFile);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, out);
@@ -174,7 +220,7 @@ for (const page of pages) {
 {
   const p = path.join(ROOT, '404.html');
   if (fs.existsSync(p)) {
-    fs.writeFileSync(path.join(DIST, '404.html'), rewriteHtml(fs.readFileSync(p, 'utf8')));
+    fs.writeFileSync(path.join(DIST, '404.html'), wrapPictures(rewriteHtml(fs.readFileSync(p, 'utf8')), webpSet));
   }
 }
 
@@ -185,17 +231,6 @@ for (const f of COPY_FILES) {
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   else console.warn(`  ! missing config file: ${f}`);
 }
-// Optimize oversized images in place before copying, so the build ships
-// compressed assets. Runs optimize-images.js (needs the optional `sharp`
-// dependency); if sharp isn't installed it exits 0 and we ship the committed
-// files as-is — hence photos should be committed already-optimized.
-try {
-  const out = execFileSync('node', [path.join(ROOT, 'optimize-images.js')], { cwd: ROOT });
-  process.stdout.write(out);
-} catch (e) {
-  console.warn(`  ! image optimization skipped (${e.message.split('\n')[0]})`);
-}
-
 for (const d of COPY_DIRS) {
   const src = path.join(ROOT, d);
   if (fs.existsSync(src)) copyDir(src, path.join(DIST, d));
