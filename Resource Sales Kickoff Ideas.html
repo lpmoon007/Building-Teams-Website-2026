@@ -292,7 +292,7 @@
     try{
       var d=ev.data;
       if(d&&d.type==='hsFormCallback'&&d.eventName==='onFormSubmitted'&&typeof gtag==='function'){
-        var lead=(d.id==='52624310-215e-45ef-a78c-ea44a2c9063c');
+        var lead=['52624310-215e-45ef-a78c-ea44a2c9063c','476fd4d4-fa92-48c3-9068-41ed3bdfa686','c4bf79e3-be0f-4cdb-ac08-d3f2a146f949','776ebb54-e945-4286-a6a1-0f8bfab121ca','1bd8342b-0a73-4abc-92ac-af0058b98429'].indexOf(d.id)>-1;
         gtag('event',lead?'generate_lead':'newsletter_signup',{page_path:location.pathname,form_id:(d.id||'')});
       }
     }catch(_){}

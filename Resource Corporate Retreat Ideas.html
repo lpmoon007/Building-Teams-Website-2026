@@ -172,6 +172,20 @@
   </div>
 </section>
 <script>(function(){function u(){var c=document.querySelector('link[rel="canonical"]');return c?c.href:location.href;}function t(m){if(typeof gtag==="function")gtag("event","share",{method:m,page_path:location.pathname});}document.addEventListener("click",function(e){var b=e.target.closest?e.target.closest(".share-btn"):null;if(!b)return;if(b.classList.contains("share-copy")){e.preventDefault();var s=b.querySelector(".lbl")||b;var o=s.textContent;if(navigator.clipboard){navigator.clipboard.writeText(u()).then(function(){s.textContent="Copied!";setTimeout(function(){s.textContent=o;},1500);});}t("copy");return;}if(b.classList.contains("share-native")){e.preventDefault();if(navigator.share){navigator.share({title:document.title,url:u()});}t("native");return;}t(b.getAttribute("data-net")||"link");},true);if(navigator.share){var n=document.querySelector(".share-native");if(n)n.hidden=false;}})();</script>
+<section class="lm" id="get-the-kit" aria-label="Free download">
+  <div class="wrap">
+    <div class="lm-in">
+      <div class="lm-copy"><span class="eyebrow">Free download</span>
+        <h2>Get the Complete Corporate Retreat Kit</h2>
+        <p>Everything you need to run a leadership offsite from scratch — instant download.</p>
+        <ul class="lm-list"><li>Sponsor-alignment questions</li><li>An editable 1.5-day agenda</li><li>Venue &amp; logistics checklist</li><li>A budget worksheet</li></ul>
+      </div>
+      <div class="lm-form"><div class="fh">Where should we send it?</div><div class="fs">Free, instant download — and we'll email you a copy.</div>
+        <div class="hs-form-frame" data-region="na2" data-form-id="c4bf79e3-be0f-4cdb-ac08-d3f2a146f949" data-portal-id="20276071"></div>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="book" style="padding-top:0">
   <div class="wrap">
     <div class="cta">
@@ -226,7 +240,7 @@
     try{
       var d=ev.data;
       if(d&&d.type==='hsFormCallback'&&d.eventName==='onFormSubmitted'&&typeof gtag==='function'){
-        var lead=(d.id==='52624310-215e-45ef-a78c-ea44a2c9063c');
+        var lead=['52624310-215e-45ef-a78c-ea44a2c9063c','476fd4d4-fa92-48c3-9068-41ed3bdfa686','c4bf79e3-be0f-4cdb-ac08-d3f2a146f949','776ebb54-e945-4286-a6a1-0f8bfab121ca','1bd8342b-0a73-4abc-92ac-af0058b98429'].indexOf(d.id)>-1;
         gtag('event',lead?'generate_lead':'newsletter_signup',{page_path:location.pathname,form_id:(d.id||'')});
       }
     }catch(_){}
