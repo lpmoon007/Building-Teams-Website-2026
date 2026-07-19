@@ -12,7 +12,7 @@
 
   if (document.getElementById('get-the-kit')) return;         // inline form already on page
   var path = location.pathname;
-  if (/\/(contact|state-of-team-building)\/?$/.test(path)) return;
+  if (/\/(contact|thank-you|privacy|terms|state-of-team-building)\/?$/.test(path)) return;
 
   var KITS = {
     exec:    { k: 'Free self-assessment', t: 'Leadership Team Health Check', p: 'Where does your leadership team really stand? A 5-minute read.', href: '/executive-team-building/#get-the-kit' },

@@ -263,6 +263,16 @@ details p{color:var(--slate);font-size:16px;margin-top:13px;max-width:74ch}
 .relguides li a:hover{border-color:var(--brand-2)}
 .a-rel h3{font-family:var(--display);font-weight:700;font-size:16px;margin:0 0 8px;color:var(--ink)}
 .a-rel ul{margin:0;padding-left:18px}.a-rel li{margin-bottom:5px}.a-rel a{color:var(--brand-2)}
+/* Legal / policy prose pages */
+.legal-doc{max-width:760px;margin:0 auto;padding:56px 0 72px}
+.legal-doc h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,4vw,42px);letter-spacing:-0.02em;margin:0 0 8px;color:var(--ink)}
+.legal-doc .upd{font-size:13px;color:var(--slate);margin-bottom:28px}
+.legal-doc h2{font-family:var(--display);font-weight:700;font-size:21px;margin:30px 0 10px;color:var(--ink)}
+.legal-doc p,.legal-doc li{font-size:16px;line-height:1.65;color:var(--ink)}
+.legal-doc ul{padding-left:20px}.legal-doc li{margin-bottom:6px}
+.legal-doc a{color:var(--brand-2)}
+.form-consent{font-size:12px;color:var(--slate);margin-top:12px;line-height:1.45}
+.form-consent a{color:var(--brand-2)}
 @media(max-width:820px){.cta{grid-template-columns:1fr;padding:48px 32px}}
 
 footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mist)}

@@ -185,4 +185,6 @@
   <url><loc>https://www.buildingteams.com/locations/austin/</loc><lastmod>2026-06-11</lastmod></url>
   <url><loc>https://www.buildingteams.com/locations/boston/</loc><lastmod>2026-06-11</lastmod></url>
   <url><loc>https://www.buildingteams.com/locations/tampa/</loc><lastmod>2026-06-11</lastmod></url>
+<url><loc>https://www.buildingteams.com/privacy/</loc><lastmod>2026-07-19</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+<url><loc>https://www.buildingteams.com/terms/</loc><lastmod>2026-07-19</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
