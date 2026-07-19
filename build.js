@@ -237,6 +237,30 @@ for (const d of COPY_DIRS) {
   else console.warn(`  ! missing asset dir: ${d}`);
 }
 
+// Minify CSS in dist/ (safe: only strips comments + whitespace around
+// {}:;,> — preserves calc() operators, descendant combinators and strings,
+// none of which have whitespace around those symbols). Source stays readable.
+function minifyCss(css) {
+  return css
+    .replace(/\/\*[\s\S]*?\*\//g, '')          // comments
+    .replace(/\s+/g, ' ')                       // collapse whitespace runs
+    .replace(/\s*([{}:;,>])\s*/g, '$1')         // trim around safe symbols
+    .replace(/;}/g, '}')                        // drop final semicolons
+    .trim();
+}
+(function minifyDistCss(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) minifyDistCss(p);
+    else if (e.name.toLowerCase().endsWith('.css')) {
+      const before = fs.statSync(p).size;
+      fs.writeFileSync(p, minifyCss(fs.readFileSync(p, 'utf8')));
+      const after = fs.statSync(p).size;
+      console.log(`  minified ${path.relative(DIST, p)}  ${(before/1024).toFixed(0)}KB -> ${(after/1024).toFixed(0)}KB`);
+    }
+  }
+})(path.join(DIST, 'assets'));
+
 // IndexNow key file(s): publish any root <hexkey>.txt to the site root so
 // search engines can verify ownership. Strict hex pattern avoids picking up
 // robots.txt / llms.txt / disavow-suggested.txt.

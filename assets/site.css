@@ -255,6 +255,14 @@ details p{color:var(--slate);font-size:16px;margin-top:13px;max-width:74ch}
 .lm-slide .btn:hover{background:var(--brand)}
 @media(max-width:819px){.lm-slide{right:12px;left:12px;bottom:84px;width:auto}}
 @media print{.lm-slide{display:none}}
+/* Related-guides cross-link block */
+.relguides{background:var(--mist);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.relguides h2{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-0.01em;margin:0 0 16px;color:var(--ink)}
+.relguides ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.relguides li a{display:block;font-family:var(--display);font-weight:600;font-size:15px;color:var(--brand-2);border:1px solid var(--line);border-radius:10px;padding:13px 16px;background:#fff;text-decoration:none}
+.relguides li a:hover{border-color:var(--brand-2)}
+.a-rel h3{font-family:var(--display);font-weight:700;font-size:16px;margin:0 0 8px;color:var(--ink)}
+.a-rel ul{margin:0;padding-left:18px}.a-rel li{margin-bottom:5px}.a-rel a{color:var(--brand-2)}
 @media(max-width:820px){.cta{grid-template-columns:1fr;padding:48px 32px}}
 
 footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mist)}
