@@ -96,3 +96,5 @@ tr{break-inside:avoid}
 .proof b{font-family:var(--display);font-weight:700;font-size:18pt;color:#fff;display:block;line-height:1}
 .proof span{font-size:8.5pt;color:#e7bfc3;letter-spacing:.02em}
 .mt{margin-top:22px}
+.cta .gtee-line{margin-top:16px;font-size:11pt;font-weight:600;color:#fff}
+.cta .gtee-line span{color:#ffd7db}
