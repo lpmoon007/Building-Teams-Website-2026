@@ -89,7 +89,7 @@
       <div class="trust-inline"><span class="stars">★★★★★</span> <strong style="color:var(--ink)">4.76/5</strong> from participants</div>
     </div>
     <div class="hero-media">
-      <img fetchpriority="high" width="1600" height="1200" class="main" src="assets/photos/conference-build.jpg" alt="Hundreds of conference attendees building at tables during a Building Teams general-session activity" />
+      <img fetchpriority="high" width="1280" height="853" class="main" src="assets/gallery/scale/IMG_5000.JPG" alt="A team holding up a finished bike they built, with a huge convention-hall general session behind them" />
       <div class="stat-float sf-1"><b>Up to 5,000</b><span>in one general session</span></div>
       <div class="stat-float sf-2"><b>500,000+</b><span>participants since 2003</span></div>
     </div>
@@ -161,6 +161,21 @@
       </div>
       <div class="img"><img width="810" height="535" src="assets/photos/kids-running.jpg" alt="Children celebrating after receiving bikes built at a conference" /></div>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:0" aria-label="Photo gallery">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;max-width:640px;margin:0 auto 22px"><span class="eyebrow" style="display:block">At general-session scale</span><h2 style="font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,34px);letter-spacing:-0.02em;margin:8px 0">Thousands of people, one room, one goal.</h2></div>
+    <div class="gallery" id="conf-gallery">
+      <button type="button" data-full="assets/gallery/scale/davita_bikes_008.jpg"><img width="810" height="540" loading="lazy" src="assets/gallery/scale/davita_bikes_008.jpg" alt="Hundreds of attendees on a convention-center floor during a Building Teams general session" /></button>
+      <button type="button" data-full="assets/gallery/scale/IMG_5669.JPG"><img width="1280" height="853" loading="lazy" src="assets/gallery/scale/IMG_5669.JPG" alt="A large corporate group building bikes at a conference general session" /></button>
+      <button type="button" data-full="assets/gallery/scale/davita_bikes_006.jpg"><img width="810" height="540" loading="lazy" src="assets/gallery/scale/davita_bikes_006.jpg" alt="A packed conference hall set up for a large-scale give-back build" /></button>
+      <button type="button" data-full="assets/gallery/scale/IMG_5036.JPG"><img width="1280" height="853" loading="lazy" src="assets/gallery/scale/IMG_5036.JPG" alt="Teams assembling bikes across a conference general session" /></button>
+      <button type="button" data-full="assets/gallery/scale/davita_bikes_012.jpg"><img width="810" height="540" loading="lazy" src="assets/gallery/scale/davita_bikes_012.jpg" alt="Thousands of participants at a record-scale Building Teams event" /></button>
+      <button type="button" data-full="assets/gallery/scale/IMG_5025.JPG"><img width="1280" height="853" loading="lazy" src="assets/gallery/scale/IMG_5025.JPG" alt="A corporate team building bikes together at a large conference" /></button>
+    </div>
+    <div style="text-align:center;margin-top:16px"><a class="btn btn-ghost" href="Gallery.html">See the full photo gallery <span class="arr">&rarr;</span></a></div>
   </div>
 </section>
 
@@ -271,6 +286,25 @@
 })();
 </script>
 <div class="mcta" aria-label="Quick contact"><a class="mcta-call" href="tel:800-513-8759"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg>Call</a><a class="mcta-prop" href="Contact.html">Get a proposal</a></div>
+<script>
+(function(){
+  var g=document.getElementById('conf-gallery'); if(!g)return;
+  var btns=[].slice.call(g.querySelectorAll('button'));
+  var lb=document.createElement('div'); lb.className='lightbox'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true'); lb.setAttribute('aria-label','Photo viewer');
+  lb.innerHTML='<button class="lb-btn lb-close" aria-label="Close">×</button><button class="lb-btn lb-prev" aria-label="Previous photo">‹</button><img alt="" /><button class="lb-btn lb-next" aria-label="Next photo">›</button><div class="lb-count"></div>';
+  document.body.appendChild(lb);
+  var im=lb.querySelector('img'), cnt=lb.querySelector('.lb-count'), i=0;
+  function show(n){i=(n+btns.length)%btns.length;var b=btns[i];im.src=b.dataset.full;im.alt=b.querySelector('img').alt;cnt.textContent=(i+1)+' / '+btns.length;}
+  function open(n){show(n);lb.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open');document.body.style.overflow='';}
+  btns.forEach(function(b,idx){b.addEventListener('click',function(){open(idx);});});
+  lb.querySelector('.lb-close').addEventListener('click',close);
+  lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(i-1);});
+  lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(i+1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(i-1);else if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
 <script src="assets/lm-slide.js" defer></script>
 <!-- LinkedIn Insight Tag -->
 <script type="text/javascript">_linkedin_partner_id="500861035";window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
