@@ -49,6 +49,15 @@
   .fcard p{font-size:15px;line-height:1.55;color:var(--slate)}
   .art-faq{max-width:820px;margin-top:24px}
   .art-faq h2{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-0.02em;margin-bottom:16px}
+  .cc-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:760px;margin:6px 0 2px}
+  .cc-photos figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--mist)}
+  .cc-photos img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+  .cc-cap{font-size:13.5px;color:var(--slate);margin:10px 0 0;max-width:760px}
+  @media(max-width:620px){.cc-photos{grid-template-columns:1fr 1fr}}
+  .actnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .actnav a{font-family:var(--display);font-weight:600;font-size:13px;color:var(--brand-2);border:1px solid var(--line);border-radius:100px;padding:8px 16px;transition:.16s}
+  .actnav a:hover{border-color:var(--brand-2)}
+  .actnav a[aria-current]{background:var(--brand-2);color:#fff;border-color:transparent}
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png" />
@@ -98,6 +107,13 @@
     <span class="eyebrow">Give-back activity · On the customer</span>
     <h1>They build a cart. A child gets the care.</h1>
     <p>Teams build and fill carts with goodies &mdash; working hard without quite knowing why, or for whom. Then the recipients are revealed: children in a hospital ward. It turns a good team building day into one people never forget.</p>
+    <div class="actnav">
+      <a href="Bike Build Team Building.html">Bike Build</a>
+      <a href="Housewarming.html">Housewarming</a>
+      <a href="Skateboard Team Building.html">Get On Board</a>
+      <a href="Shoe Build Team Building.html">Sole Purpose</a>
+      <a href="Care Cart Team Building.html" aria-current="page">Care Cart</a>
+    </div>
   </div>
 </section>
 
@@ -118,9 +134,16 @@
       <div class="lab">What it is</div>
       <p>A fun, interactive give-back event &mdash; originally built for healthcare organizations &mdash; where each team builds a Care Cart and stuffs it with goodies. At the end, the &ldquo;real&rdquo; customers are revealed to cheers, and every cart goes to a children&rsquo;s hospital ward or a local children&rsquo;s organization. Giving your people a shared act of generosity lifts a standard team building day to something most have never felt.</p>
     </div>
+    <div class="cc-photos">
+      <figure><img width="250" height="239" loading="lazy" src="assets/gallery/care-cart/care-cart-team.jpg" alt="A team beside a finished, decorated Care Cart stocked with toys and games" /></figure>
+      <figure><img width="288" height="407" loading="lazy" src="assets/gallery/care-cart/care-cart-filled.jpg" alt="A completed Care Cart filled with books, games and toys for a children's ward" /></figure>
+      <figure><img width="252" height="216" loading="lazy" src="assets/gallery/care-cart/care-cart-donation.jpg" alt="Participants stocking a Care Cart to donate to children in need" /></figure>
+    </div>
+    <p class="cc-cap">Real Care Carts, built and stocked by corporate teams and donated to children&rsquo;s wards.</p>
     <div class="sbody">
       <h2>How it works</h2>
       <p>The setup is simple &mdash; usually a hotel or meeting-center conference room. Teams assemble and stock their carts through a facilitated experience designed to inspire and motivate. The more participants, the more carts; the more carts, the more building, interaction and impact. Then comes the reveal, which reconnects everyone to the customer they serve and the difference they can make.</p>
+      <p>It scales from a boardroom of executives to thousands on a general-session floor. We&rsquo;ve run Care Cart for 300+ people at a healthcare company&rsquo;s retreat, rotating teams through the cart build alongside other challenges &mdash; the more people in the room, the bigger the reveal.</p>
 
       <h2>Who it&rsquo;s built for</h2>
       <p>Like all our programs, Care Cart is tailored to your group &mdash; the curriculum flexes to the situation each of these audiences is facing:</p>
