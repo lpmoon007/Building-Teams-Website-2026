@@ -35,9 +35,9 @@
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-label', 'Free resource');
     el.innerHTML =
-      '<button class="lm-slide-x" aria-label="Dismiss">×</button>' +
+      '<button class="lm-slide-x" aria-label="Dismiss">\u00d7</button>' +
       '<div class="k"></div><div class="t"></div><p></p>' +
-      '<a class="btn" href="' + kit.href + '">Get it free →</a>';
+      '<a class="btn" href="' + kit.href + '">Get it free \u2192</a>';
     el.querySelector('.k').textContent = kit.k;
     el.querySelector('.t').textContent = kit.t;
     el.querySelector('p').textContent = kit.p;
