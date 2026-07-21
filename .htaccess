@@ -36,6 +36,13 @@ RewriteEngine On
   AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
 
+# ----- Force UTF-8 -----
+# The pages are authored in UTF-8 (em dashes, middots, arrows, curly quotes).
+# Without this, the server can send a Content-Type charset that OVERRIDES the
+# page's <meta charset> and renders those as mojibake (— becomes "â€"", etc.).
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js
+
 # ----- Canonical host + HTTPS (matches https://www. canonicals) -----
 # Force HTTPS
 RewriteCond %{HTTPS} off
