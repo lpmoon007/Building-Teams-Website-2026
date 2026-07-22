@@ -44,6 +44,8 @@ const EXCLUDE = new Set([
   'Spam Cleanup Checklist.html',
   'Launch & Growth Plan.html',
   'State of Team Building 2026-print.html',
+  'Operation You Matter Mission Specs.html',
+  'doc-page.js',
 ]);
 
 // Non-page top-level files copied verbatim into dist/ root.
