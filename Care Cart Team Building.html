@@ -54,6 +54,12 @@
   .cc-photos img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;display:block}
   .cc-cap{font-size:13.5px;color:var(--slate);margin:10px 0 0;max-width:760px}
   @media(max-width:620px){.cc-photos{grid-template-columns:1fr 1fr}}
+  .cc-hero{background:linear-gradient(180deg,var(--mist),var(--paper));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0 22px}
+  .cc-hero .row{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .cc-hero figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(21,23,28,.09)}
+  .cc-hero img{display:block;height:240px;width:auto;max-width:100%}
+  .cc-hero .cap{text-align:center;font-size:13.5px;color:var(--slate);margin:16px auto 0;max-width:640px}
+  @media(max-width:640px){.cc-hero img{height:170px}}
   .actnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
   .actnav a{font-family:var(--display);font-weight:600;font-size:13px;color:var(--brand-2);border:1px solid var(--line);border-radius:100px;padding:8px 16px;transition:.16s}
   .actnav a:hover{border-color:var(--brand-2)}
@@ -117,13 +123,14 @@
   </div>
 </section>
 
-<section style="padding-top:0">
+<section class="cc-hero" aria-label="Care Cart photos">
   <div class="wrap">
-    <div class="actvid vfacade" data-id="BkeqT3FN8HU">
-      <img src="https://i.ytimg.com/vi/BkeqT3FN8HU/hqdefault.jpg" alt="A give-back team building experience — Building Teams video" loading="lazy" width="1280" height="720" />
-      <div class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="vlabel"><div class="k">Watch</div><div class="t">A give-back team building experience</div></div>
+    <div class="row">
+      <figure><img fetchpriority="high" width="250" height="239" src="assets/gallery/care-cart/care-cart-team.jpg" alt="A team beside a finished, decorated Care Cart stocked with toys and games" /></figure>
+      <figure><img width="288" height="407" src="assets/gallery/care-cart/care-cart-filled.jpg" alt="A completed Care Cart filled with books, games and toys for a children's ward" /></figure>
+      <figure><img width="252" height="216" src="assets/gallery/care-cart/care-cart-donation.jpg" alt="Participants stocking a Care Cart to donate to children in need" /></figure>
     </div>
+    <p class="cap">Real Care Carts &mdash; built and stocked by corporate teams, then revealed and donated to children&rsquo;s hospital wards.</p>
   </div>
 </section>
 
@@ -134,12 +141,6 @@
       <div class="lab">What it is</div>
       <p>A fun, interactive give-back event &mdash; originally built for healthcare organizations &mdash; where each team builds a Care Cart and stuffs it with goodies. At the end, the &ldquo;real&rdquo; customers are revealed to cheers, and every cart goes to a children&rsquo;s hospital ward or a local children&rsquo;s organization. Giving your people a shared act of generosity lifts a standard team building day to something most have never felt.</p>
     </div>
-    <div class="cc-photos">
-      <figure><img width="250" height="239" loading="lazy" src="assets/gallery/care-cart/care-cart-team.jpg" alt="A team beside a finished, decorated Care Cart stocked with toys and games" /></figure>
-      <figure><img width="288" height="407" loading="lazy" src="assets/gallery/care-cart/care-cart-filled.jpg" alt="A completed Care Cart filled with books, games and toys for a children's ward" /></figure>
-      <figure><img width="252" height="216" loading="lazy" src="assets/gallery/care-cart/care-cart-donation.jpg" alt="Participants stocking a Care Cart to donate to children in need" /></figure>
-    </div>
-    <p class="cc-cap">Real Care Carts, built and stocked by corporate teams and donated to children&rsquo;s wards.</p>
     <div class="sbody">
       <h2>How it works</h2>
       <p>The setup is simple &mdash; usually a hotel or meeting-center conference room. Teams assemble and stock their carts through a facilitated experience designed to inspire and motivate. The more participants, the more carts; the more carts, the more building, interaction and impact. Then comes the reveal, which reconnects everyone to the customer they serve and the difference they can make.</p>
