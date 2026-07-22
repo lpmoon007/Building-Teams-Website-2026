@@ -37,6 +37,8 @@ const LABELS = {
   'conference': 'Conference',
   'executive': 'Executive',
   'operation-you-matter': 'Operation You Matter',
+  '60-seconds-to-give': '60 Seconds to Give',
+  'children': 'Kids We Serve',
 };
 const ORDER = ['bike-build', 'housewarming', 'skateboard-build', 'shoe-build', 'scale', 'reveals', 'conference', 'executive', 'care-cart', 'operation-you-matter'];
 
