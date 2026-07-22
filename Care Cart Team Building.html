@@ -54,12 +54,9 @@
   .cc-photos img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;display:block}
   .cc-cap{font-size:13.5px;color:var(--slate);margin:10px 0 0;max-width:760px}
   @media(max-width:620px){.cc-photos{grid-template-columns:1fr 1fr}}
-  .cc-hero{background:linear-gradient(180deg,var(--mist),var(--paper));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0 22px}
-  .cc-hero .row{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
-  .cc-hero figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(21,23,28,.09)}
-  .cc-hero img{display:block;height:240px;width:auto;max-width:100%}
-  .cc-hero .cap{text-align:center;font-size:13.5px;color:var(--slate);margin:16px auto 0;max-width:640px}
-  @media(max-width:640px){.cc-hero img{height:170px}}
+  .cc-heroimg{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(21,23,28,.10)}
+  .cc-heroimg img{display:block;width:100%;height:auto}
+  .cc-cap2{text-align:center;font-size:13.5px;color:var(--slate);margin:14px auto 0;max-width:680px}
   .actnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
   .actnav a{font-family:var(--display);font-weight:600;font-size:13px;color:var(--brand-2);border:1px solid var(--line);border-radius:100px;padding:8px 16px;transition:.16s}
   .actnav a:hover{border-color:var(--brand-2)}
@@ -123,14 +120,12 @@
   </div>
 </section>
 
-<section class="cc-hero" aria-label="Care Cart photos">
+<section style="padding-top:0">
   <div class="wrap">
-    <div class="row">
-      <figure><img fetchpriority="high" width="250" height="239" src="assets/gallery/care-cart/care-cart-team.jpg" alt="A team beside a finished, decorated Care Cart stocked with toys and games" /></figure>
-      <figure><img width="288" height="407" src="assets/gallery/care-cart/care-cart-filled.jpg" alt="A completed Care Cart filled with books, games and toys for a children's ward" /></figure>
-      <figure><img width="252" height="216" src="assets/gallery/care-cart/care-cart-donation.jpg" alt="Participants stocking a Care Cart to donate to children in need" /></figure>
-    </div>
-    <p class="cap">Real Care Carts &mdash; built and stocked by corporate teams, then revealed and donated to children&rsquo;s hospital wards.</p>
+    <figure class="cc-heroimg">
+      <img fetchpriority="high" width="1672" height="941" src="assets/gallery/care-cart/care cart build dallas.png" alt="Dozens of corporate teams painting, decorating and stocking Care Carts in a hotel ballroom" />
+    </figure>
+    <p class="cc-cap2">A room full of teams building painted Care Carts &mdash; every one stocked with books, games and toys, then donated to children in need.</p>
   </div>
 </section>
 
@@ -160,6 +155,20 @@
 
       <h2>What it costs</h2>
       <p>Care Cart flexes on group size, format, location and the goods donated, so there&rsquo;s no flat rate. Tell us who your team is and what you want them to feel, and we&rsquo;ll scope it with you. <a href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener" style="color:var(--brand-2);font-weight:600">Book a call</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:8px 0 0" aria-label="Photo gallery">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;max-width:640px;margin:0 auto 22px"><span class="eyebrow" style="display:block">From real events</span><h2 style="font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,34px);letter-spacing:-0.02em;margin:8px 0">Carts built, decorated and donated.</h2></div>
+    <div class="gallery" id="cc-gallery">
+      <button type="button" data-full="assets/gallery/care-cart/care cart build denver.png"><img width="1448" height="1086" loading="lazy" src="assets/gallery/care-cart/care cart build denver.png" alt="A corporate team decorating a Care Cart in Denver" /></button>
+      <button type="button" data-full="assets/gallery/care-cart/care cart build lawn.png"><img width="1672" height="941" loading="lazy" src="assets/gallery/care-cart/care cart build lawn.png" alt="Teams building Care Carts outdoors on a lawn" /></button>
+      <button type="button" data-full="assets/gallery/care-cart/care cart decoration.png"><img width="1672" height="941" loading="lazy" src="assets/gallery/care-cart/care cart decoration.png" alt="A large outdoor Care Cart event at golden hour with dozens of decorated carts" /></button>
+      <button type="button" data-full="assets/gallery/care-cart/care cart phoenix.png"><img width="1448" height="1086" loading="lazy" src="assets/gallery/care-cart/care cart phoenix.png" alt="A Care Cart team building event in Phoenix" /></button>
+      <button type="button" data-full="assets/gallery/care-cart/IMG_1437.jpg"><img width="1024" height="768" loading="lazy" src="assets/gallery/care-cart/IMG_1437.jpg" alt="A finished, decorated Care Cart stocked for a children's ward" /></button>
+      <button type="button" data-full="assets/gallery/care-cart/care-cart-team.jpg"><img width="250" height="239" loading="lazy" src="assets/gallery/care-cart/care-cart-team.jpg" alt="A team beside an early Care Cart stocked with toys and games" /></button>
     </div>
   </div>
 </section>
@@ -265,6 +274,25 @@
 </script>
 <div class="mcta" aria-label="Quick contact"><a class="mcta-call" href="tel:800-513-8759"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg>Call</a><a class="mcta-prop" href="Contact.html">Get a proposal</a></div>
 <script>(function(){document.querySelectorAll('.actvid').forEach(function(f){f.setAttribute('role','button');f.setAttribute('tabindex','0');var _l=(f.querySelector('.vlabel .t')||{}).textContent;f.setAttribute('aria-label',_l?'Play video: '+_l.trim():'Play video');f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f.click();}});f.addEventListener('click',function(){if(f.querySelector('iframe'))return;var ifr=document.createElement('iframe');ifr.src='https://www.youtube-nocookie.com/embed/'+f.dataset.id+'?autoplay=1&rel=0';ifr.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';ifr.allowFullscreen=true;ifr.title='Building Teams video';f.classList.add('playing');f.appendChild(ifr);});});})();</script>
+<script>
+(function(){
+  var g=document.getElementById('cc-gallery'); if(!g)return;
+  var btns=[].slice.call(g.querySelectorAll('button'));
+  var lb=document.createElement('div'); lb.className='lightbox'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true'); lb.setAttribute('aria-label','Photo viewer');
+  lb.innerHTML='<button class="lb-btn lb-close" aria-label="Close">×</button><button class="lb-btn lb-prev" aria-label="Previous photo">‹</button><img alt="" /><button class="lb-btn lb-next" aria-label="Next photo">›</button><div class="lb-count"></div>';
+  document.body.appendChild(lb);
+  var im=lb.querySelector('img'), cnt=lb.querySelector('.lb-count'), i=0;
+  function show(n){i=(n+btns.length)%btns.length;var b=btns[i];im.src=b.dataset.full;im.alt=b.querySelector('img').alt;cnt.textContent=(i+1)+' / '+btns.length;}
+  function open(n){show(n);lb.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open');document.body.style.overflow='';}
+  btns.forEach(function(b,idx){b.addEventListener('click',function(){open(idx);});});
+  lb.querySelector('.lb-close').addEventListener('click',close);
+  lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(i-1);});
+  lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(i+1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(i-1);else if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
 <script src="assets/lm-slide.js" defer></script>
 <!-- LinkedIn Insight Tag -->
 <script type="text/javascript">_linkedin_partner_id="500861035";window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
