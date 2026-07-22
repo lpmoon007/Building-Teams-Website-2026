@@ -36,7 +36,7 @@ const LABELS = {
   'reveals': 'The Reveals',
   'conference': 'Conference',
   'executive': 'Executive',
-  'operation-you-matter': 'Operation: You Matter',
+  'operation-you-matter': 'Operation You Matter',
 };
 const ORDER = ['bike-build', 'housewarming', 'skateboard-build', 'shoe-build', 'scale', 'reveals', 'conference', 'executive', 'care-cart', 'operation-you-matter'];
 
@@ -81,9 +81,21 @@ async function processImage(abs) {
   const items = [];
   let total = 0;
 
+  // Collect image paths relative to a category dir, recursing one+ levels into
+  // any mission/sub-folders (e.g. operation-you-matter/<mission>/photo.png).
+  function collect(dir, rel = '') {
+    const out = [];
+    for (const e of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      const r = rel ? rel + '/' + e.name : e.name;
+      if (e.isDirectory()) out.push(...collect(path.join(dir, e.name), r));
+      else if (IMG_RE.test(e.name)) out.push(r);
+    }
+    return out;
+  }
+
   for (const cat of cats) {
     const dir = path.join(GAL, cat);
-    const files = fs.readdirSync(dir).filter((f) => IMG_RE.test(f)).sort();
+    const files = collect(dir);
     if (!files.length) continue;
     const label = LABELS[cat] || cat.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
     tabs.push(`<button class="gtab" data-cat="${cat}" type="button">${esc(label)} <span>${files.length}</span></button>`);
@@ -91,7 +103,7 @@ async function processImage(abs) {
       const abs = path.join(dir, f);
       const { w, h } = await processImage(abs);
       const src = `assets/gallery/${cat}/${f}`;        // literal spaces OK; build wraps <picture>
-      const alt = altFor(f, label);
+      const alt = altFor(path.basename(f), label);
       items.push(
         `      <button type="button" class="gcell" data-cat="${cat}" data-full="${esc(src)}">` +
         `<img width="${w}" height="${h}" loading="lazy" src="${esc(src)}" alt="${esc(alt)}" /></button>`
