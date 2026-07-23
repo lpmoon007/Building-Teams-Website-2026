@@ -40,6 +40,18 @@
   .xp-jump a{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:0.02em;color:#e7e9ed;border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:8px 15px;transition:.16s}
   .xp-jump a:hover{border-color:#ff9b88;color:#ff9b88}
 
+  /* hero video facade */
+  .actvid{position:relative;border-radius:18px;overflow:hidden;cursor:pointer;background:var(--ink);aspect-ratio:16/9;box-shadow:0 24px 60px rgba(0,0,0,0.18)}
+  .actvid img{width:100%;height:100%;object-fit:cover;display:block}
+  .actvid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;transition:.18s;box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+  .actvid .play svg{width:34px;height:34px;fill:var(--ink);margin-left:4px}
+  .actvid:hover .play{background:#ff9b88;transform:translate(-50%,-50%) scale(1.06)}
+  .actvid .vlabel{position:absolute;left:0;right:0;bottom:0;padding:24px 26px 20px;background:linear-gradient(to top,rgba(0,0,0,0.72),transparent);color:#fff}
+  .actvid .vlabel .k{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#ff9b88}
+  .actvid .vlabel .t{font-family:var(--display);font-weight:600;font-size:19px;margin-top:3px}
+  .actvid.playing .play,.actvid.playing .vlabel,.actvid.playing img{display:none}
+  .actvid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
   /* virtual section */
   .vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
   @media(max-width:760px){.vid-grid{grid-template-columns:1fr}}
@@ -162,8 +174,8 @@
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="actvid vfacade" data-id="aNaJ-5U1MR0">
-      <img src="https://i.ytimg.com/vi/aNaJ-5U1MR0/hqdefault.jpg" alt="Building Teams — an overview — Building Teams video" loading="lazy" width="1280" height="720" />
+    <div class="actvid vfacade" data-id="BkeqT3FN8HU">
+      <img src="https://i.ytimg.com/vi/BkeqT3FN8HU/maxresdefault.jpg" alt="Building Teams give-back experiences — overview video" loading="lazy" width="1280" height="720" />
       <div class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="vlabel"><div class="k">Watch</div><div class="t">Building Teams — an overview</div></div>
     </div>

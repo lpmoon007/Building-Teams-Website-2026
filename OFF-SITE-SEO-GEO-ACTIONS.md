@@ -51,7 +51,7 @@ Teamland, BestCorporateEvents) live on these lists; you should too.
 - [ ] **Unlinked brand mentions** — search `"Building Teams"` / `"Be Legendary"` (in quotes) and find pages that mention you without linking; ask for the link.
 - [ ] **Charity-partner links** — every local charity you build bikes/shoes for is a natural, high-trust backlink. Ask each to link to buildingteams.com from their partners/sponsors page.
 - [ ] **Client CSR/press pages** — clients that write up their give-back event can link to you.
-- [ ] **Sister sites** — sensible cross-links among buildingteams.com, belegendary.org, and legendary-retreats.com (already referenced in schema `sameAs`).
+- [ ] **Sister sites** — sensible cross-links between buildingteams.com and belegendary.org (legendary-retreats.com folded into belegendary.org; already referenced in schema `sameAs`).
 - [ ] **Link gap analysis** — export competitors' backlinks (Ahrefs/SEMrush) and target domains that link to them but not you. *(Bring the export next session and I'll build the target list.)*
 
 ---

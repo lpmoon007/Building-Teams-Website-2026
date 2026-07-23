@@ -65,7 +65,7 @@ ErrorDocument 404 /404.html
 # ----- Cross-brand move: Off-Road Immersion -> Be Legendary (executive retreat) -----
 # This premium, Colorado-only, James-led leadership experience now lives on the
 # executive brand. 301 the old give-back-hub URL to its new home.
-RewriteRule ^experiences/off-road-immersion/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,L]
+RewriteRule ^experiences/off-road-immersion(/index\.html)?/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
 
 # ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
 # Every /news/* URL on the old site was injected casino/essay/pharma spam.
@@ -197,7 +197,7 @@ RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /team-building-workshops/ [R=301,NC,L]
 RewriteRule ^Adventure_Teambuilding/corporate_sailing(_shackletons_adventure)?\.htm/?$ /experiences/corporate-sailing/ [R=301,NC,L]
-RewriteRule ^Adventure_Teambuilding/[a-z_]*off[-_]?road[a-z_]*\.htm/?$ /experiences/off-road-immersion/ [R=301,NC,L]
+RewriteRule ^Adventure_Teambuilding/[a-z_]*off[-_]?road[a-z_]*\.htm/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
 RewriteRule (^|/)corporate_orienteering\.htm/?$ /experiences/team-orienteering/ [R=301,NC,L]
 RewriteRule ^workshops/two-hour-team-building-workshops/what-is-wrong-with-you/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ / [R=301,NC,L]
@@ -206,7 +206,7 @@ RewriteRule ^i/shack1\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^location/los-angeles/?$ /locations/los-angeles/ [R=301,NC,L]
 # Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
 RewriteRule ^location/([^/]+) /locations/$1/ [R=301,NC,L]
-RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ /experiences/off-road-immersion/ [R=301,NC,L]
+RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
 RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /effective-facilitation-workshop/ [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ / [R=301,NC,L]
