@@ -203,9 +203,10 @@ RewriteRule ^workshops/two-hour-team-building-workshops/what-is-wrong-with-you/?
 RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ /executive-team-building/ [R=301,NC,L]
 RewriteRule ^i/shack1\.jpg/?$ / [R=301,NC,L]
-RewriteRule ^location/los-angeles/?$ /locations/los-angeles/ [R=301,NC,L]
 # Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
-RewriteRule ^location/([^/]+) /locations/$1/ [R=301,NC,L]
+# Anchored with /?$ so "/location/boston/" maps to exactly "/locations/boston/"
+# (an unanchored pattern appends the trailing slash and produces "//").
+RewriteRule ^location/([^/]+)/?$ /locations/$1/ [R=301,NC,L]
 RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
 RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /effective-facilitation-workshop/ [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
