@@ -62,6 +62,11 @@ DirectoryIndex index.html
 # Custom error page
 ErrorDocument 404 /404.html
 
+# ----- Cross-brand move: Off-Road Immersion -> Be Legendary (executive retreat) -----
+# This premium, Colorado-only, James-led leadership experience now lives on the
+# executive brand. 301 the old give-back-hub URL to its new home.
+RewriteRule ^experiences/off-road-immersion/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,L]
+
 # ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
 # Every /news/* URL on the old site was injected casino/essay/pharma spam.
 RewriteRule ^news/ - [G,NC,L]

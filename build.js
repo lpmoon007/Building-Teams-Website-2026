@@ -46,6 +46,7 @@ const EXCLUDE = new Set([
   'State of Team Building 2026-print.html',
   'Operation You Matter Mission Specs.html',
   'doc-page.js',
+  'Off Road Immersion Team Building.html', // moved to belegendary.org (301 in .htaccess)
 ]);
 
 // Non-page top-level files copied verbatim into dist/ root.
