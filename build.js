@@ -181,6 +181,11 @@ function wrapPictures(html, webpSet) {
     const m = tag.match(/\bsrc=("|')([^"']+)\1/i);
     if (!m) return tag;
     const src = m[2];
+    // Logos ship as plain <img>: they're tiny (WebP saves ~nothing) and the
+    // <picture>/WebP path was failing to render some client logos on the
+    // server, leaving the social-proof strip half-blank. Plain <img> is proven
+    // to render, so skip wrapping anything under /assets/logos/.
+    if (/\/assets\/logos\//i.test(src)) return tag;
     const mm = src.match(/^(\/assets\/.+)\.(jpe?g|png)$/i);
     if (!mm) return tag;
     const webp = mm[1] + '.webp';
