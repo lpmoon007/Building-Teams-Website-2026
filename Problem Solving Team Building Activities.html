@@ -167,7 +167,7 @@
 <h2>Bring these to your team</h2>
 <p>Any of these can be run in-house with the free guide, or we can facilitate them for you and combine several into a focused workshop &mdash; every exercise tied back to the real problems your team is trying to crack. Tell us what you want your people to get better at, and we&rsquo;ll build the session around it.</p>
     <div class="a-cta">
-      <a class="btn btn-primary" href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener">Book a call &rarr;</a>
+      <a class="btn btn-primary" href="Contact.html#book" target="_blank" rel="noopener">Book a call &rarr;</a>
       <a class="btn btn-ghost" href="Team Building Activities Library.html">Browse the full library</a>
     </div>
     <div class="a-rel"><h3>Related</h3><ul><li><a href="Team Building Activities Library.html">The full activity library</a></li><li><a href="Communication Team Building Activities.html">Communication activities</a></li></ul></div>
@@ -198,7 +198,7 @@
       </div>
       <div><h2 class="fh">What we do</h2><ul><li><a href="Corporate Team Building Services.html">Services</a></li><li><a href="Experiences.html">Experiences</a></li><li><a href="Programs.html">Programs</a></li><li><a href="Team Building Workshops.html">Workshops</a></li><li><a href="Team Coaching.html">Team Coaching</a></li><li><a href="Team LFS.html">Team LFS</a></li><li><a href="Executive Team Building.html">Executive</a></li><li><a href="Conference Team Building.html">Conference</a></li><li><a href="Corporate Team Building Events.html">Events</a></li><li><a href="Virtual Hybrid Team Building.html">Virtual &amp; Hybrid</a></li><li><a href="Charity Team Building.html">Charity / CSR</a></li><li><a href="Operation You Matter.html">Operation You Matter</a></li></ul></div>
       <div><h2 class="fh">Explore</h2><ul><li><a href="Case Studies.html">Case Studies</a></li><li><a href="Customers.html">Customers</a></li><li><a href="Resources.html">Resources</a></li><li><a href="Team Building Activities Library.html">Free Activity Library</a></li><li><a href="Locations.html">Locations</a></li></ul></div>
-      <div><h2 class="fh">Company</h2><ul><li><a href="About.html">About</a></li><li><a href="Contact.html">Contact</a></li><li><a href="tel:800-513-8759">800-513-8759</a></li><li><a href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener">Book a call</a></li></ul></div>
+      <div><h2 class="fh">Company</h2><ul><li><a href="About.html">About</a></li><li><a href="Contact.html">Contact</a></li><li><a href="tel:800-513-8759">800-513-8759</a></li><li><a href="Contact.html#book" target="_blank" rel="noopener">Book a call</a></li></ul></div>
     </div>
     <div class="legal"><span>&copy; 2026 Be Legendary &middot; Building Teams. All rights reserved.</span><span><a href="Privacy Policy.html">Privacy</a> &middot; <a href="Terms of Use.html">Terms</a></span><span><a href="https://www.facebook.com/belegendary">Facebook</a> &middot; <a href="https://twitter.com/belegendary">X / Twitter</a></span></div>
   </div>
@@ -212,7 +212,7 @@
     var a=e.target.closest?e.target.closest('a'):null;
     if(!a||typeof gtag!=='function')return;
     var href=a.getAttribute('href')||'';
-    if(/hubspot\.com/i.test(href)){
+    if(/hubspot\.com/i.test(href)||/#book/.test(href)){
       gtag('event','book_a_call',{link_url:href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,60)});
     }else if(/^tel:/i.test(href)){
       gtag('event','phone_click',{link_url:href,page_path:location.pathname});

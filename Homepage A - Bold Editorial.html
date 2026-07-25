@@ -217,7 +217,7 @@
       <h1 id="h1" class="disp">Be<br /><em>Legendary.</em></h1>
       <p class="hero-sub">Team building for <b style="color:var(--paper)">5 to 5,000</b> people that changes your team while it changes the world. Every event is philanthropic — your people build bikes, boards and shoes for kids who need them.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener">Book a call <span class="arr">→</span></a>
+        <a class="btn btn-primary" href="Contact.html#book" target="_blank" rel="noopener">Book a call <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="#experiences">See the experiences</a>
       </div>
     </div>
@@ -319,7 +319,7 @@
       <h2 class="disp">Let’s build<br />something legendary.</h2>
       <p>Tell us about your team and your goals. We’ll design an event your people — and a community of kids — will never forget.</p>
       <div class="row">
-        <a class="btn btn-primary" href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener">Book a call <span class="arr">→</span></a>
+        <a class="btn btn-primary" href="Contact.html#book" target="_blank" rel="noopener">Book a call <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="Contact.html">Request a proposal</a>
       </div>
     </div>
@@ -337,7 +337,7 @@
       </div>
       <div><h4>Team Building</h4><ul><li><a href="Conference Team Building.html">Conference</a></li><li><a href="Executive Team Building.html">Executive</a></li><li><a href="Charity Team Building.html">Charity / CSR</a></li><li><a href="#experiences">Workshops</a></li></ul></div>
       <div><h2 class="fh">Company</h2><ul><li><a href="#">About Us</a></li><li><a href="#book">Contact</a></li><li><a href="#services">Locations</a></li><li><a href="#">Blog</a></li></ul></div>
-      <div><h4>Talk to us</h4><ul><li><a href="tel:800-513-8759">800-513-8759</a></li><li><a href="https://meetings-na2.hubspot.com/jcarter28" target="_blank" rel="noopener">Book a call</a></li><li><a href="https://www.facebook.com/belegendary">Facebook</a></li><li><a href="https://twitter.com/belegendary">X / Twitter</a></li></ul></div>
+      <div><h4>Talk to us</h4><ul><li><a href="tel:800-513-8759">800-513-8759</a></li><li><a href="Contact.html#book" target="_blank" rel="noopener">Book a call</a></li><li><a href="https://www.facebook.com/belegendary">Facebook</a></li><li><a href="https://twitter.com/belegendary">X / Twitter</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 Be Legendary · Building Teams. All rights reserved.</span><span>Direction A — Bold Editorial</span></div>
   </div>
@@ -351,7 +351,7 @@
     var a=e.target.closest?e.target.closest('a'):null;
     if(!a||typeof gtag!=='function')return;
     var href=a.getAttribute('href')||'';
-    if(/hubspot\.com/i.test(href)){
+    if(/hubspot\.com/i.test(href)||/#book/.test(href)){
       gtag('event','book_a_call',{link_url:href,page_path:location.pathname,link_text:(a.textContent||'').trim().slice(0,60)});
     }else if(/^tel:/i.test(href)){
       gtag('event','phone_click',{link_url:href,page_path:location.pathname});
