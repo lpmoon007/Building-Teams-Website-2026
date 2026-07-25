@@ -71,3 +71,64 @@
     if (!shown && document.documentElement.scrollHeight <= window.innerHeight * 1.3) build();
   }, 30000);
 })();
+
+/* Inline booking modal.
+   Any link whose href ends in "#book" opens the HubSpot scheduler in an
+   overlay on the current page instead of navigating away, so the
+   meetings-na2.hubspot.com subdomain never appears in the address bar.
+   The /contact/ page has the scheduler embedded inline (id="book"), so
+   there we let the native anchor scroll to it and skip the modal.
+   With JS off, the links still resolve to /contact/#book as a fallback. */
+(function () {
+  if (document.getElementById('book')) return;   // inline embed present (Contact) — scroll natively
+  var SRC = 'https://meetings-na2.hubspot.com/jcarter28?embed=true';
+  var built = false, modal;
+
+  function loadEmbed() {
+    var s = document.createElement('script');
+    s.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+    s.type = 'text/javascript';
+    document.body.appendChild(s);
+  }
+
+  function open() {
+    if (!built) {
+      built = true;
+      modal = document.createElement('div');
+      modal.className = 'book-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', 'Book a call');
+      modal.innerHTML =
+        '<div class="book-modal-box">' +
+          '<button class="book-modal-x" aria-label="Close">×</button>' +
+          '<div class="meetings-iframe-container" data-src="' + SRC + '"></div>' +
+        '</div>';
+      document.body.appendChild(modal);
+      modal.addEventListener('click', function (ev) {
+        if (ev.target === modal) close();
+      });
+      modal.querySelector('.book-modal-x').addEventListener('click', close);
+      loadEmbed();
+    }
+    modal.classList.add('in');
+    document.documentElement.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKey);
+  }
+
+  function close() {
+    if (modal) modal.classList.remove('in');
+    document.documentElement.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+  }
+  function onKey(ev) { if (ev.key === 'Escape') close(); }
+
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href]');
+    if (!a) return;
+    if (/#book$/.test(a.getAttribute('href') || '')) {
+      ev.preventDefault();
+      open();
+    }
+  });
+})();

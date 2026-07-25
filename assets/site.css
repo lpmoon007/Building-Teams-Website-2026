@@ -255,6 +255,16 @@ details p{color:var(--slate);font-size:16px;margin-top:13px;max-width:74ch}
 .lm-slide .btn:hover{background:var(--brand)}
 @media(max-width:819px){.lm-slide{right:12px;left:12px;bottom:84px;width:auto}}
 @media print{.lm-slide{display:none}}
+/* Inline booking modal (HubSpot scheduler overlay) */
+.book-modal{position:fixed;inset:0;z-index:120;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;background:rgba(21,23,28,.55);opacity:0;visibility:hidden;transition:opacity .25s ease;overflow-y:auto}
+.book-modal.in{opacity:1;visibility:visible}
+.book-modal-box{position:relative;width:100%;max-width:900px;background:#fff;border-radius:14px;box-shadow:0 30px 80px rgba(21,23,28,.35);padding:44px 20px 20px;transform:translateY(16px);transition:transform .25s ease}
+.book-modal.in .book-modal-box{transform:translateY(0)}
+.book-modal-box .meetings-iframe-container{min-height:640px}
+.book-modal-x{position:absolute;top:10px;right:10px;width:34px;height:34px;border:0;background:var(--mist);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;border-radius:8px}
+.book-modal-x:hover{background:var(--line)}
+@media(max-width:819px){.book-modal{padding:16px 8px}.book-modal-box{padding:40px 8px 12px}}
+@media print{.book-modal{display:none}}
 /* Related-guides cross-link block */
 .relguides{background:var(--mist);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .relguides h2{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-0.01em;margin:0 0 16px;color:var(--ink)}
