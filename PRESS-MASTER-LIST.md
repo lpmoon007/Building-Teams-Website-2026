@@ -54,7 +54,7 @@ indexed backlink: #5, #21, #22, #23.**
 | 25 | IRC (rescue.org) | "Building a Dream, One Bicycle at a Time" | — | (see #10) | see #10 | ♻️ DUPLICATE of #10 — DEAD path | Salal CU + Be Legendary |
 | 26 | Successful Meetings | Feature (bio: founder of Repario Ltd.) | Oct 2007 | *print — publisher was mimegasite.com (→ Northstar/MeetingsNet)* | n/a (print) | 🖨️ PRINT | "James Carter… founder of Repario Ltd." |
 | 27 | Nevada Business Report | "The Power of One" (Vol 1, Issue 13) | Apr 2007 | 🗂️ `/assets/press/nevada-business-report-the-power-of-one-2007.pdf` (orig. nevadabusinessreport.com — dead) | not in backlink index | 🗂️ **SELF-HOSTED PDF** (original dead) | Repario's James Carter & William Mariani; Building a Dream |
-| 28 | **SHRM / HR Magazine** | "Thwarting the Diversity Backlash" — by Martha Frase-Blunt | 6-01-2003 | 🗂️ `/assets/press/hr-magazine-thwarting-the-diversity-backlash-2003.pdf` (orig. shrm.org — dead) | not in backlink index | 🗂️ **SELF-HOSTED PDF** (original dead) — *placement TBD: fits belegendary.org (founder brand) better than BT give-back page* | **James Carter, head of The Carter Group Inc. — founder's FIRST company** |
+| 28 | **SHRM / HR Magazine** | "Thwarting the Diversity Backlash" — by Martha Frase-Blunt | 6-01-2003 | *(removed from BT — being placed on belegendary.org)* | not in backlink index | ➡️ **MOVED to belegendary.org** (off-theme for BT give-back page; founder/Carter-Group era) | **James Carter, head of The Carter Group Inc. — founder's FIRST company** |
 | 29 | Short Takes — Meetings West | Los Angeles / Repario Building a Dream note | Jan 2007 | (see #14) | see #14 | ♻️ DUPLICATE of #14 — DEAD | "Lake Tahoe, Nev.-based… Repario Ltd." |
 | 30 | Northern Nevada Business Weekly | "Team-building without eye-rolling" — by John Seelmeyer | 1-29-2007 | 🗂️ `/assets/press/nnbw-team-building-without-eye-rolling-2007.pdf` | not in backlink index | 🗂️ **SELF-HOSTED PDF** (print scan) | Repario's James Carter & William Mariani; Pfizer, American Express |
 
@@ -72,11 +72,10 @@ indexed backlink: #5, #21, #22, #23.**
   (nofollow → buildingteams.com), **#12 HotelNewsResource**, **#13 Flickr set** 🟢
 
 ### B. Self-hosted PDF scans (live on /press/, permanent — can't rot)
-- **#28 SHRM (2003)**, **#24 Alaska Airlines Magazine**, **#30 NNBW (2007)**,
+- **#24 Alaska Airlines Magazine**, **#30 NNBW (2007)**,
   **#27 Nevada Business Report (2007)**, **#2 Benzinga (2010)**,
   **#8 Wenatchee World (2010)**, **#10 IRC** — all served from `/assets/press/`.
-- Note: **#28 SHRM** placement is under review — it may fit **belegendary.org**
-  (founder brand) better than the BT give-back page.
+- **#28 SHRM (2003)** — removed from BT; being placed on **belegendary.org** (founder brand).
 
 ### C. Still on Wayback (no scan yet) — swap to a hosted PDF if a scan turns up
 - #1 DeVry, #14 Meetings Focus, #15 RISMedia, #16 Leapfrog, #11 CHART, #7 ZynniaTV.
