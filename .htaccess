@@ -70,6 +70,9 @@ RewriteRule ^experiences/off-road-immersion(/index\.html)?/?$ https://www.belege
 # ----- Retired: Holiday Spirit folded into Operation You Matter (Mission Merry) -----
 RewriteRule ^activities/holiday-team-building/?(index\.html)?$ /operation-you-matter/#mission-merry [R=301,NC,L]
 
+# ----- Cross-brand move: Team Coaching -> Be Legendary -----
+RewriteRule ^team-coaching/?(index\.html)?$ https://www.belegendary.org/how-we-work-together/ [R=301,NC,L]
+
 # ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
 # Every /news/* URL on the old site was injected casino/essay/pharma spam.
 RewriteRule ^news/ - [G,NC,L]
