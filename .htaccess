@@ -67,6 +67,9 @@ ErrorDocument 404 /404.html
 # executive brand. 301 the old give-back-hub URL to its new home.
 RewriteRule ^experiences/off-road-immersion(/index\.html)?/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
 
+# ----- Retired: Holiday Spirit folded into Operation You Matter (Mission Merry) -----
+RewriteRule ^activities/holiday-team-building/?(index\.html)?$ /operation-you-matter/#mission-merry [R=301,NC,L]
+
 # ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
 # Every /news/* URL on the old site was injected casino/essay/pharma spam.
 RewriteRule ^news/ - [G,NC,L]
