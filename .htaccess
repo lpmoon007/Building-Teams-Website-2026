@@ -73,6 +73,11 @@ RewriteRule ^activities/holiday-team-building/?(index\.html)?$ /operation-you-ma
 # ----- Cross-brand move: Team Coaching -> Be Legendary -----
 RewriteRule ^team-coaching/?(index\.html)?$ https://www.belegendary.org/how-we-work-together/ [R=301,NC,L]
 
+# ----- Cross-brand move: Executive Team Building -> Be Legendary -----
+# The executive offering now lives on the executive brand. Anchor with $ so this
+# matches ONLY the landing page, NOT the /success-stories/ child still hosted here.
+RewriteRule ^executive-team-building/?(index\.html)?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+
 # ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
 # Every /news/* URL on the old site was injected casino/essay/pharma spam.
 RewriteRule ^news/ - [G,NC,L]
@@ -99,14 +104,14 @@ RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/what-mot
 # These currently 404 or fall to a too-generic catch-all; route each to the
 # closest modern page so its Google ranking transfers instead of dropping.
 # (MUST precede the broad ^product/, ^Teambuilding_Activity/, ^workshops rules.)
-RewriteRule ^Leadership/legendary_leadership\.htm/?$ /executive-team-building/ [R=301,NC,L]
-RewriteRule ^Leadership(/|$) /executive-team-building/ [R=301,NC,L]
+RewriteRule ^Leadership/legendary_leadership\.htm/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+RewriteRule ^Leadership(/|$) https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
 RewriteRule ^Building_Corporate_Teams(/|$) / [R=301,NC,L]
 RewriteRule ^adventure-team-building/sailing-as-team-building/?$ /experiences/corporate-sailing/ [R=301,NC,L]
 RewriteRule ^adventure-team-building(/|$) /experiences/ [R=301,NC,L]
 RewriteRule ^team-building-workshops/all-team-building-workshops/?$ /team-building-workshops/ [R=301,NC,L]
 RewriteRule ^workshops/facilitator-training-course/?$ /effective-facilitation-workshop/ [R=301,NC,L]
-RewriteRule ^executive-team-building/leadership-development/?$ /executive-team-building/ [R=301,NC,L]
+RewriteRule ^executive-team-building/leadership-development/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
 # "team building kits" ranks via several old kit/product pages -> consolidate on the kits page
 RewriteRule ^team-building-activity-kits/?$ /team-building-kits/ [R=301,NC,L]
 RewriteRule ^product/limited-materials-digital-kit/?$ /team-building-kits/ [R=301,NC,L]
@@ -197,8 +202,8 @@ RewriteRule ^Conference_Teambuilding/recreate\.html?/?$ /activities/power-of-rec
 RewriteRule ^Conference_Teambuilding/ /activities/ [R=301,NC,L]
 # Leadership activity article -> existing leadership exercises guide
 RewriteRule ^leadership_activity_ideas\.htm/?$ /resources/team-building-ideas/leadership-team-building-exercises/ [R=301,NC,L]
-# Rest of the old executive microsite -> executive team building
-RewriteRule ^Executive_Teambuilding/ /executive-team-building/ [R=301,NC,L]
+# Rest of the old executive microsite -> executive team building (now on Be Legendary)
+RewriteRule ^Executive_Teambuilding/ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
 RewriteRule ^i/best-seller\.png/?$ / [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ / [R=301,NC,L]
 RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /team-building-workshops/ [R=301,NC,L]
@@ -207,7 +212,7 @@ RewriteRule ^Adventure_Teambuilding/[a-z_]*off[-_]?road[a-z_]*\.htm/?$ https://w
 RewriteRule (^|/)corporate_orienteering\.htm/?$ /experiences/team-orienteering/ [R=301,NC,L]
 RewriteRule ^workshops/two-hour-team-building-workshops/what-is-wrong-with-you/?$ /resources/ [R=301,NC,L]
 RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ / [R=301,NC,L]
-RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ /executive-team-building/ [R=301,NC,L]
+RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
 RewriteRule ^i/shack1\.jpg/?$ / [R=301,NC,L]
 # Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
 # Anchored with /?$ so "/location/boston/" maps to exactly "/locations/boston/"
