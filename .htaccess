@@ -81,6 +81,12 @@ RewriteRule ^executive-team-building/?(index\.html)?$ https://www.belegendary.or
 # ----- Cross-brand move: Corporate Sailing -> Be Legendary -----
 RewriteRule ^experiences/corporate-sailing/?(index\.html)?$ https://www.belegendary.org/sailing-team-building/ [R=301,NC,L]
 
+# ----- Cross-brand move: executive offsite / retreat resources -> Be Legendary -----
+# The executive-planning resource cluster now lives on the executive brand.
+RewriteRule ^resources/executive-offsite-agenda/?(index\.html)?$ https://www.belegendary.org/leadership-offsite-agenda/ [R=301,NC,L]
+RewriteRule ^resources/company-offsite-planning-checklist/?(index\.html)?$ https://www.belegendary.org/how-to-plan-an-executive-offsite/ [R=301,NC,L]
+RewriteRule ^resources/corporate-retreat-ideas/?(index\.html)?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
+
 # ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
 # Every /news/* URL on the old site was injected casino/essay/pharma spam.
 RewriteRule ^news/ - [G,NC,L]
@@ -177,8 +183,8 @@ RewriteRule ^team_building_spy_scenarios\.htm/?$ /resources/team-building-spy-sc
 RewriteRule ^teambuilding_articles\.htm/?$ /resources/ [R=301,NC,L]
 RewriteRule ^Teambuilding_Articles/ /resources/ [R=301,NC,L]
 # Staff-retreat keyword cluster -> corporate retreat ideas
-RewriteRule ^staff_retreat_games_ideas\.htm/?$ /resources/corporate-retreat-ideas/ [R=301,NC,L]
-RewriteRule ^staff_retreat_teambuilding_non_profit_organization\.htm/?$ /resources/corporate-retreat-ideas/ [R=301,NC,L]
+RewriteRule ^staff_retreat_games_ideas\.htm/?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
+RewriteRule ^staff_retreat_teambuilding_non_profit_organization\.htm/?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
 # Old team building books product page -> activities library
 RewriteRule (^|/)teambuildingbooks\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
 
