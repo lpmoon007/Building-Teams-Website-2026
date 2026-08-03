@@ -116,7 +116,7 @@ RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/what-mot
 RewriteRule ^Leadership/legendary_leadership\.htm/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
 RewriteRule ^Leadership(/|$) https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
 RewriteRule ^Building_Corporate_Teams(/|$) / [R=301,NC,L]
-RewriteRule ^adventure-team-building/sailing-as-team-building/?$ https://www.belegendary.org/sailing-team-building/ [R=301,NC,L]
+RewriteRule ^adventure-team-building/sailing-as-team-building/?(index\.html)?$ https://www.belegendary.org/sailing-team-building/ [R=301,NC,L]
 RewriteRule ^adventure-team-building(/|$) /experiences/ [R=301,NC,L]
 RewriteRule ^team-building-workshops/all-team-building-workshops/?$ /team-building-workshops/ [R=301,NC,L]
 RewriteRule ^workshops/facilitator-training-course/?$ /effective-facilitation-workshop/ [R=301,NC,L]
