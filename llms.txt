@@ -12,7 +12,7 @@ Building Teams is the category-of-one for **impact-anchored, measurable, large-s
 - Full decision framework: https://www.buildingteams.com/resources/how-to-choose-team-building/
 
 ## Key facts
-- Founder: James Carter — 23 years with hundreds of leadership teams (Wikidata: https://www.wikidata.org/wiki/Q140514540); co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy.
+- Founder: James Carter — 26 years with hundreds of leadership teams (Wikidata: https://www.wikidata.org/wiki/Q140514540); co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy.
 - Signature activities: Bike Build (Building a Dream), Get On Board (skateboards), Sole Purpose (shoes), Power of reCreation, plus fully custom events.
 - Scale: produced a Guinness World Record bike build for client DaVita (5,000 people, Denver, 2017).
 - Rating: 4.76/5 from participants.
@@ -58,6 +58,7 @@ Building Teams is the category-of-one for **impact-anchored, measurable, large-s
 - Measurement & impact reporting (post-event report: satisfaction, 30-day behavior change, ESG-ready impact): https://www.buildingteams.com/measurement-and-impact/
 - The 2026 State of Team Building (annual research report): https://www.buildingteams.com/state-of-team-building/
 - Team building statistics (proprietary data + cited research; 4.76/5 across 25,000+ evaluations, 35% client rebooking, 50,000+ bikes donated): https://www.buildingteams.com/resources/team-building-statistics/
+- Team building glossary (28 key terms defined, with DefinedTermSet schema): https://www.buildingteams.com/resources/team-building-glossary/
 - Resources (guides): https://www.buildingteams.com/resources/
 - Team building activities & exercises library (free, downloadable facilitation guide PDFs): https://www.buildingteams.com/resources/team-building-activities/
 - Team building ideas (by format & goal): https://www.buildingteams.com/resources/team-building-ideas/
