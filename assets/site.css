@@ -436,3 +436,13 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .ctab th,.ctab td{border:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top;line-height:1.5}
 .ctab th{background:var(--mist);font-family:var(--display);font-weight:600;color:var(--ink)}
 .ctab caption{caption-side:top;text-align:left;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-2);margin-bottom:8px}
+
+/* Popular-cities internal-link module (location equity) */
+.citylinks{padding:36px 0;border-top:1px solid var(--line)}
+.citylinks .eyebrow{color:var(--brand-2)}
+.citylinks h2{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,26px);letter-spacing:-0.02em;margin:5px 0 6px}
+.citylinks p{color:var(--slate);max-width:62ch;margin:0}
+.cl-list{list-style:none;display:flex;flex-wrap:wrap;gap:9px 10px;padding:0;margin:16px 0 0}
+.cl-list a{display:inline-block;font-family:var(--display);font-size:14px;font-weight:600;color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:999px;padding:8px 15px;text-decoration:none;transition:border-color .15s,color .15s}
+.cl-list a:hover{border-color:var(--brand-2);color:var(--brand-2)}
+.cl-list a.cl-all{background:transparent;color:var(--brand-2);border-color:var(--brand-2)}
