@@ -446,3 +446,10 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .cl-list a{display:inline-block;font-family:var(--display);font-size:14px;font-weight:600;color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:999px;padding:8px 15px;text-decoration:none;transition:border-color .15s,color .15s}
 .cl-list a:hover{border-color:var(--brand-2);color:var(--brand-2)}
 .cl-list a.cl-all{background:transparent;color:var(--brand-2);border-color:var(--brand-2)}
+
+/* Location long-tail section (charity + large-group per city) */
+.loc-longtail{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.loc-longtail .eyebrow{color:var(--brand-2)}
+.loc-longtail h2{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,26px);letter-spacing:-0.02em;margin:6px 0 8px}
+.loc-longtail p{color:var(--ink-2,#33373e);line-height:1.62;margin:0 0 12px}
+@media(max-width:720px){.loc-longtail{grid-template-columns:1fr;gap:22px}}
