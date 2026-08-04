@@ -453,3 +453,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--mis
 .loc-longtail h2{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,26px);letter-spacing:-0.02em;margin:6px 0 8px}
 .loc-longtail p{color:var(--ink-2,#33373e);line-height:1.62;margin:0 0 12px}
 @media(max-width:720px){.loc-longtail{grid-template-columns:1fr;gap:22px}}
+
+/* Reserve space for async HubSpot form embeds so they don't shift content (CLS) */
+@media(max-width:760px){.newsletter .hs-form-frame{min-height:112px}}
+.formcard .hs-form-frame{min-height:320px}
