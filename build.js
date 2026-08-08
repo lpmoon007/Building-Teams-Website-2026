@@ -151,7 +151,7 @@ function rewriteHtml(html) {
   return html.replace(
     // Value runs to the matching closing quote; allow the OTHER quote char
     // inside (e.g. an apostrophe in "Activity Don't Touch Me.html").
-    /\b(href|src)=("|')(.*?)\2/gi,
+    /\b(href|src|data-full)=("|')(.*?)\2/gi,
     (m, attr, q, value) => `${attr}=${q}${rewriteValue(value)}${q}`
   );
 }
