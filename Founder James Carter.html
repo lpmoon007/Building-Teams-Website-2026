@@ -80,16 +80,20 @@
   .media-row .m{font-family:var(--display);font-weight:700;font-size:17px;color:var(--ink);opacity:.55}
   .media-row a.m{opacity:.72;transition:.15s}
   .media-row a.m:hover{opacity:1;color:var(--brand-2)}
-  .books{background:var(--mist);border:1px solid var(--line);border-radius:20px;padding:36px;margin-top:36px}
+  .books{background:var(--mist);border:1px solid var(--line);border-radius:20px;padding:36px;margin:36px auto 0;max-width:1040px}
   .books > p{font-size:16px;color:var(--slate);max-width:64ch;margin-bottom:24px}
-  .shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:start}
   .bookcard{display:block;text-decoration:none;transition:.2s}
   .bookcard:hover{transform:translateY(-5px)}
   .bookcard img{width:100%;height:auto;border-radius:8px;box-shadow:0 16px 36px rgba(21,23,28,0.22);display:block}
   .bookcard .nm{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink);margin-top:12px;line-height:1.2}
   .bookcard .au{font-size:12.5px;color:var(--slate);margin-top:3px}
-  .books .soon{font-family:var(--display);font-size:13px;font-weight:600;color:var(--brand-2);margin-top:22px}
-  @media(max-width:680px){.shelf{grid-template-columns:1fr 1fr;gap:14px}}
+  .bookcard-soon{cursor:default}
+  .bookcard-soon:hover{transform:none}
+  .cover-soon{aspect-ratio:2/3;border-radius:8px;background:linear-gradient(155deg,var(--brand-2),#480910);box-shadow:0 16px 36px rgba(21,23,28,0.22);display:flex;flex-direction:column;justify-content:center;gap:14px;text-align:center;padding:22px 18px;color:#fff}
+  .cover-soon .cs-lab{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#ffb59b}
+  .cover-soon .cs-title{font-family:var(--display);font-weight:700;font-size:clamp(15px,1.4vw,19px);line-height:1.22}
+  @media(max-width:900px){.shelf{grid-template-columns:1fr 1fr;gap:16px}}
   .jc-video{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0c0c0e}
   .jc-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .jc-vcap{font-size:13px;color:var(--slate);margin-top:8px}
@@ -182,9 +186,14 @@
       <a class="m" href="http://edition.cnn.com/2012/03/26/business/extreme-retreats/index.html" target="_blank" rel="noopener nofollow">CNN</a><a class="m" href="https://www.cnn.com/2018/09/30/success/executive-retreats" target="_blank" rel="noopener nofollow">CNN Money</a><a class="m" href="https://www.businessinsider.com/ceos-executive-getaways-de-stress-luxury-resorts-2018-9" target="_blank" rel="noopener nofollow">Business Insider</a><a class="m" href="https://www.businessdestinations.com/work/risky-business/" target="_blank" rel="noopener nofollow">Business Destinations</a>
     </div>
 
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap">
     <div class="books">
       <h2 style="margin-top:0;margin-bottom:8px">The books</h2>
-      <p>James is a co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy in several collaborative works on leadership and growth.</p>
+      <p>James is a co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy in several collaborative works on leadership and growth &mdash; with a fourth on the way.</p>
       <div class="shelf">
         <a class="bookcard" href="https://www.amazon.com/Discover-Inner-Strength-James-Carter/dp/1600135129" target="_blank" rel="noopener">
           <img width="333" height="500" src="assets/books/discover-your-inner-strength.jpg" alt="Discover Your Inner Strength book cover, co-authored by James Carter" />
@@ -201,10 +210,14 @@
           <div class="nm">One Great Idea</div>
           <div class="au">18 power-house ideas</div>
         </a>
+        <div class="bookcard bookcard-soon">
+          <div class="cover-soon"><span class="cs-lab">Forthcoming</span><span class="cs-title">Lost Disciplines of Leadership</span></div>
+          <div class="nm">Lost Disciplines of Leadership</div>
+          <div class="au">James Carter &middot; sole author</div>
+        </div>
       </div>
-      <div class="soon">Forthcoming: <em>Lost Disciplines of Leadership</em></div>
     </div>
-  </div></div>
+  </div>
 </section>
 
 <section id="book">
