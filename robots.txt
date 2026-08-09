@@ -1,4 +1,4 @@
-# Building Teams robots.txt
+# Legendary Team Building robots.txt
 User-agent: *
 Allow: /
 

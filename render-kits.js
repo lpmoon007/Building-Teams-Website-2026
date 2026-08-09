@@ -19,7 +19,7 @@ const KITS = [
 ];
 
 const footer = `<div style="width:100%;font-family:sans-serif;font-size:7pt;color:#9aa0a8;padding:0 14mm;display:flex;justify-content:space-between;">
-  <span>Building Teams · Be Legendary · buildingteams.com · 800-513-8759</span>
+  <span>Legendary Team Building · Be Legendary · buildingteams.com · 800-513-8759</span>
   <span>Page <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`;
 
 (async () => {

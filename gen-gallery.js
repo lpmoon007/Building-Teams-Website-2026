@@ -50,10 +50,10 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g
 function altFor(file, catLabel) {
   const base = path.basename(file, path.extname(file));
   const junk = /^(img|dsc|dscn|dscf|pict|picture|photo|image|p\d|100_|n\d|screenshot)/i;
-  if (junk.test(base) || /^[\d_\-\s]+$/.test(base)) return `${catLabel} — a Building Teams give-back team building event`;
+  if (junk.test(base) || /^[\d_\-\s]+$/.test(base)) return `${catLabel} — a Legendary Team Building give-back team building event`;
   const words = base.replace(/[_\-]+/g, ' ').replace(/\s+/g, ' ').trim();
   const titled = words.replace(/\b\w/g, (c) => c.toUpperCase());
-  return `${titled} — ${catLabel} team building with Building Teams`;
+  return `${titled} — ${catLabel} team building with Legendary Team Building`;
 }
 
 async function processImage(abs) {
