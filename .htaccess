@@ -171,6 +171,11 @@ RewriteRule ^Teambuilding_Activity/ /resources/team-building-activities/ [R=301,
 RewriteRule ^product/win-win-win/?$ /resources/team-building-activities/win-win-win/ [R=301,NC,L]
 RewriteRule ^product/perfect-square/?$ /resources/team-building-activities/perfect-square/ [R=301,NC,L]
 RewriteRule ^product/bull-ring-team-building-activity/?$ /resources/team-building-activities/bull-ring/ [R=301,NC,L]
+RewriteRule ^product/china-syndrome/?$ /resources/team-building-activities/china-syndrome/ [R=301,NC,L]
+RewriteRule ^product/let-go-my-ego/?$ /resources/team-building-activities/let-go-my-ego/ [R=301,NC,L]
+RewriteRule ^product/supply-chain/?$ /resources/team-building-activities/supply-chain/ [R=301,NC,L]
+RewriteRule ^product/trust-walk/?$ /resources/team-building-activities/trust-walk/ [R=301,NC,L]
+RewriteRule ^product/group-communication-workshop/?$ /team-building-workshops/ [R=301,NC,L]
 RewriteRule ^product/ /resources/team-building-activities/ [R=301,NC,L]
 
 # ----- 301 MOVED PERMANENTLY: legit old pages -> new URLs -----
