@@ -231,9 +231,9 @@ RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ - [G,NC,L]
 RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
 RewriteRule ^i/shack1\.jpg/?$ - [G,NC,L]
 # Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
-# Anchored with /?$ so "/location/boston/" maps to exactly "/locations/boston/"
-# (an unanchored pattern appends the trailing slash and produces "//").
-RewriteRule ^location/([^/]+)/?(index\.html)?$ /locations/$1/ [R=301,NC,L]
+# Broadened to also catch WooCommerce sub-paths (/location/denver/page/2/?paged=...):
+# capture only the first segment as $1; QSD drops the old ?product_* query junk.
+RewriteRule ^location/([^/]+) /locations/$1/ [R=301,NC,QSD,L]
 RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
 RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /effective-facilitation-workshop/ [R=301,NC,L]
 RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
@@ -266,5 +266,29 @@ RewriteRule ^(blog/)?enel-green-power-walks-on-fire/?$ /case-studies/ [R=301,NC,
 RewriteRule ^(blog/)?a-to-z-media-goes-beyond-traditional-team-building/?$ /case-studies/ [R=301,NC,L]
 # Everything else under /blog/ (unrevived posts, feeds, dated permalinks) -> Resources
 RewriteRule ^blog(/|$) /resources/ [R=301,NC,L]
+
+# ----- 404 drilldown (Aug 2026): remaining unhandled legacy patterns -----
+# WooCommerce store leftovers (category / DIY / old activities index) -> modern equivalent
+RewriteRule ^product-category(/|$) /resources/team-building-activities/ [R=301,NC,QSD,L]
+RewriteRule ^do-it-yourself-team-building(/|$) /team-building-kits/ [R=301,NC,QSD,L]
+RewriteRule ^team-building-activities(/|$) /resources/team-building-activities/ [R=301,NC,QSD,L]
+# WordPress internals / old cart images -> gone
+RewriteRule ^wp-content/ - [G,NC,L]
+RewriteRule ^i/cart_images/ - [G,NC,L]
+# Legacy CHILD pages of real sections (base pages stay; .+ never matches the base)
+RewriteRule ^team-building-workshops/.+ /team-building-workshops/ [R=301,NC,QSD,L]
+RewriteRule ^conference-team-building/.+ /conference-team-building/ [R=301,NC,QSD,L]
+RewriteCond %{REQUEST_URI} !success-stories
+RewriteRule ^executive-team-building/.+ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+RewriteRule ^Corporate_Teambuilding/ /resources/ [R=301,NC,L]
+# Single legacy pages
+RewriteRule ^intrapersonal_communication_activities\.htm/?$ /resources/communication-team-building-activities/ [R=301,NC,L]
+RewriteRule ^index\.htm/?$ / [R=301,NC,L]
+RewriteRule ^customers\.htm/?$ /customers/ [R=301,NC,L]
+RewriteRule ^about-us/?$ /about/ [R=301,NC,L]
+RewriteRule ^staff-retreat-games-ideas/?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
+RewriteRule ^the-best-team-experience/?$ /experiences/ [R=301,NC,L]
+RewriteRule ^repario-adult-team-building-activities/?$ /resources/adult-team-building-activities/ [R=301,NC,L]
+RewriteRule ^off-road-immersion-retreat/?$ https://www.belegendary.org/executive-off-road-immersion/ [R=301,NC,L]
 
 # ----- end redirect map -----
