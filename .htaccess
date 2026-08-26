@@ -233,6 +233,9 @@ RewriteRule ^i/shack1\.jpg/?$ - [G,NC,L]
 # Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
 # Broadened to also catch WooCommerce sub-paths (/location/denver/page/2/?paged=...):
 # capture only the first segment as $1; QSD drops the old ?product_* query junk.
+# Exceptions handled BEFORE the generic rule (targets that have no /locations/ page):
+RewriteRule ^location/new-york-city(/.*)?$ /locations/ [R=301,NC,L]
+RewriteRule ^location/?$ /locations/ [R=301,NC,L]
 RewriteRule ^location/([^/]+) /locations/$1/ [R=301,NC,QSD,L]
 RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
 RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /effective-facilitation-workshop/ [R=301,NC,L]
