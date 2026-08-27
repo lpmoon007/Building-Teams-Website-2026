@@ -1,0 +1,297 @@
+# ============================================================
+# Legendary Team Building — redirect map  (301 preserve + 410 spam removal)
+# Generated from Semrush backlink analysis. Place at the site root.
+# Implements "Redirect Map (from backlinks).csv".
+# NOTE: the homepage "/" is intentionally NOT redirected (it KEEPS its 781 backlinks).
+# ============================================================
+
+Options +FollowSymLinks
+RewriteEngine On
+
+# ----- Self-hosted fonts: correct MIME type + long immutable cache -----
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ----- Browser caching for our own static assets (fixes "no cache" audits) -----
+# CSS/JS get a conservative 1-week TTL so a deploy is picked up within days;
+# images/media get 30 days (they rarely change). Third-party tracking scripts
+# are served from their own hosts and are unaffected by these rules.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|gif|webp|svg|ico|avif|mp4|webm)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# ----- Gzip/Brotli compression for text assets -----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# ----- Force UTF-8 -----
+# The pages are authored in UTF-8 (em dashes, middots, arrows, curly quotes).
+# Without this, the server can send a Content-Type charset that OVERRIDES the
+# page's <meta charset> and renders those as mojibake (— becomes "â€"", etc.).
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js
+
+# ----- Canonical host + HTTPS (matches https://www. canonicals) -----
+# Force HTTPS (proxy-safe: also honor X-Forwarded-Proto so an upstream TLS
+# terminator that makes Apache see %{HTTPS}=off does not cause a redirect loop)
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://www.buildingteams.com%{REQUEST_URI} [R=301,L]
+# Force www
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ----- HSTS (site is HTTPS-only; conservative 1yr, no includeSubDomains/preload) -----
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+# Serve folder index + clean directory URLs
+DirectoryIndex index.html
+
+# Custom error page
+ErrorDocument 404 /404.html
+
+# ----- Cross-brand move: Off-Road Immersion -> Be Legendary (executive retreat) -----
+# This premium, Colorado-only, James-led leadership experience now lives on the
+# executive brand. 301 the old give-back-hub URL to its new home.
+RewriteRule ^experiences/off-road-immersion(/index\.html)?/?$ https://www.belegendary.org/executive-off-road-immersion/ [R=301,NC,L]
+
+# ----- Retired: Holiday Spirit folded into Operation You Matter (Mission Merry) -----
+RewriteRule ^activities/holiday-team-building/?(index\.html)?$ /operation-you-matter/#mission-merry [R=301,NC,L]
+
+# ----- Cross-brand move: Team Coaching -> Be Legendary -----
+RewriteRule ^team-coaching/?(index\.html)?$ https://www.belegendary.org/how-we-work-together/ [R=301,NC,L]
+
+# ----- Cross-brand move: Executive Team Building -> Be Legendary -----
+# The executive offering now lives on the executive brand. Anchor with $ so this
+# matches ONLY the landing page, NOT the /success-stories/ child still hosted here.
+RewriteRule ^executive-team-building/?(index\.html)?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+
+# ----- Cross-brand move: Corporate Sailing -> Be Legendary -----
+RewriteRule ^experiences/corporate-sailing/?(index\.html)?$ https://www.belegendary.org/sailing-team-building/ [R=301,NC,L]
+
+# ----- Cross-brand move: executive offsite / retreat resources -> Be Legendary -----
+# The executive-planning resource cluster now lives on the executive brand.
+RewriteRule ^resources/executive-offsite-agenda/?(index\.html)?$ https://www.belegendary.org/leadership-offsite-agenda/ [R=301,NC,L]
+RewriteRule ^resources/company-offsite-planning-checklist/?(index\.html)?$ https://www.belegendary.org/how-to-plan-an-executive-offsite/ [R=301,NC,L]
+RewriteRule ^resources/corporate-retreat-ideas/?(index\.html)?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
+
+# ----- 410 GONE: spam-injected pages (kill, do NOT redirect) -----
+# Every /news/* URL on the old site was injected casino/essay/pharma spam.
+RewriteRule ^news/ - [G,NC,L]
+RewriteRule ^zajm-onlajn-absoljutno-vsem-na-kartu/?$ - [G,NC,L]
+RewriteRule ^top-resume-service-2/?$ - [G,NC,L]
+RewriteRule ^kak-vzjat-kredit-bez-kreditnoj-istorii/?$ - [G,NC,L]
+RewriteRule ^home-inspection-checklists/?$ - [G,NC,L]
+RewriteRule ^pdf-accounting-basics-for-beginners-accounting/?$ - [G,NC,L]
+RewriteRule ^banking-option-of-the-wolf-winner-casino-online-for-dummies/?$ - [G,NC,L]
+RewriteRule ^naklejka-viza-masterkard-pay-pass-visa-paywave/?$ - [G,NC,L]
+RewriteRule ^pjat-prichin-pochemu-bank-otkazhet-v-kredite/?$ - [G,NC,L]
+RewriteRule ^(gambling-online|online-gambling)/?$ - [G,NC,L]
+
+# ----- Backlink recovery: specific legacy URLs with real editorial links -----
+# MUST precede the broad catch-alls below (first match with [L] wins), so these
+# land on their MOST specific modern page instead of the generic library.
+RewriteRule ^Teambuilding_Activity/communication_exercises\.htm/?$ /resources/communication-team-building-activities/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/trust_teambuilding_exercises\.htm/?$ /resources/team-building-activities/trust-walk/ [R=301,NC,L]
+RewriteRule ^teambuilding_articles/teamexperience\.htm/?$ /resources/experiential-learning/ [R=301,NC,L]
+RewriteRule ^teambuilding_activity/all_teambuilding_exercises\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^blog/2011/06/22/innovation-the-candle-puzzle/?$ /resources/what-motivates-teams/ [R=301,NC,L]
+
+# ----- Ranking preservation: legacy URLs holding organic positions -----
+# These currently 404 or fall to a too-generic catch-all; route each to the
+# closest modern page so its Google ranking transfers instead of dropping.
+# (MUST precede the broad ^product/, ^Teambuilding_Activity/, ^workshops rules.)
+RewriteRule ^Leadership/legendary_leadership\.htm/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+RewriteRule ^Leadership(/|$) https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+RewriteRule ^Building_Corporate_Teams(/|$) / [R=301,NC,L]
+RewriteRule ^adventure-team-building/sailing-as-team-building/?(index\.html)?$ https://www.belegendary.org/sailing-team-building/ [R=301,NC,L]
+RewriteRule ^adventure-team-building(/|$) /experiences/ [R=301,NC,L]
+RewriteRule ^team-building-workshops/all-team-building-workshops/?$ /team-building-workshops/ [R=301,NC,L]
+RewriteRule ^workshops/facilitator-training-course/?$ /effective-facilitation-workshop/ [R=301,NC,L]
+RewriteRule ^executive-team-building/leadership-development/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+# "team building kits" ranks via several old kit/product pages -> consolidate on the kits page
+RewriteRule ^team-building-activity-kits/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^product/limited-materials-digital-kit/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^product/communication-team-building-kit/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Kits(/|$) /team-building-kits/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Simulations/index\.html?/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/best_selling_team_products\.htm/?$ /team-building-kits/ [R=301,NC,L]
+# Problem-solving exercises -> the specific guide (not the generic library)
+RewriteRule ^Teambuilding_Activity/problem_solving_exercises\.htm/?$ /resources/problem-solving-team-building-activities/ [R=301,NC,L]
+
+# ----- Activity library consolidation: old DIY activity / kit / exercise tree -----
+# The Scavenger Hunt maps to its dedicated rebuild; everything else in the
+# /Teambuilding_Activity/ tree (individual games, kits, exercises-by-outcome,
+# simulations) consolidates into the new activities library so it inherits the
+# link equity these high-ranking pages earned. [NC] also catches lowercase paths.
+RewriteRule ^Teambuilding_Activity/Simulations/scavenger_hunt\.htm/?$ /experiences/the-ultimate-hunt/ [R=301,NC,L]
+# Individual activity pages now exist -> route each old game URL to its exact new page (link equity)
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/alphabet_soup\.html?/?$ /resources/team-building-activities/alphabet-soup/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/ball_mania\.html?/?$ /resources/team-building-activities/ball-mania/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/bull_ring\.html?/?$ /resources/team-building-activities/bull-ring/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/chain_of_command\.html?/?$ /resources/team-building-activities/chain-of-command/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/change_five\.html?/?$ /resources/team-building-activities/change-five/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/china_syndrome\.html?/?$ /resources/team-building-activities/china-syndrome/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/dont_touch_me\.html?/?$ /resources/team-building-activities/dont-touch-me/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/get_it_together\.html?/?$ /resources/team-building-activities/get-it-together/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/group_juggling\.html?/?$ /resources/team-building-activities/group-juggling/ [R=301,NC,L]
+# Highwire discontinued (unsafe) -> route old game URL and the retired clean URL to the library
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/highwire\.html?/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^resources/team-building-activities/highwire/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/knot_a_team\.html?/?$ /resources/team-building-activities/knot-a-team/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/knot_or_not_a_knot\.html?/?$ /resources/team-building-activities/knot-or-not-a-knot/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/learning_maze\.html?/?$ /resources/team-building-activities/learning-maze/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/let_go_my_ego\.html?/?$ /resources/team-building-activities/let-go-my-ego/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/magic_carpet\.html?/?$ /resources/team-building-activities/magic-carpet/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/orange_ball_race\.html?/?$ /resources/team-building-activities/orange-ball-race/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/perfect_square\.html?/?$ /resources/team-building-activities/perfect-square/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/river_crossing\.html?/?$ /resources/team-building-activities/river-crossing/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/search_and_rescue\.html?/?$ /resources/team-building-activities/search-and-rescue/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/supply_chain\.html?/?$ /resources/team-building-activities/supply-chain/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/team_shackles\.html?/?$ /resources/team-building-activities/team-shackles/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/tied_in_knots\.html?/?$ /resources/team-building-activities/tied-in-knots/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/trust_walk\.html?/?$ /resources/team-building-activities/trust-walk/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/washing_machines\.html?/?$ /resources/team-building-activities/washing-machines/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/who_are_you\.html?/?$ /resources/team-building-activities/who-are-you/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/Teambuilding_Games/win_win_win\.html?/?$ /resources/team-building-activities/win-win-win/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Activity/ /resources/team-building-activities/ [R=301,NC,L]
+# WordPress-era product URLs for individual activities -> activity library
+RewriteRule ^product/win-win-win/?$ /resources/team-building-activities/win-win-win/ [R=301,NC,L]
+RewriteRule ^product/perfect-square/?$ /resources/team-building-activities/perfect-square/ [R=301,NC,L]
+RewriteRule ^product/bull-ring-team-building-activity/?$ /resources/team-building-activities/bull-ring/ [R=301,NC,L]
+RewriteRule ^product/china-syndrome/?$ /resources/team-building-activities/china-syndrome/ [R=301,NC,L]
+RewriteRule ^product/let-go-my-ego/?$ /resources/team-building-activities/let-go-my-ego/ [R=301,NC,L]
+RewriteRule ^product/supply-chain/?$ /resources/team-building-activities/supply-chain/ [R=301,NC,L]
+RewriteRule ^product/trust-walk/?$ /resources/team-building-activities/trust-walk/ [R=301,NC,L]
+RewriteRule ^product/group-communication-workshop/?$ /team-building-workshops/ [R=301,NC,L]
+RewriteRule ^product/ /resources/team-building-activities/ [R=301,NC,L]
+
+# ----- 301 MOVED PERMANENTLY: legit old pages -> new URLs -----
+RewriteRule ^teambuilding_faqs\.htm/?$ /faq/ [R=301,NC,L]
+RewriteRule ^teambuilding_tools\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^teambuilding_teachers\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^teambuilding_links\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^team_building_spy_scenarios\.htm/?$ /resources/team-building-spy-scenarios/ [R=301,NC,L]
+# Old articles hub + individual article pages -> Resources
+RewriteRule ^teambuilding_articles\.htm/?$ /resources/ [R=301,NC,L]
+RewriteRule ^Teambuilding_Articles/ /resources/ [R=301,NC,L]
+# Staff-retreat keyword cluster -> corporate retreat ideas
+RewriteRule ^staff_retreat_games_ideas\.htm/?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
+RewriteRule ^staff_retreat_teambuilding_non_profit_organization\.htm/?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
+# Old team building books product page -> activities library
+RewriteRule (^|/)teambuildingbooks\.htm/?$ /resources/team-building-activities/ [R=301,NC,L]
+
+# Old email newsletters (/newsletters/*) -> best-match modern pages
+RewriteRule ^newsletters/motivation\.html?/?$ /resources/what-motivates-teams/ [R=301,NC,L]
+RewriteRule ^newsletters/valentines_day\.html?/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^newsletters/10_step_process\.html?/?$ /resources/ [R=301,NC,L]
+
+# Old Repario /team/ microsite -> best-match modern pages, rest to Resources
+RewriteRule ^team/team_building_blueprint_excellence/ /programs/blueprint-for-excellence/ [R=301,NC,L]
+RewriteRule ^team/team_building_event/[a-z_]*building_a_dream[a-z_]*\.htm/?$ /activities/bike-build/ [R=301,NC,L]
+RewriteRule ^team/team_building_event/[a-z_]*scavanger[a-z_]*\.htm/?$ /experiences/the-ultimate-hunt/ [R=301,NC,L]
+RewriteRule ^team/ /resources/ [R=301,NC,L]
+
+# Old Conference_Teambuilding + Executive_Teambuilding trees -> modern pages
+RewriteRule ^Executive_Teambuilding/executive_teambuilding_succc?ess_stories\.htm/?$ /executive-team-building/success-stories/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/conference_teambuilding\.htm/?$ /conference-team-building/ [R=301,NC,L]
+RewriteRule ^conference_teambuilding\.htm/?$ /conference-team-building/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/care_cart\.htm/?$ /activities/care-cart/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/building_a_dream\.htm/?$ /activities/bike-build/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/sole_purpose\.htm/?$ /activities/shoe-build/ [R=301,NC,L]
+RewriteRule ^Conference_Teambuilding/recreate\.html?/?$ /activities/power-of-recreation/ [R=301,NC,L]
+# Remaining give-back conference events (inspiring minds, one world one team, art for the sky, etc.)
+RewriteRule ^Conference_Teambuilding/ /activities/ [R=301,NC,L]
+# Leadership activity article -> existing leadership exercises guide
+RewriteRule ^leadership_activity_ideas\.htm/?$ /resources/team-building-ideas/leadership-team-building-exercises/ [R=301,NC,L]
+# Rest of the old executive microsite -> executive team building (now on Be Legendary)
+RewriteRule ^Executive_Teambuilding/ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+RewriteRule ^i/best-seller\.png/?$ - [G,NC,L]
+RewriteRule ^wp-content/uploads/2019/08/Learning-maze\.jpg/?$ - [G,NC,L]
+RewriteRule ^teambuilding_workshops/youth_education/education_teambuilding_workshops\.htm/?$ /team-building-workshops/ [R=301,NC,L]
+RewriteRule ^Adventure_Teambuilding/corporate_sailing(_shackletons_adventure)?\.htm/?$ https://www.belegendary.org/sailing-team-building/ [R=301,NC,L]
+RewriteRule ^Adventure_Teambuilding/[a-z_]*off[-_]?road[a-z_]*\.htm/?$ https://www.belegendary.org/executive-off-road-immersion/ [R=301,NC,L]
+RewriteRule (^|/)corporate_orienteering\.htm/?$ /experiences/team-orienteering/ [R=301,NC,L]
+RewriteRule ^workshops/two-hour-team-building-workshops/what-is-wrong-with-you/?$ /resources/ [R=301,NC,L]
+RewriteRule ^i/products/Life_Size_Puzzle/life_size_puzzle\.jpg/?$ - [G,NC,L]
+RewriteRule ^Executive_Teambuilding/executive_teambuilding\.htm/?$ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+RewriteRule ^i/shack1\.jpg/?$ - [G,NC,L]
+# Old singular /location/<city>/ URLs (several rank organically) -> new /locations/<city>/
+# Broadened to also catch WooCommerce sub-paths (/location/denver/page/2/?paged=...):
+# capture only the first segment as $1; QSD drops the old ?product_* query junk.
+# Exceptions handled BEFORE the generic rule (targets that have no /locations/ page):
+RewriteRule ^location/new-york-city(/.*)?$ /locations/ [R=301,NC,L]
+RewriteRule ^location/?$ /locations/ [R=301,NC,L]
+RewriteRule ^location/([^/]+) /locations/$1/ [R=301,NC,QSD,L]
+RewriteRule ^adventure_teambuilding/firewalking\.htm/?$ https://www.belegendary.org/denver-executive-leadership-retreat [R=301,NC,L]
+RewriteRule ^open_enrollment/effective_facilitator\.html/?$ /effective-facilitation-workshop/ [R=301,NC,L]
+RewriteRule ^Corporate_Teambuilding/two_hour_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
+RewriteRule ^i/products/Bull_Ring/walking_sm\.jpg/?$ - [G,NC,L]
+RewriteRule ^Corporate_Teambuilding/half_day_teambuilding_workshops\.html/?$ /resources/ [R=301,NC,L]
+RewriteRule ^conference-team-building/sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
+
+# Workshop URL families -> the dedicated team building workshops page
+# (NOTE: no rule for ^team-building-workshops — that is now a real page)
+RewriteRule ^teambuilding_workshops(/|$) /team-building-workshops/ [R=301,NC,L]
+RewriteRule ^workshops(/|$) /team-building-workshops/ [R=301,NC,L]
+
+# ----- Old WordPress blog: 7 revived evergreen posts -> new articles, rest -> Resources -----
+RewriteRule ^(blog/)?untangling-complex-group-dynamics/?$ /resources/untangling-group-dynamics/ [R=301,NC,L]
+RewriteRule ^(blog/)?the-five-cs-of-managing-virtual-teams/?$ /resources/managing-virtual-teams/ [R=301,NC,L]
+RewriteRule ^(blog/)?accountability-starts-with-you-excuse-me/?$ /resources/accountability-starts-with-me/ [R=301,NC,L]
+RewriteRule ^(blog/)?why-teams-and-team-building/?$ /resources/why-team-building/ [R=301,NC,L]
+RewriteRule ^(blog/)?myers-briggs-mbti-as-a-team-building-tool/?$ /resources/myers-briggs-team-building/ [R=301,NC,L]
+RewriteRule ^(blog/)?5-ways-to-ensure-your-teambuilding-will-suck/?$ /resources/why-team-building-fails/ [R=301,NC,L]
+RewriteRule ^(blog/)?we-see-what-we-look-for/?$ /resources/we-see-what-we-look-for/ [R=301,NC,L]
+# Client event recaps -> Case Studies (folded in as "in the field" proof)
+RewriteRule ^(blog/)?devry-builds-108-bicycles-and-108-dreams/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?60-children-get-brand-new-bicycles-at-nbcuniversal-conference/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?cargill-builds-15-bicycles-for-the-geneva-boys-and-girls-club/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?novartiss-recreation-event-supports-indian-summer-camp/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?14-actelion-employees-built-a-better-tomorrow/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?sole-purpose-in-new-jersey/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?california-pizza-kitchen-inspires-action-on-sailing-adventure/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?enel-green-power-walks-on-fire/?$ /case-studies/ [R=301,NC,L]
+RewriteRule ^(blog/)?a-to-z-media-goes-beyond-traditional-team-building/?$ /case-studies/ [R=301,NC,L]
+# Everything else under /blog/ (unrevived posts, feeds, dated permalinks) -> Resources
+RewriteRule ^blog(/|$) /resources/ [R=301,NC,L]
+
+# ----- 404 drilldown (Aug 2026): remaining unhandled legacy patterns -----
+# WooCommerce store leftovers (category / DIY / old activities index) -> modern equivalent
+RewriteRule ^product-category(/|$) /resources/team-building-activities/ [R=301,NC,QSD,L]
+RewriteRule ^do-it-yourself-team-building(/|$) /team-building-kits/ [R=301,NC,QSD,L]
+RewriteRule ^team-building-activities(/|$) /resources/team-building-activities/ [R=301,NC,QSD,L]
+# WordPress internals / old cart images -> gone
+RewriteRule ^wp-content/ - [G,NC,L]
+RewriteRule ^i/cart_images/ - [G,NC,L]
+# Legacy CHILD pages of real sections (base pages stay; .+ never matches the base)
+RewriteRule ^team-building-workshops/.+ /team-building-workshops/ [R=301,NC,QSD,L]
+RewriteRule ^conference-team-building/.+ /conference-team-building/ [R=301,NC,QSD,L]
+RewriteCond %{REQUEST_URI} !success-stories
+RewriteRule ^executive-team-building/.+ https://www.belegendary.org/executive-team-building/ [R=301,NC,L]
+RewriteRule ^Corporate_Teambuilding/ /resources/ [R=301,NC,L]
+# Single legacy pages
+RewriteRule ^intrapersonal_communication_activities\.htm/?$ /resources/communication-team-building-activities/ [R=301,NC,L]
+RewriteRule ^index\.htm/?$ / [R=301,NC,L]
+RewriteRule ^customers\.htm/?$ /customers/ [R=301,NC,L]
+RewriteRule ^about-us/?$ /about/ [R=301,NC,L]
+RewriteRule ^staff-retreat-games-ideas/?$ https://www.belegendary.org/teams/corporate-retreat-ideas/ [R=301,NC,L]
+RewriteRule ^the-best-team-experience/?$ /experiences/ [R=301,NC,L]
+RewriteRule ^repario-adult-team-building-activities/?$ /resources/adult-team-building-activities/ [R=301,NC,L]
+RewriteRule ^off-road-immersion-retreat/?$ https://www.belegendary.org/executive-off-road-immersion/ [R=301,NC,L]
+
+# ----- end redirect map -----

@@ -1,5 +1,6 @@
-# Generated build output — never commit or hand-edit; regenerate with `node build.js`
-dist/
+# Build output IS committed (dist/) so the server deploy is a pure file copy —
+# no Node/build step on the host to fail. Regenerate with `node build.js` and
+# commit the result; never hand-edit files under dist/.
 
 # OS / editor cruft
 .DS_Store
