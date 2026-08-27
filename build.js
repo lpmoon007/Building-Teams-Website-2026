@@ -31,6 +31,24 @@ const DIST = process.env.OUT_DIR
   : path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.buildingteams.com';
 
+// Unique per-build id, stamped into every page's <head> so a deploy can be
+// verified from the live page source (View Source -> search "build:"). Combines
+// the current git commit SHA with the build time, so it changes every commit
+// AND every rebuild — unlike the old static marker, which was identical across
+// builds and so could never prove a deploy actually replaced the live files.
+const BUILD_ID = (() => {
+  let sha = 'nogit';
+  try { sha = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: ROOT }).toString().trim(); } catch (_) {}
+  return `${sha} ${new Date().toISOString()}`;
+})();
+
+// Stamp/refresh the build marker in a page's <head>. Removes any prior
+// build/build-marker comment first so markers never accumulate.
+function stampBuildId(html) {
+  html = html.replace(/[ \t]*<!--\s*build(?:-marker)?:[^>]*-->\n?/gi, '');
+  return html.replace(/<head>/i, `<head>\n<!-- build: ${BUILD_ID} -->`);
+}
+
 // Pages that must never appear in the build: the two alternate homepage
 // concepts (only Homepage C ships, as "/") and the internal working docs.
 // These mirror the entries in .gitignore so source and build agree.
@@ -217,7 +235,7 @@ const webpSet = collectWebp();
 
 for (const page of pages) {
   const html = fs.readFileSync(path.join(ROOT, page.file), 'utf8');
-  const out = wrapPictures(rewriteHtml(html), webpSet);
+  const out = stampBuildId(wrapPictures(rewriteHtml(html), webpSet));
   const dest = path.join(DIST, page.distFile);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, out);
@@ -228,7 +246,7 @@ for (const page of pages) {
 {
   const p = path.join(ROOT, '404.html');
   if (fs.existsSync(p)) {
-    fs.writeFileSync(path.join(DIST, '404.html'), wrapPictures(rewriteHtml(fs.readFileSync(p, 'utf8')), webpSet));
+    fs.writeFileSync(path.join(DIST, '404.html'), stampBuildId(wrapPictures(rewriteHtml(fs.readFileSync(p, 'utf8')), webpSet)));
   }
 }
 
