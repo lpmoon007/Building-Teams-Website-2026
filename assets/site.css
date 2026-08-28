@@ -47,6 +47,10 @@ img{display:block;max-width:100%;height:auto}
 .btn-primary:hover{background:var(--brand);transform:translateY(-1px);box-shadow:0 10px 24px rgba(100,1,10,.22)}
 .btn-ghost{border-color:var(--line);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--ink)}
+/* Ghost buttons on the dark bands (.cta = ink, .impact = brand) need light
+   text/border — the default dark ink color is invisible there. */
+.cta .btn-ghost,.impact .btn-ghost{border-color:rgba(255,255,255,.35);color:#fff}
+.cta .btn-ghost:hover,.impact .btn-ghost:hover{border-color:#fff}
 .arr{transition:transform .16s}.btn:hover .arr{transform:translateX(3px)}
 
 header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
