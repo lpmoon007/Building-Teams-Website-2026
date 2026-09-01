@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- build: 40fefbb 2026-09-01T19:51:14.238Z -->
+<!-- build: 81e554f 2026-09-01T20:02:12.783Z -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTYTZ0E5S"></script>
 <script>
@@ -197,7 +197,10 @@
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="img-placeholder" data-alt="A corporate team and young scientists working side by side at a station during an Inspiring Minds give-back">Hero image<br>Inspiring Minds &mdash; the teach-back moment</div>
+    <figure style="margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(21,23,28,.10)">
+      <picture><source type="image/webp" srcset="/assets/gallery/inspiringminds/inspiring-minds-reveal.webp"><img fetchpriority="high" width="1672" height="941" src="/assets/gallery/inspiringminds/inspiring-minds-reveal.jpg" alt="Corporate teams and young scientists at the reveal moment of an Inspiring Minds give-back" style="display:block;width:100%;height:auto" /></picture>
+    </figure>
+    <p class="oym-cap" style="text-align:center;font-size:13.5px;color:var(--slate);margin:14px auto 0;max-width:700px">The reversal &mdash; competitors become teachers, and the children arrive as the young scientists.</p>
   </div>
 </section>
 
@@ -330,6 +333,20 @@
   </div>
 </section>
 
+<section style="padding-top:0" aria-label="Photo gallery">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;max-width:640px;margin:0 auto 22px"><span class="eyebrow" style="display:block">From the room</span><h2 style="font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,34px);letter-spacing:-0.02em;margin:8px 0">Moments from Inspiring Minds.</h2></div>
+    <div class="gallery" id="im-gallery">
+      <button type="button" data-full="/assets/gallery/inspiringminds/inspiring-minds-reveal.jpg"><picture><source type="image/webp" srcset="/assets/gallery/inspiringminds/inspiring-minds-reveal.webp"><img width="1672" height="941" loading="lazy" src="/assets/gallery/inspiringminds/inspiring-minds-reveal.jpg" alt="Corporate teams and young scientists at the reveal moment of an Inspiring Minds give-back" /></picture></button>
+      <button type="button" data-full="/assets/gallery/inspiringminds/inspiring-minds-cryptex.jpg"><picture><source type="image/webp" srcset="/assets/gallery/inspiringminds/inspiring-minds-cryptex.webp"><img width="1672" height="941" loading="lazy" src="/assets/gallery/inspiringminds/inspiring-minds-cryptex.jpg" alt="A team working a six-letter cryptex in the Secrets Through Time variation of Inspiring Minds" /></picture></button>
+      <button type="button" data-full="/assets/gallery/inspiringminds/inspiring-minds-cipher-wheel.jpg"><picture><source type="image/webp" srcset="/assets/gallery/inspiringminds/inspiring-minds-cipher-wheel.webp"><img width="1672" height="941" loading="lazy" src="/assets/gallery/inspiringminds/inspiring-minds-cipher-wheel.jpg" alt="Encrypting a name on a cipher wheel at an Inspiring Minds station" /></picture></button>
+      <button type="button" data-full="/assets/gallery/inspiringminds/inspiring-minds-vip-cryptex.jpg"><picture><source type="image/webp" srcset="/assets/gallery/inspiringminds/inspiring-minds-vip-cryptex.webp"><img width="1672" height="941" loading="lazy" src="/assets/gallery/inspiringminds/inspiring-minds-vip-cryptex.jpg" alt="A child and adults opening the cryptex together during Inspiring Minds" /></picture></button>
+      <button type="button" data-full="/assets/gallery/inspiringminds/inspiring-minds-group-300.jpg"><picture><source type="image/webp" srcset="/assets/gallery/inspiringminds/inspiring-minds-group-300.webp"><img width="1672" height="941" loading="lazy" src="/assets/gallery/inspiringminds/inspiring-minds-group-300.jpg" alt="A ballroom of hundreds running Inspiring Minds pods at a conference general session" /></picture></button>
+      <button type="button" data-full="/assets/gallery/inspiringminds/inspiring-minds-vips-300.jpg"><picture><source type="image/webp" srcset="/assets/gallery/inspiringminds/inspiring-minds-vips-300.webp"><img width="1672" height="941" loading="lazy" src="/assets/gallery/inspiringminds/inspiring-minds-vips-300.jpg" alt="Children arriving as the young scientists during a large Inspiring Minds session" /></picture></button>
+    </div>
+  </div>
+</section>
+
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sec-head" style="margin:0 auto 40px;text-align:center"><span class="eyebrow">Questions, answered</span><h2>Inspiring Minds FAQs</h2></div>
@@ -430,6 +447,25 @@
 })();
 </script>
 <div class="mcta" aria-label="Quick contact"><a class="mcta-call" href="tel:800-513-8759"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg>Call</a><a class="mcta-prop" href="/contact/">Get a proposal</a></div>
+<script>
+(function(){
+  var g=document.getElementById('im-gallery'); if(!g)return;
+  var btns=[].slice.call(g.querySelectorAll('button'));
+  var lb=document.createElement('div'); lb.className='lightbox'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true'); lb.setAttribute('aria-label','Photo viewer');
+  lb.innerHTML='<button class="lb-btn lb-close" aria-label="Close">×</button><button class="lb-btn lb-prev" aria-label="Previous photo">‹</button><img alt="" /><button class="lb-btn lb-next" aria-label="Next photo">›</button><div class="lb-count"></div>';
+  document.body.appendChild(lb);
+  var im=lb.querySelector('img'), cnt=lb.querySelector('.lb-count'), i=0;
+  function show(n){i=(n+btns.length)%btns.length;var b=btns[i];im.src=b.dataset.full;im.alt=b.querySelector('img').alt;cnt.textContent=(i+1)+' / '+btns.length;}
+  function open(n){show(n);lb.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open');document.body.style.overflow='';}
+  btns.forEach(function(b,idx){b.addEventListener('click',function(){open(idx);});});
+  lb.querySelector('.lb-close').addEventListener('click',close);
+  lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(i-1);});
+  lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(i+1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(i-1);else if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
 <!-- LinkedIn Insight Tag -->
 <script type="text/javascript">_linkedin_partner_id="500861035";window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
 <script type="text/javascript">(function(l){if(!l){window.lintrk=function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]}window.__liLoad=function(){if(window._liL)return;window._liL=1;var s=document.getElementsByTagName("script")[0];var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";s.parentNode.insertBefore(b,s);};})(window.lintrk);</script>
