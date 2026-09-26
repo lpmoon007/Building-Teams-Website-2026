@@ -212,6 +212,33 @@ function wrapPictures(html, webpSet) {
   });
 }
 
+// Merge the brand's alternate names into the sitewide Organization JSON-LD so
+// AI engines that split "Building Teams" / "BuildingTeams.com" from "Legendary
+// Team Building" reconcile them to one entity. Handled at build time because the
+// Organization node is hard-coded identically on every page; editing 209 source
+// files by hand would drift. Matches the two shapes that exist in source — with
+// ("alternateName":"Be Legendary") and without an alternateName — merges rather
+// than overwrites, de-dupes, and is idempotent (a re-run finds an array and
+// leaves it unchanged). Only the first (and only) #org node per page is touched.
+const ORG_ALTERNATE_NAMES = ['Building Teams', 'BuildingTeams.com'];
+function injectOrgAlternateNames(html) {
+  return html.replace(
+    /("@id":"https:\/\/www\.buildingteams\.com\/#org","name":"Legendary Team Building")(?:,"alternateName":("[^"]*"|\[[^\]]*\]))?/,
+    (whole, head, altVal) => {
+      let existing = [];
+      if (altVal) {
+        try {
+          const parsed = JSON.parse(altVal); // "Be Legendary" or ["a","b"]
+          existing = Array.isArray(parsed) ? parsed : [parsed];
+        } catch { existing = []; }
+      }
+      const merged = existing.slice();
+      for (const n of ORG_ALTERNATE_NAMES) if (!merged.includes(n)) merged.push(n);
+      return `${head},"alternateName":${JSON.stringify(merged)}`;
+    }
+  );
+}
+
 // ---------------------------------------------------------------------------
 // run
 // ---------------------------------------------------------------------------
@@ -235,7 +262,7 @@ const webpSet = collectWebp();
 
 for (const page of pages) {
   const html = fs.readFileSync(path.join(ROOT, page.file), 'utf8');
-  const out = stampBuildId(wrapPictures(rewriteHtml(html), webpSet));
+  const out = stampBuildId(injectOrgAlternateNames(wrapPictures(rewriteHtml(html), webpSet)));
   const dest = path.join(DIST, page.distFile);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, out);
@@ -246,7 +273,7 @@ for (const page of pages) {
 {
   const p = path.join(ROOT, '404.html');
   if (fs.existsSync(p)) {
-    fs.writeFileSync(path.join(DIST, '404.html'), stampBuildId(wrapPictures(rewriteHtml(fs.readFileSync(p, 'utf8')), webpSet)));
+    fs.writeFileSync(path.join(DIST, '404.html'), stampBuildId(injectOrgAlternateNames(wrapPictures(rewriteHtml(fs.readFileSync(p, 'utf8')), webpSet))));
   }
 }
 
