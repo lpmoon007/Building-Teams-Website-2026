@@ -78,16 +78,24 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);bac
 .nav-toggle svg{display:block}
 @media(max-width:1150px){
   .nav-toggle{display:inline-flex}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 0;box-shadow:0 18px 40px rgba(21,23,28,.12);z-index:60}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0 0 6px;box-shadow:0 18px 40px rgba(21,23,28,.12);z-index:60;max-height:calc(100vh - 62px);overflow-y:auto}
   .nav-links.open{display:flex}
   .nav-links a{padding:13px 36px;font-size:16px}
   .nav-dd{display:block}
-  .nav-dd-trigger{padding:13px 36px;font-size:16px}
-  .nav-dd-menu{position:static;display:flex;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;min-width:0}
+  /* mobile menu: top-level categories as tappable headers (accordion) */
+  .nav-links a.nav-dd-trigger{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 24px;font-size:16px;font-weight:700;color:var(--ink);border-top:1px solid var(--line)}
+  .nav-dd:first-child>a.nav-dd-trigger{border-top:0}
+  .nav-dd-menu{position:static;display:none;margin:0;padding:4px 0 10px;border:0;border-radius:0;box-shadow:none;min-width:0;background:var(--mist)}
   .nav-dd-menu::before{display:none}
-  .nav-dd-menu a{padding:11px 36px 11px 54px;font-size:15px;border-radius:0}
-  .nav-dd-caret{display:none}
+  .nav-dd-menu a{padding:10px 24px 10px 40px;font-size:15px;font-weight:500;color:var(--slate);border-radius:0}
+  .nav-dd:hover>.nav-dd-menu,.nav-dd:focus-within>.nav-dd-menu{display:none}
+  .nav-dd.open>.nav-dd-menu{display:flex}
+  .nav-dd-caret{display:inline-block;flex:none;margin-left:12px;transition:transform .15s ease}
+  .nav-dd:hover>a.nav-dd-trigger .nav-dd-caret,.nav-dd:focus-within>a.nav-dd-trigger .nav-dd-caret{transform:none}
+  .nav-dd.open>a.nav-dd-trigger .nav-dd-caret{transform:rotate(180deg)}
 }
+/* phones: drop the header CTA + phone (both live in the sticky bottom bar) */
+@media(max-width:819px){.nav-cta .btn-primary,.nav-phone{display:none}}
 @media(max-width:560px){.nav-phone .np-num{display:none}}
 
 /* split hero (image + copy) */

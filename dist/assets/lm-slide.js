@@ -132,3 +132,17 @@
     }
   });
 })();
+
+/* Mobile nav accordion: tap a top-level category to expand/collapse its items.
+   Only active in the mobile drawer (<=1150px); desktop keeps hover dropdowns. */
+;(function(){
+  var mq = window.matchMedia('(max-width:1150px)');
+  document.addEventListener('click', function(e){
+    var trig = e.target.closest && e.target.closest('.nav-dd-trigger');
+    if(!trig || !mq.matches) return;
+    e.preventDefault();
+    var dd = trig.parentNode;
+    var open = dd.classList.toggle('open');
+    trig.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+})();
