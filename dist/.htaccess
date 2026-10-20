@@ -294,4 +294,27 @@ RewriteRule ^the-best-team-experience/?$ /experiences/ [R=301,NC,L]
 RewriteRule ^repario-adult-team-building-activities/?$ /resources/adult-team-building-activities/ [R=301,NC,L]
 RewriteRule ^off-road-immersion-retreat/?$ https://www.belegendary.org/executive-off-road-immersion/ [R=301,NC,L]
 
+# ----- 404 cleanup (Oct 2026, from GA4 "Page Not Found" views Jul 22 - Oct 19) -----
+# Each line below matched no earlier rule. Old store, retreat and legacy pages.
+RewriteRule ^(checkout|cart|shop|my-account)(/.*)?$ /team-building-kits/ [R=301,NC,QSD,L]
+RewriteRule ^downloadable-team-building-activities/?$ /team-building-kits/ [R=301,NC,L]
+RewriteRule ^locations/new-york-city/?$ /locations/ [R=301,NC,L]
+RewriteRule ^(Executive|Corporate)_Retreats(/|$) /corporate-retreats/ [R=301,NC,L]
+RewriteRule ^speaking_engagements\.htm/?$ /conference-team-building/ [R=301,NC,L]
+RewriteRule ^sole-purpose/?$ /activities/shoe-build/ [R=301,NC,L]
+RewriteRule ^blended-learning-and-trainings-for-teams/?$ /team-building-workshops/ [R=301,NC,L]
+RewriteRule ^team-building-activities-exercises-and-games/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^teambuilding_activity/?$ /resources/team-building-activities/ [R=301,NC,L]
+RewriteRule ^Adventure_Teambuilding/scavenger_hunt\.htm/?$ /experiences/the-ultimate-hunt/ [R=301,NC,L]
+RewriteRule ^creative_team_building_ideas\.htm/?$ /resources/team-building-ideas/ [R=301,NC,L]
+RewriteRule ^(about_us|careers|jobs|lifetime-guarantee|two-year-warranty)(\.htm)?/?$ /about/ [R=301,NC,L]
+RewriteRule ^contact\.htm/?$ /contact/ [R=301,NC,L]
+RewriteRule ^sitemap\.htm/?$ / [R=301,NC,L]
+RewriteRule ^legendary-consulting/?$ https://www.belegendary.org/how-we-work-together/ [R=301,NC,L]
+RewriteRule ^state/?$ /locations/ [R=301,NC,L]
+RewriteRule ^(feed|team-building-blog-tips-advice-more-for-the-workplace)/?$ /resources/ [R=301,NC,L]
+# Spam-injected category page
+RewriteRule ^category/nlp-algorithms/?$ - [G,NC,L]
+RewriteRule ^category(/|$) /resources/ [R=301,NC,L]
+
 # ----- end redirect map -----
