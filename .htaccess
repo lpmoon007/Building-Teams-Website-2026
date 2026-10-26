@@ -70,7 +70,13 @@ ErrorDocument 404 /404.html
 RewriteRule ^experiences/off-road-immersion(/index\.html)?/?$ https://www.belegendary.org/executive-off-road-immersion/ [R=301,NC,L]
 
 # ----- Retired: Holiday Spirit folded into Operation You Matter (Mission Merry) -----
-RewriteRule ^activities/holiday-team-building/?(index\.html)?$ /operation-you-matter/#mission-merry [R=301,NC,L]
+RewriteRule ^activities/holiday-team-building/?(index\.html)?$ /operation-you-matter/#mission-merry [R=301,NC,NE,L]
+
+# ----- 404s found 2026-10-26 (GSC, Otterly AI citations): guessed/typo URLs -> real pages -----
+RewriteRule ^best-charity-team-building-companies/?$ /resources/best-charity-team-building-companies/ [R=301,NC,L]
+RewriteRule ^conference/?$ /conference-team-building/ [R=301,NC,L]
+RewriteRule ^resources/tuckmans-stages-of-group-development/?$ /resources/tuckmans-stages-of-team-development/ [R=301,NC,L]
+RewriteRule ^state-of-team_building/?$ /state-of-team-building/ [R=301,NC,L]
 
 # ----- Cross-brand move: Team Coaching -> Be Legendary -----
 RewriteRule ^team-coaching/?(index\.html)?$ https://www.belegendary.org/how-we-work-together/ [R=301,NC,L]
