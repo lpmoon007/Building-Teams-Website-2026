@@ -97,6 +97,9 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);bac
 /* phones: drop the header CTA + phone (both live in the sticky bottom bar) */
 @media(max-width:819px){.nav-cta .btn-primary,.nav-phone{display:none}}
 @media(max-width:560px){.nav-phone .np-num{display:none}}
+/* narrow desktops (above the hamburger breakpoint): drop the wordmark so the
+   logo icon + nav links + phone + CTA don't crowd/overlap before collapsing */
+@media(max-width:1320px){.nav-logo .wm{display:none}}
 
 /* split hero (image + copy) */
 .hero{padding:74px 0 64px;background:linear-gradient(180deg,var(--mist),var(--paper))}
